@@ -1,0 +1,49 @@
+
+/*fixed 디자인 첨가*/
+.subpage .header {position: fixed;}
+.subpage.ver-mini .header__wrap__h1 h1 {top: 12px;}
+.subpage.ver-mini .header {height:60px;}
+.mainpage.ver-mini .header {position: fixed;top:0;height:60px;background-color:#212336}
+.mainpage.ver-mini .header__wrap__h1 h1 {top: 12px;}
+
+//.ver-mini .header__wrap__h1 h1 a { @include sprite($title, 1.5);}
+.ver-mini .header__wrap__h1 h1 a img {max-height:$mobileTitle;}
+
+.ver-mini .ver2.down-all .gnb {background-position:0 -49px;}
+.mainpage.ver-mini .ver2.down-all .gnb {background-position:0 -97px;}
+.subpage .gnb .gnb-menu > a {transition: all 0.3s ease 0s;}
+.ver-mini .ver2 .gnb .gnb-menu > a {height:60px;line-height: 60px;transition: all 0.3s ease 0s;}
+.ver-mini.mainpage .ver2 .gnb .gnb-menu > a {height:60px;line-height: 60px;transition: all 0.3s ease 0s;}
+
+.ver-mini.mainpage .gnb-menu {border-right:0px !important}
+
+.sub-visual {
+position: fixed;
+width: 100%;
+margin-top: 109px;}
+
+.ver-mini .sub-visual {margin-top:60px;}
+.ver-mini .main-section {margin-top:109px}
+.ver-mini .main-section {margin-top:109px}
+.sub-page-container {padding-top:424px;}
+.ver-mini.subpage .header__links__1 {top:20px}
+.ver-mini.mainpage .header__links__1 {top:20px}
+
+.ver-mini.subpage .btn_all{top:2px}
+.ver-mini.mainpage .btn_all{top:2px}
+
+@media screen and (min-width:769px) and (max-width:1500px) {
+	.subpage.ver-mini .header {height:108px;}
+	.mainpage.ver-mini .header {height:108px;}
+	.ver-mini .gnb {top:48px !important}
+	.ver-mini.mainpage .ver2 .gnb .gnb-menu > a {transition: all 0.0s ease 0s;}
+}
+@media screen and (min-width:1px) and (max-width:768px) {
+
+	.ver-mini .main-section {margin-top:0}
+	.ver-mini .main-section {margin-top:0}
+	.sub-page-container {padding-top:51px}
+	.ver-mini .header__wrap__h1 h1 {top: 9px;}
+	//.header__wrap__h1 h1 a { @include sprite($title, 1.7);}
+	//.ver-mini .header__wrap__h1 h1 a { @include sprite($title, 1.7);}
+}

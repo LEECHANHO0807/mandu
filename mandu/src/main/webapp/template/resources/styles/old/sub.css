@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+/* 위원장 인사말 */
+.greet { position: relative; padding: 70px 0; }
+.greet:before { position: absolute; top: 145px; left: 50%; display: inline-block; width: 483px; height: 387px; margin-left: 160px; content: ''; background: url('http://www.balance.go.kr/images/main/greet_bg.jpg') no-repeat; }
+.greet p ~ p { margin-top: 23px; }
+.greet .sign { text-align: right; }
+.greet .sign em { font-size: 0; display: inline-block; width: 145px; height: 74px; margin-left: 50px; vertical-align: middle; background: url('http://www.balance.go.kr/images/main/sign.gif') no-repeat; }
+.greet p.mtm1	{margin-top:0px;}
+
+.greet.new:before	{display:none}
+.greet.new p:first-child { margin-top:70px; }
+
+.greet.new .contents-wrap{background:url(/images/main/greeting.png) no-repeat 100% 100%; background-size:28% auto;}
+.greet.new .contents-wrap .paddingty{padding-right:350px;}
+
+/* 위원회 소개 */
+.intro { padding: 70px 0; background: #ecf3f7; }
+.intro h2 { text-align: center; }
+.intro ul { margin: 0 auto; list-style: none; }
+.intro li { display: inline-block; width: 560px; vertical-align: top; }
+.intro li ~ li { margin-left: 18px; }
+.intro li h3 { font-size: 26px; font-weight: normal; line-height: 53px; position: relative; height: 55px; margin-bottom: 5px; text-align: center; border: 2px solid #8bb5dc; border-radius: 2px; background: url('http://www.balance.go.kr/images/main/intro_bg.gif'); }
+.intro li h3:before, .intro li h3:after { position: absolute; top: 18px; display: inline-block; width: 16px; height: 16px; content: ''; border: 2px solid #3b82c5; border-radius: 50%; }
+.intro li h3:before { left: 15px; }
+.intro li h3:after { right: 15px; }
+.intro li p { height: 390px; padding: 30px; border: 2px solid #8bb5dc; border-radius: 2px; background: #fff; }
+.intro li:last-child p { word-break: break-all; }
+
+.intro div.btn		{display:block; text-align:center; margin-top:64px;}
+.intro div.btn img		{margin:0 15px 0 -10px;}
+
+/* 위원회 구성 */
+.org { padding: 70px 0; text-align: center; }
+.org h2 { text-align: center; }
+
+/* CI소개 */
+.ci_ser img {position:absolute; }
+.ci_ser	article	{position:relative; }
+.ci_ser div	{margin-left:550px; width:600px;min-height:250px;}
+.ci_ser h4	{color:#4a4a4a;font-size:28px;font-weight:500;}
+.ci_ser h4 .col_1	{color:#e29787;}
+.ci_ser h4 .col_2	{color:#3b82c5;}
+.ci_ser h4 .col_3	{color:#a0a0a0;}
+.ci_ser	p	{margin-top:30px;font-size:17px;letter-spacing:-1px;text-align:justify;line-height:28px;}
+.ci_ser	h4.col_4	{color:#191919;font-weight:500;}
+.ci_ser	span.txt_deco	{text-decoration:underline;}
+.ci_ser	.font17	{font-size:17px;}
+.ci_ser	.Mt30	{margin-top:30px;}
+.ci_ser	.Mt50	{margin-top:50px;}
+.ci_ser	.Mt30 img ~ img	{margin-left:15px;}
+
+/* 연혁 */
+.history > div { overflow: hidden; padding: 30px 0; }
+.history > div:first-child { padding: 0 0 30px }
+.history > div ~ div { border-top: 1px solid #ddd; }
+.history .year { font-weight: bold; line-height: 1; float: left; width: 150px; color: #203c92; }
+.history .con { list-style: none; }
+.history .con li { position: relative; padding: 5px 0; }
+.history .con .day { font-weight: bold; position: absolute; top: 5px; left: 0; color: #444; }
+.history .con .txt { display: inline-block; padding-left: 80px; color: #666; }
+
+@media screen and (min-width: 0px) {
+	.history {font-size: 15px;}
+	.history .year {float: none; font-size: 30px;}
+	.history .year:after {content: "년";}
+	.history .con {float: none; margin-top: 15px;}
+}
+
+@media screen and (min-width: 768px) {
+	.history {font-size: 16px;}
+	.history .year {float: left; font-size: 40px;}
+	.history .year:after {content: "";}
+	.history .con {float: left; margin-top: 0;}
+}
+
+/* 국가균형발전기획단 */
+.plan .diagram { list-style: none; }
+.plan .diagram li { display: inline-block; position: relative; }
+.plan .diagram li ~ li { margin-left: 35px; }
+.plan .diagram li span { font-weight: bold; display: table-cell; width: 260px; height: 260px; padding: 30px; text-align: center; vertical-align: middle; color: #fff; border-radius: 50%; background: #00ab95; }
+.plan .diagram li:after { content: '+'; position: absolute; left: 270px; top: 100px; font-size: 40px; color: #00ab95 }
+.plan .font18	{font-size:18px !important;text-align:justify; letter-spacing:1.5; line-height:24px; }
+
+/* 추진실적 */
+.committee_perfor { line-height: 1.5; display: table; width: 100%; margin-top: 10px; table-layout: fixed; border-top: 2px solid #ccc; }
+.committee_perfor .num { width: 10%; }
+.committee_perfor .date { width: 10%; }
+.committee_perfor .place { width: 20%; }
+.committee_perfor .thead { display: table-header-group; color: #151515; background: #f0f0f0; }
+.committee_perfor .tbody { display: table-row-group; }
+.committee_perfor div > ul { display: table-row; }
+.committee_perfor div > ul > li { display: table-cell; text-align: center; vertical-align: middle; border-bottom: 1px solid #e5e5e5; }
+.committee_perfor .thead > ul > li { font-size: 16px; font-weight: bold; padding: 15px 10px; }
+.committee_perfor .tbody > ul > li { font-size: 16px; padding: 15px 10px; }
+.committee_perfor .tbody .num { font-size: 18px; color: #151515; }
+.committee_perfor .tbody .date { font-family: sans-serif; }
+.committee_perfor .tbody .memo { font-size: 18px; text-align: left; }
+.committee_perfor .tbody .memo ul { list-style: none; }
+.committee_perfor .tbody .memo li { position: relative; padding-left: 15px; }
+.committee_perfor .tbody .memo li:before { position: absolute; left: 0; content: '•'; }

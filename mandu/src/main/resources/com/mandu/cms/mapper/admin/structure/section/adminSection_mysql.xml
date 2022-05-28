@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="adminSection">
+	
+	
+	<!-- 부분 확인 -->
+	<select id="sectionCheck" parameterType="com.mandu.cms.admin.structure.section.domain.Section" resultType="java.lang.Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			CMS_SECTION
+		WHERE
+			SITE_CODE = #{siteCode}
+	</select>
+	
+	
+	<!-- 부분 정보 -->
+	<select id="sectionRead" parameterType="com.mandu.cms.admin.structure.section.domain.Section" resultType="com.mandu.cms.admin.structure.section.domain.Section">
+		SELECT
+			SITE_CODE AS siteCode,
+			SECTION_HEADER AS sectionHeader,
+			SECTION_FOOTER AS sectionFooter,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_SECTION.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_SECTION.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_SECTION.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_SECTION.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_SECTION
+		WHERE
+			SITE_CODE = #{siteCode}
+	</select>
+	
+	
+	<!-- 부분 등록 -->
+	<insert id="sectionCreate" parameterType="com.mandu.cms.admin.structure.section.domain.Section">	
+		INSERT INTO 
+		CMS_SECTION (
+			SITE_CODE,
+			SECTION_HEADER,
+			SECTION_FOOTER,
+			WRITE_ID,
+			WRITE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		)
+		VALUES (
+			#{siteCode},
+			#{sectionHeader},
+			#{sectionFooter},
+			#{writeId},
+			SYSDATE(),
+			NULL,
+			NULL
+		)
+	</insert>
+		
+	
+	<!-- 부분 수정 -->
+	<update id="sectionUpdate" parameterType="com.mandu.cms.admin.structure.section.domain.Section">
+		UPDATE
+			CMS_SECTION
+		SET
+			SECTION_HEADER = #{sectionHeader},
+			SECTION_FOOTER = #{sectionFooter},
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE()
+		WHERE
+			SITE_CODE = #{siteCode}
+	</update>
+	
+
+	<!-- 부분 삭제 -->
+	<update id="sectionDelete" parameterType="com.mandu.cms.admin.structure.section.domain.Section">
+		DELETE
+		FROM
+			CMS_SECTION
+		WHERE
+			SITE_CODE = #{siteCode} 
+	</update>	
+	
+	
+</mapper>

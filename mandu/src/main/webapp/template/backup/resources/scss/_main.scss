@@ -1,0 +1,102 @@
+
+
+/*	메인페이지
+===========================*/
+
+
+.main-section {
+	position:relative;
+	background-color:#ffffff;
+	font-family: $font1;
+}
+
+.main-slogun {text-align: center; background-color:#ffd700;
+	@media screen and (min-width:1px) and (max-width:768px) {
+		& {display: none;}
+	}
+
+}
+
+.main-cont {
+	padding-bottom:80px;
+	&--top {
+		width:1500px;
+		margin:0 auto;
+		padding-top: 80px;
+	}
+	&--mid {background-color:#ebedef;
+		padding-top:55px;
+	}
+	&--bot {width:1500px;margin:0 auto;
+		padding-top:60px;
+	}
+	&__item {
+
+
+		&--1 {
+			float: left;
+			width:50%;
+		}
+		&--2 {
+			float:right;
+			width:733px;
+		}
+		&--3 {
+			float:left;
+			width:100%;
+		}
+		&--4 {
+			float:left;
+			width:50%;
+			&__in {margin-right:10px;}
+		}
+		&--5 {
+			float:right;
+			width:50%;
+			&__in {margin-left:12px;}
+		}
+	}
+}
+
+
+@media screen and (min-width:1px) and (max-width:1500px) {
+	.main-cont {padding: 2%;
+	}
+
+	.main-cont--top {width: auto;}
+	.main-cont--bot {width: auto;}
+
+	.main-cont__item--4 {width:49%}
+	.main-cont__item--5 {width:51%}
+	.main-cont__item--4__in {margin-right:0px;}
+	.main-cont__item--5__in {margin-left:10px;}
+}
+@media screen and (min-width:769px) and (max-width:1500px) {
+	.main-cont {padding: 2%;}
+
+	.main-cont--top {width: auto;}
+	.main-cont--bot {width: auto;}
+
+
+	.main-cont__item--1 {width:35%}
+	.main-cont__item--1 > article {margin-right:0;}
+	.main-cont__item--2 {width:63%;}
+}
+
+
+@media screen and (min-width:1px) and (max-width:768px) {
+	.main-section {padding-top:51px;}
+
+	.main-cont {
+
+		&__item--1 { width: auto; float: none; margin-bottom:30px;}
+		&__item--2 { width: auto; float: none;}
+
+		&__item--4 { width: auto; float: none; margin-bottom:30px;
+			&__in {margin-right:0;}
+		}
+		&__item--5 { width: auto; float: none;
+			&__in {margin-left:0;}
+		}
+	}
+}

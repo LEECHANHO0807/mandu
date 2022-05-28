@@ -1,0 +1,42 @@
+
+/*상단배너*/
+
+.top-banner {min-height:30px;
+
+	&__in {min-height:30px;position:relative;
+		> div:nth-child(1) {min-height:30px;}
+		&__link {
+			display:block;
+			text-align:center;
+			margin:0 auto;
+			max-width:1500px;
+			color:#fff;
+			font-size:17px;
+			&__tit {
+				color:#f2cb8e;
+				font-weight: normal;
+				padding-right:10px;
+			}
+		}
+		img {max-width: 100%;}
+
+		p {position:absolute;top:0;left:-9999px;font-size:0;overflow:hidden;width:0;height:0;}
+
+		.top-banner-close {
+			background-color:#2b3353;
+			border-radius: 5px;
+			padding: 2px 5px;
+			position: absolute; bottom: 14px; right: 0;text-align: right;
+			a,
+			label {vertical-align:middle;color:#fff}
+		}
+	}
+}
+
+body .top-banner {display:block;position: relative;z-index: 9;}
+body.pop-closed .top-banner {display:none;}
+
+@media screen and (min-width:1px) and (max-width:768px) {
+	body .top-banner  {display:none;}
+}
+

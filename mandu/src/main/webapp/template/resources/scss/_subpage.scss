@@ -1,0 +1,912 @@
+/*
+ * Sub Page
+ */
+
+$subpage-content-size: 1200px;
+
+$subpage-nav-color: #203c92;
+$subpage-nav-height: 70px;
+
+$active-color: #1b306e;
+$subtitle-height: 65px;
+
+.subpage {
+	background-color: white;
+	padding: 50px 0 100px 0;
+
+	.subpage-row {
+		margin-bottom: 60px;
+	}
+
+	// 서브페이지 네비게이션 사용할 때
+	// @include breakpoints(sm) {
+	//	margin-top: $subpage-nav-height;
+	// }
+
+	#content {
+		max-width: $subpage-content-size;
+		min-height: 600px;
+		margin: 0 auto;
+
+		.subtitle {
+			position: relative;
+			box-sizing: content-box;
+			border-bottom: 1px solid #d4d4d4;
+			padding: 0 50px;
+
+			@include breakpoints(xs) {
+				line-height: $subtitle-height - 30;
+				padding-bottom: 20px;
+				margin-bottom: 20px;
+
+				> h2 {
+					font-size: 25px;
+				}
+
+				.subtitle-prev, .subtitle-next {
+					height: $subtitle-height - 30;
+
+					span {
+						display: none;
+					}
+				}
+			}
+			@include breakpoints(sm) {
+				line-height: $subtitle-height - 24;
+				padding-bottom: 24px;
+				margin-bottom: 24px;
+
+				> h2 {
+					font-size: 30px;
+				}
+
+				.subtitle-prev, .subtitle-next {
+					height: $subtitle-height - 24;
+
+					span {
+						display: none;
+					}
+				}
+			}
+			@include breakpoints(md) {
+				line-height: $subtitle-height - 18;
+				padding-bottom: 28px;
+				margin-bottom: 28px;
+
+				> h2 {
+					font-size: 35px;
+				}
+
+				.subtitle-prev, .subtitle-next {
+					height: $subtitle-height - 18;
+					font-size: 15px;
+
+					span {
+						display: inline;
+					}
+				}
+			}
+			@include breakpoints(lg) {
+				line-height: $subtitle-height - 12;
+				padding-bottom: 32px;
+				margin-bottom: 32px;
+
+				> h2 {
+					font-size: 40px;
+				}
+
+				.subtitle-prev, .subtitle-next {
+					height: $subtitle-height - 12;
+					font-size: 17px;
+
+					span {
+						display: inline;
+					}
+				}
+			}
+			@include breakpoints(xl) {
+				line-height: $subtitle-height - 6;
+				padding-bottom: 36px;
+				margin-bottom: 36px;
+
+				> h2 {
+					font-size: 45px;
+				}
+
+				.subtitle-prev, .subtitle-next {
+					height: $subtitle-height - 6;
+					font-size: 19px;
+
+					span {
+						display: inline;
+					}
+				}
+			}
+			@include breakpoints(xxl) {
+				line-height: $subtitle-height;
+				padding-bottom: 40px;
+				margin-bottom: 40px;
+
+				> h2 {
+					font-size: 50px;
+				}
+
+				.subtitle-prev, .subtitle-next {
+					height: $subtitle-height;
+					font-size: 21px;
+
+					span {
+						display: inline;
+					}
+				}
+			}
+
+			> h2 {
+				text-align: center;
+			}
+
+			.breadcrumb {
+				line-height: 30px;
+				margin-left: 0;
+
+				@include breakpoints(xs) {
+					display: none;
+				}
+
+				@include breakpoints(sm) {
+					display: block;
+				}
+
+				ul {
+					padding: 0;
+					margin: 0;
+					text-align: center;
+
+					li {
+						list-style: none;
+						position: relative;
+						display: inline-block;
+						padding-right: 9px + 3px;
+						margin-right: 9px - 6px;
+						float: none;
+
+						&:first-child {
+							padding-left: 0;
+
+							i {
+								display: none;
+							}
+						}
+
+						a {
+							display: block;
+							line-height: 30px;
+							color: #666;
+							text-decoration: none;
+
+							@include breakpoints(xs) {
+								font-size: 12px;
+							}
+
+							@include breakpoints(md) {
+								font-size: 14px;
+							}
+
+							i {
+								position: absolute;
+								left: 0;
+								top: 0;
+								bottom: 0;
+								margin: auto;
+							}
+						}
+
+						&:last-child {
+
+							> a {
+								color: inherit;
+							}
+						}
+
+						&:after {
+							@include sprite($breadcrumb-arrow);
+							content: ">";
+							text-indent: -99999px;
+							position: absolute;
+							right: 0;
+							top: 0;
+							bottom: 0;
+							margin: auto 0;
+						}
+
+						&:last-child {
+							padding-right: 0;
+							margin-right: 0;
+
+							&:after {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+
+			.subtitle-prev, .subtitle-next {
+				display: block;
+				position: absolute;
+				top: -14px;
+				bottom: 0;
+				margin: auto;
+				font-weight: bold;
+				color: #767676;
+				text-decoration: none;
+
+				img {
+					height: inherit;
+					display: block;
+				}
+			}
+
+			.subtitle-prev {
+				left: 0;
+
+				img {
+					float: left;
+					margin-right: 15px;
+				}
+			}
+
+			.subtitle-next {
+				right: 0;
+
+				img {
+					float: right;
+					margin-left: 15px;
+				}
+			}
+		}
+	}
+}
+
+.subpage-nav {
+	position: fixed;
+	top: $header-height;
+	left: 0;
+	right: 0;
+	background-color: $subpage-nav-color;
+	z-index: 1;
+
+	> .container {
+		max-width: $subpage-content-size + 40px;
+	}
+
+	@include breakpoints(xs) {
+		display: none;
+	}
+
+	@include breakpoints(sm) {
+		display: block;
+	}
+
+	.subpage-nav__home {
+		position: absolute;
+		left: 20px;
+		display: block;
+		background-color: $active-color;
+		width: $subpage-nav-height;
+		height: $subpage-nav-height;
+		background-image: url(../../resources/images/global/subpage-nav__home.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		text-indent: -9999px;
+		color: transparent;
+		overflow: hidden;
+	}
+
+	.subpage-nav__inner {
+		position: relative;
+
+		> ul {
+			height: $subpage-nav-height;
+			float: left;
+			width: 100%;
+			padding-left: $subpage-nav-height;
+			box-sizing: border-box;
+			display: flex;
+
+			> li {
+				flex: 1;
+				max-width: 300px;
+				margin-right: 1px;
+				list-style: none;
+				float: left;
+				position: relative;
+
+				> h3 {
+					height: $subpage-nav-height;
+					line-height: $subpage-nav-height;
+					color: white;
+					font-weight: normal;
+					font-size: 19px;
+					padding: 0 35px;
+					position: relative;
+					cursor: pointer;
+					padding-right: (31px * 2) + 29px;
+
+					&:before {
+						display: block;
+						content: "";
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: -1px;
+						margin: auto;
+						width: 1px;
+						height: 58px;
+						background-color: rgba(255,255,255,0.2);
+					}
+
+					&:after {
+						display: block;
+						content: "";
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: 31px;
+						margin: auto;
+						width: 29px;
+						height: 29px;
+						background-image: url(../../resources/images/global/subpage-nav__li-arrow.png);
+						background-repeat: no-repeat;
+						background-position: center;
+						transition: 0.2s;
+					}
+				}
+
+				&:first-child {
+
+					> h3 {
+						cursor: default;
+						outline: 0;
+
+						&:after {
+							display: none;
+						}
+					}
+				}
+
+				> ul {
+					display: none;
+					position: absolute;
+					left: 0;
+					right: 0;
+					padding: 20px 35px;
+					background-color: $subpage-nav-color;
+
+					> li {
+						list-style: none;
+						padding: 10px 0;
+
+						> a {
+							display: block;
+							line-height: 20px;
+							color: white;
+							text-decoration: none;
+
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+
+				&.active {
+					background-color: $active-color;
+
+					> h3 {
+
+						&:after {
+							transform: rotate(180deg);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.subpage-table {
+	overflow-x: auto;
+
+	table {
+		width: 100%;
+		min-width: 900px;
+
+		thead {
+
+			th {
+				border-right: 1px solid #ddd;
+				border-bottom: 1px solid #ddd;
+
+				@include breakpoints(xs) {
+					font-size: 14px;
+					padding: 10px;
+				}
+
+				@include breakpoints(sm) {
+					font-size: 14.5px;
+					padding: 11px;
+				}
+
+				@include breakpoints(md) {
+					font-size: 15px;
+					padding: 12px;
+				}
+
+				@include breakpoints(lg) {
+					font-size: 15.5px;
+					padding: 13px;
+				}
+
+				@include breakpoints(xl) {
+					font-size: 16px;
+					padding: 14px;
+				}
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+
+		tbody {
+
+			td {
+				padding: 15px;
+				border-right: 1px solid #ddd;
+				border-bottom: 1px solid #ddd;
+				line-height: 1.5em;
+
+				@include breakpoints(xs) {
+					font-size: 14px;
+					padding: 10px;
+				}
+
+				@include breakpoints(sm) {
+					font-size: 14.5px;
+					padding: 11px;
+				}
+
+				@include breakpoints(md) {
+					font-size: 15px;
+					padding: 12px;
+				}
+
+				@include breakpoints(lg) {
+					font-size: 15.5px;
+					padding: 13px;
+				}
+
+				@include breakpoints(xl) {
+					font-size: 16px;
+					padding: 14px;
+				}
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+	}
+}
+
+.accordion_tab {
+	width: 100%;
+	margin-bottom: 30px;
+
+	@include clear-both();
+
+	@include breakpoints(xs) {
+		display: block;
+	}
+
+	@include breakpoints(lg) {
+		display: flex;
+		align-items: stretch;
+	}
+
+	li {
+		float: left;
+		flex: 1 1 auto;
+		list-style: none;
+		float: left;
+		border: 1px solid #ddd;
+		box-sizing: border-box;
+		margin: -0.5px;
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+		}
+
+		@include breakpoints(sm) {
+			width: (100% / 4);
+		}
+
+		@include breakpoints(md) {
+			width: (100% / 6);
+		}
+
+		@include breakpoints(xl) {
+			width: auto;
+		}
+
+		a {
+			display: block;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			box-sizing: border-box;
+			font-size: 17px;
+			font-weight:bold;
+			line-height:20px;
+			width:100%;
+			height: 100%;
+			text-align: center;
+			text-decoration: none;
+			color: inherit;
+			background: #fafafa;
+			word-break: keep-all;
+
+			@include breakpoints(xs) {
+				font-size: 15px;
+				padding: 10px 0;
+			}
+
+			@include breakpoints(sm) {
+				font-size: 15.5px;
+				padding: 12px 0;
+			}
+
+			@include breakpoints(md) {
+				font-size: 16px;
+				padding: 14px 0;
+			}
+
+			@include breakpoints(lg) {
+				font-size: 16.5px;
+				padding: 16px 0;
+			}
+
+			@include breakpoints(xl) {
+				font-size: 17px;
+				padding: 18px 0;
+			}
+
+			&:hover {
+				color: #fff;
+				background: #203c92;
+			}
+		}
+
+		&.active {
+
+			a {
+				color: #fff;
+				background: #1b306e;
+			}
+		}
+	}
+
+	&[data-length="1"] > li {
+		width: (100% / 1);
+	}
+	&[data-length="2"] > li {
+		width: (100% / 2);
+	}
+	&[data-length="3"] > li {
+		width: (100% / 3);
+	}
+	&[data-length="4"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+		}
+
+		@include breakpoints(sm) {
+			width: (100% / 2);
+		}
+
+		@include breakpoints(lg) {
+			width: (100% / 4);
+		}
+	}
+	&[data-length="5"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+
+			&:nth-last-child(1) {
+				width: (100% / 1);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 2);
+			}
+		}
+
+		@include breakpoints(sm) {
+			width: (100% / 3);
+
+			&:nth-last-child(1) {
+				width: (100% / 2);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 2);
+			}
+		}
+
+		@include breakpoints(lg) {
+			width: (100% / 5);
+
+			&:nth-last-child(1) {
+				width: (100% / 5);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 5);
+			}
+		}
+	}
+	&[data-length="6"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+		}
+
+		@include breakpoints(sm) {
+			width: (100% / 3);
+		}
+
+		@include breakpoints(lg) {
+			width: (100% / 6);
+		}
+	}
+	&[data-length="7"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+
+			&:nth-last-child(1) {
+				width: (100% / 1);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 2);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 2);
+			}
+		}
+
+		@include breakpoints(sm) {
+			width: (100% / 4);
+
+			&:nth-last-child(1) {
+				width: (100% / 3);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 3);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 3);
+			}
+		}
+
+		@include breakpoints(lg) {
+			width: (100% / 7);
+
+			&:nth-last-child(1) {
+				width: (100% / 7);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 7);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 7);
+			}
+		}
+	}
+	&[data-length="8"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+		}
+
+		@include breakpoints(md) {
+			width: (100% / 4);
+		}
+
+		@include breakpoints(lg) {
+			width: (100% / 8);
+		}
+	}
+	&[data-length="9"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+
+			&:nth-last-child(1) {
+				width: (100% / 1);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 2);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 2);
+			}
+
+			&:nth-last-child(4) {
+				width: (100% / 2);
+			}
+		}
+
+		@include breakpoints(sm) {
+			width: (100% / 3);
+
+			&:nth-last-child(1) {
+				width: (100% / 3);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 3);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 3);
+			}
+
+			&:nth-last-child(4) {
+				width: (100% / 3);
+			}
+		}
+
+		@include breakpoints(md) {
+			width: (100% / 5);
+
+			&:nth-last-child(1) {
+				width: (100% / 4);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 4);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 4);
+			}
+
+			&:nth-last-child(4) {
+				width: (100% / 4);
+			}
+		}
+
+		@include breakpoints(lg) {
+			width: (100% / 9);
+
+			&:nth-last-child(1) {
+				width: (100% / 9);
+			}
+
+			&:nth-last-child(2) {
+				width: (100% / 9);
+			}
+
+			&:nth-last-child(3) {
+				width: (100% / 9);
+			}
+
+			&:nth-last-child(4) {
+				width: (100% / 9);
+			}
+		}
+	}
+	&[data-length="10"] > li {
+
+		@include breakpoints(xs) {
+			width: (100% / 2);
+		}
+
+		@include breakpoints(md) {
+			width: (100% / 5);
+		}
+		@include breakpoints(lg) {
+			width: (100% / 10);
+		}
+	}
+}
+
+
+.video {
+
+	&-manu {
+		margin: 30px auto;
+		max-width: 800px;
+		box-shadow: 0 0 20px rgba(0,0,0,0.1);
+
+		&-title {
+			background-color: white;
+			padding: 30px;
+
+			@include clear-both();
+
+			h3 {
+				color: $primary-color;
+				float: left;
+				font-size: 20px;
+				font-weight: normal;
+				line-height: 35px;
+			}
+
+			&-btn {
+				float: right;
+
+				a {
+					box-sizing: border-box;
+					display: block;
+					height: 35px;
+					border-radius: 3px;
+					background-color: $primary-color;
+					color: white;
+					padding: 8px 10px;
+					text-decoration: none;
+
+					&.video-scroll-append {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&-content {
+			background-color: #f5f6f7;
+			padding: 20px 0;
+			line-height: 20px;
+			font-size: 14px;
+
+			&-inner {
+				padding: 0 30px;
+				overflow-y: auto;
+
+				@include breakpoints(xs) {
+					max-height: 100px;
+				}
+
+				@include breakpoints(md) {
+					max-height: 200px;
+				}
+
+				@include breakpoints(xl) {
+					max-height: 300px;
+				}
+			}
+
+			p {
+				padding: 10px 0;
+			}
+		}
+	}
+}
+
+.sound-only{
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+}

@@ -1,0 +1,201 @@
+
+
+
+.yeyak-second {
+	position: relative;
+	text-align:center;
+	margin:0 auto;
+	width: 80%;
+	&__title {
+		text-align: left;
+		background-color: #ec6159;
+		height: 70px;
+		line-height: 70px;
+		color: #fff;
+		font-size:18px;
+		font-weight:bold;
+		padding-left:20px;
+	}
+	&__reback {
+		position: absolute;
+		top:14px;right:20px;
+		color:#fff;
+		border:1px solid #fff;
+		display: block;
+		padding: 9px 10px;
+		border-radius: 5px;
+		font-size:13px;
+		white-space: nowrap;
+
+		span {
+			padding-left:30px;
+			display: block;
+			position: relative;
+			&:before {
+				position: absolute;
+				top:50%;
+				left:0;
+				transform: translateY(-50%);
+				@include sprite($reback)
+			}
+
+		}
+		&:hover,
+		&:focus {text-decoration: underline; }
+	}
+	&__wrap {
+		text-align: left;
+		background-color:#fff;
+		min-height: 580px;
+		border: {
+			left: 1px solid #dcdcdc;
+			bottom: 1px solid #dcdcdc;
+			right: 1px solid #dcdcdc;
+		}
+		box-sizing: border-box;
+		@include floatWrap;
+
+		&__top-left {
+			padding:20px;
+			color:#999;
+			width:50%;
+			box-sizing: border-box;
+			float:left;
+			&__tit {
+
+				@include h4Type1;
+			}
+			&__seat {
+				font-size:0;
+				span {
+					margin-right:5px;
+					font-size:14px;
+					display: inline-block;
+					padding:2px 5px;
+					color:#000;
+					border:1px solid #ddd;
+					margin-bottom:4px;
+				}
+				em {
+					font-size:14px;
+					color:#333;
+					font-weight: bold;;
+				}
+			}
+		}
+		&__top {
+			padding:20px;
+			color:#999;
+			width:50%;
+			box-sizing: border-box;
+			float:left;
+			&__tit {
+
+				@include h4Type1;
+			}
+			&__seat {
+				font-size:0;
+				span {
+					margin-right:5px;
+					font-size:14px;
+					display: inline-block;
+					padding:2px 5px;
+					color:#000;
+					margin-bottom:4px;
+					border:1px solid #ddd
+				}
+			}
+		}
+
+
+		&__mid {
+			margin-top:10px;
+			padding-bottom:80px;
+			min-height: 300px;
+			padding-left:20px;
+			padding-right:20px;
+			padding-top:170px;
+			border-top:1px solid #ddd;
+			border-bottom:1px solid #ddd;
+			width:100%;
+			box-sizing: border-box;
+			float:left;
+			background: {
+				image:url('../../resources/images/cont/stage-bg.png');
+				position: center 70px;
+				repeat: no-repeat;
+			}
+
+		}
+		&__bot {
+			padding:20px;
+			position: relative;
+			min-height: 90px;
+			width:100%;
+			box-sizing: border-box;
+			float:left;
+			&__info {
+				@include floatWrap;
+				li {
+					float:left;
+					position: relative;
+					padding-left:20px;
+					margin-right:30px;
+					&:before{
+						position: absolute;
+						top:50%;
+						left:0;
+						transform: translateY(-50%);
+					}
+				}
+				.type1:before {@include sprite($seat-posible)}
+				.type2:before {@include sprite($seat-imposible)}
+				.type3:before {@include sprite($seat-complete)}
+			}
+			&__info2 {
+				position: absolute;
+				top:20px;
+				right:20px;
+				@include basicList3
+			}
+		}
+	}
+
+}
+
+
+.seat_row-wrap {
+	@include floatWrap;
+	padding-bottom:10px;
+	padding-top:10px;
+	background-color:#fff;
+}
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.yeyak-second {width:auto;}
+}
+
+@media screen and (min-width:1px) and (max-width:880px) {
+	.yeyak-second__wrap__bot__info2 {position: relative;padding:0 0 20px 20px;}
+}
+@media screen and (min-width:1px) and (max-width:560px) {
+	.yeyak-second__reback {right:10px;}
+	.yeyak-second__wrap {padding-left:10px;padding-right:10px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

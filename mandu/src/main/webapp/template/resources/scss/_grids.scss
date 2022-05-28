@@ -1,0 +1,88 @@
+/* 
+ * Grids System
+ */
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 1100px,
+    xl: 1300px,
+    xxl: 1600px
+) !default;
+$content-size: 1600px;
+$subpage-content-size: 1400px;
+$col-x-spacing: 30px;
+$col-y-spacing: 18px;
+
+@mixin clear-both {
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+.container {
+    max-width: $content-size + 40px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    @include clear-both();
+}
+
+.row {
+    display: flex;
+    flex: 1 0 100%;
+    flex-wrap: wrap;
+    margin: 0-($col-y-spacing / 2) 0-($col-x-spacing / 2);
+    
+    @include clear-both();
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.row-reverse .col {
+    float: right;
+}
+
+.col {
+    padding: ($col-y-spacing / 2) ($col-x-spacing / 2);
+    box-sizing: border-box;
+    flex: 1 0 0%;
+    float: left;
+
+    @for $i from 1 through 12 {
+        &-#{$i} {
+            flex: 0 0 auto;
+            width: 100% / 12 * $i;
+        }
+    }
+
+    @each $viewport, $breakpoint in $grid-breakpoints {
+        @media screen and (min-width: $breakpoint) {
+            @for $i from 1 through 12 {
+                &-#{$viewport}-#{$i} {
+                    flex: 0 0 auto;
+                    width: 100% / 12 * $i;
+                }
+            }
+        }
+    }
+}
+
+@mixin breakpoints($breakpoint) {
+	// If the key exists in the map
+	@if map-has-key($grid-breakpoints, $breakpoint) {
+		// Prints a media query based on the value
+		@media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+			@content;
+		}
+	} @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+            + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}

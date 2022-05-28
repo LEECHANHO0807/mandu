@@ -1,0 +1,95 @@
+$image-oversize: 54px;
+
+.greeting-new {
+	word-break: keep-all;
+
+	&__title {
+		margin-bottom: 80px;
+		color: $primary-color;
+		margin-bottom: 30px;
+		position: relative;
+
+		@include breakpoints(xs) {
+			font-size: 20px;
+		}
+	
+		@include breakpoints(sm) {
+			font-size: 23px;
+		}
+	
+		@include breakpoints(md) {
+			font-size: 26px;
+		}
+	
+		@include breakpoints(lg) {
+			font-size: 29px;
+		}
+	
+		@include breakpoints(xl) {
+			font-size: 32px;
+		}
+	}
+
+	img {
+		display: block;
+		float: right;
+		margin-left: 20px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		bottom: 0 - $image-oversize;
+
+		@include breakpoints(xs) {
+			width: 100%;
+		}
+
+		@include breakpoints(lg) {
+			width: auto;
+		}
+	}
+
+	&__text {
+		color: #444;
+		line-height: 1.5em;
+
+		strong {
+			color: #203c92;
+		}
+
+		@include breakpoints(xs) {
+			font-size: 16px;
+		}
+	
+		@include breakpoints(sm) {
+			font-size: 17px;
+		}
+	
+		@include breakpoints(md) {
+			font-size: 18px;
+		}
+	
+		@include breakpoints(lg) {
+			font-size: 19px;
+		}
+	
+		@include breakpoints(xl) {
+			font-size: 20px;
+		}
+	}
+
+	&__sign {
+		margin-top: 75px;
+
+		img {
+			display: block;
+			margin: 0 0 0 auto;
+
+			@include breakpoints(xs) {
+				width: 200px;
+			}
+
+			@include breakpoints(md) {
+				width: 272px;
+			}
+		}
+	}
+}

@@ -1,0 +1,80 @@
+$red: red;
+
+
+//---------------------------------------------
+
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+@function str-split($string, $separator) {
+	$split-arr: ();
+	$index: str-index($string, $separator);
+
+	@while $index !=null {
+		$item: str-slice($string, 1, $index - 1);
+		$split-arr: append($split-arr, $item);
+		$string: str-slice($string, $index + 1);
+		$index: str-index($string, $separator);
+	}
+
+	$split-arr: append($split-arr, $string);
+
+	@return $split-arr;
+}
+
+@mixin sprite($sprite, $size: 1) {
+	$sprite-offset-x: nth($sprite, 3) / $size;
+	$sprite-offset-y: nth($sprite, 4) / $size;
+	$sprite-total-width: nth($sprite, 7) / $size;
+	$sprite-width: nth($sprite, 5) / $size;
+	$sprite-height: nth($sprite, 6) / $size;
+	$sprite-image: nth($sprite, 9);
+	$sprite-name: nth($sprite, 10);
+
+	content: '';
+	vertical-align: middle;
+	display: inline-block;
+
+	background: {
+		repeat: no-repeat;
+		position: $sprite-offset-x $sprite-offset-y;
+		image: url('#{$sprite-image}');
+	};
+
+	@if ($size > 1) {
+		background-size: $sprite-total-width auto;
+	}
+
+	width: $sprite-width;
+	min-width: $sprite-width;
+	height: $sprite-height;
+}
+
+
+@mixin sprites($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+
+		@if str-index($sprite-name, '-active') {
+
+			//*:focus > .icon-#{str-replace($sprite-name, '-active', '')},
+			*:active>.icon-#{str-replace($sprite-name, '-active', '')},
+			*:hover>.icon-#{str-replace($sprite-name, '-active', '')} {
+				@include sprite($sprite);
+			}
+		}
+
+		@else {
+			.icon-#{$sprite-name} {
+				@include sprite($sprite);
+			}
+		}
+	}
+}

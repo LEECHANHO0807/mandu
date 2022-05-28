@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="userMeta">
+	
+	
+	<!-- 메타 정보-->
+	<select id="metaInformation" parameterType="com.mandu.cms.admin.function.meta.domain.Meta" resultType="com.mandu.cms.admin.function.meta.domain.Meta">
+		SELECT
+			META_TITLE AS metaTitle,
+			META_AUTHOR AS metaAuthor,
+			META_KEYWORDS AS metaKeywords,
+			META_DESCRIPTION AS metaDescription,
+			META_URL AS metaUrl
+		FROM
+			CMS_META
+		WHERE
+			SITE_CODE = #{siteCode}
+	</select>
+	
+	
+</mapper>

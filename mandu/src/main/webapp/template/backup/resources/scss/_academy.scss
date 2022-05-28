@@ -1,0 +1,402 @@
+.academy {
+	&__top {
+		@include floatWrap;
+		padding-bottom: 40px;
+		margin-bottom: 70px;
+		border-bottom:1px solid #333;
+		&__image {
+			float: left;
+			width: 30%;
+			img {
+				max-width: 100%;
+			}
+		}
+		&__right {
+			float: right;
+			width: 65%;
+			&__title {
+				font-size:30px;
+				font-weight:bold;
+				margin-bottom:10px;
+			}
+			&__ul{
+				font-size:16px;
+				font-size:1.6rem;
+				&__li {
+					padding-top: 18px;
+					padding-bottom: 18px;
+					border-bottom:1px solid #dcdcdc;
+					position: relative;
+					padding-left:100px;
+					&__tit {
+						position: absolute;
+						top:18px;
+						left:0;
+					}
+					&__cont {
+						&__table {
+							@include basicTable4;
+							margin-bottom:0px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	&__mid {
+		border-top:1px solid #000;
+		padding-bottom:60px;
+		&__list {
+			min-height:110px;
+			border-bottom:1px solid #000;
+			position: relative;
+			padding-top:45px;
+			padding-bottom:45px;
+			@include floatWrap;
+			&__num {
+				font-size: 25px;
+				float: left;
+				height: 110px;
+				display: block;
+				line-height: 110px;
+				padding-left: 30px;
+				padding-right: 70px;
+				border-right: 1px solid #dcdcdc;margin-right:50px;
+
+			}
+			&__img {
+				float:left;
+
+				width:115px;
+				height:115px;
+				border-radius: 90px;
+				overflow: hidden;
+				img {
+					width:100%;
+					//height:100%;
+				}
+			}
+			&__cont {
+				float:left;
+				margin-left:35px;
+				max-width: 30%;
+				&__tit {
+					font-size: 20px;
+					font-weight: bold;
+					margin-bottom:10px;
+				}
+				&__detail {
+					font-size:16px;
+				}
+			}
+			&__total {
+				position: absolute;
+				top:50%;
+				right:180px;
+				transform: translateY(-50%);
+				display: inline-block;
+				color: #000;
+				border:1px solid #000;
+				width: 200px;
+				background-color: #fff;
+				font-size: 18px;
+				height: 100px;
+				text-align: center;
+				line-height: 100px;
+				font-weight: 600;
+				transition: all 0.3s ease 0s;
+				min-width: 120px;
+				box-sizing: border-box;
+				text-align: center;
+			}
+			&__btn {
+				position: absolute;
+				top:50%;
+				right:0;
+				transform: translateY(-50%);
+				@include btn7(150px);
+			}
+		}
+
+	}
+	&__bot {
+		&__table {
+			@include basicTable4;
+		}
+	}
+
+}
+
+
+@media screen and (min-width:901px) and (max-width:1200px) {
+	.academy__mid {
+		&__list__total {width:auto;padding-left:10px;padding-right:10px;right:155px;}
+	}
+}
+
+@media screen and (min-width:1px) and (max-width:900px) {
+	.academy__mid {
+		&__list {padding:20px 10px;}
+		&__list__num {float: none; height: auto; line-height: 1.6;border-right:0px;position: absolute;top:10px;left:20px;padding-left:0;padding-right:0;margin-right:0;}
+		&__list__img {margin-bottom:20px;padding-left:80px;margin-right:20px;}
+		&__list__cont {margin-bottom:20px;margin-left:0px;}
+		&__list__total {
+			position: relative;
+			top:0; right:0;
+			transform: translateY(0);
+			height:40px;
+			line-height: 40px;
+			width:100%;
+			margin-bottom:5px;
+		}
+		&__list__btn {
+			position: relative;
+			top:0; right:0;
+			transform: translateY(0);
+			height:40px;
+			line-height: 40px;
+			width:100%;
+		}
+	}
+}
+@media screen and (min-width:1px) and (max-width:800px) {
+	.academy__top__image {
+		float:none;
+		width:auto;
+		max-width:360px;
+		text-align: center;
+		margin:0 auto;
+		margin-bottom:30px;
+	}
+	.academy__top__right {
+		float:none;
+		width:auto;
+	}
+}
+@media screen and (min-width:1px) and (max-width:460px) {
+	.academy__top__right__ul__li {padding-left:0px;}
+	.academy__top__right__ul__li:last-child {border-bottom:0px;}
+	.academy__top__right__ul__li__tit {position: relative;top:0;}
+}
+
+
+/*
+	할인선택페이지 부분
+*/
+
+
+.academy-detail {
+	position: relative;
+	text-align:center;
+	&__title {
+		text-align: left;
+		background-color: #ec6159;
+		height: 70px;
+		line-height: 70px;
+		color: #fff;
+		font-size:18px;
+		font-weight:bold;
+		padding-left:20px;
+	}
+	&__reback {
+		position: absolute;
+		top: 14px;
+		right: 20px;
+		color:#fff;
+		border: 1px solid #fff;
+		display: block;
+		padding: 9px 10px;
+		border-radius: 5px;
+		font-size: 13px;
+		white-space: nowrap;
+
+		span {
+			padding-left:30px;
+			display: block;
+			position: relative;
+			&:before {
+				position: absolute;
+				top:50%;
+				left:0;
+				transform: translateY(-50%);
+				@include sprite($reback)
+			}
+
+		}
+		&:hover,
+		&:focus {text-decoration: underline; }
+	}
+	&__wrap {
+		text-align: left;
+		background-color:#fff;
+		min-height: 380px;
+		border: {
+			left: 1px solid #dcdcdc;
+			bottom: 1px solid #dcdcdc;
+			right: 1px solid #dcdcdc;
+		}
+		box-sizing: border-box;
+
+		&__choose {
+			padding:20px;
+			font-size:17px;
+			border-bottom:1px solid #ddd;
+			&__pos {color:#000}
+			&__num {color:#ec6159}
+		}
+
+		&__ul {
+			&__li {
+				border-bottom:1px solid #ddd;
+				padding-top:10px;
+				padding-bottom:10px;
+				display:flex;
+				div {min-height:38px;line-height: 38px;vertical-align: top;}
+				&__item1 {flex:1;text-align:center;}
+				&__item2 {flex:2;text-align:left;padding-left:20px;}
+				&__item3 {flex:1;text-align:center;}
+				&__item4 {flex:1;
+					text-align:center;
+					&__selectbox {
+						@include selectBox2(60px);
+					}
+				}
+				.lte-ie9 & {@include floatWrap;}
+				.lte-ie9 &__item1 {width:20%;float:left;}
+				.lte-ie9 &__item2 {width:40%;float:left;padding-left:0;}
+				.lte-ie9 &__item3 {width:20%;float:left;}
+				.lte-ie9 &__item4 {width:20%;float:left;}
+
+				@media screen and (min-width:1px) and (max-width:880px) {
+					flex-wrap: wrap;
+					div {line-height:1.6;}
+					&__item1 {flex:1;min-width:300px;}
+					&__item2 {flex:2;min-width:300px;text-align:center;padding-left:0;}
+					&__item3 {flex:2;min-width:300px;}
+					&__item4 {flex:1;min-width:300px;
+						&__selectbox {
+							@include selectBox2(260px);
+						}
+					}
+				}
+			}
+		}
+
+		&__total {
+			&__tit {padding:20px;padding-top:50px;font-size:20px;font-weight: bold;border-bottom:1px solid #ddd;}
+
+			&__h4 {padding:10px;font-size:16px;font-weight: bold;
+				display:inline-block;
+				width:20%;
+				box-sizing: border-box;
+				padding-left:40px;
+			}
+
+			&__info {
+				display:inline-block;
+				width:75%;
+				box-sizing: border-box;
+				&__seat {
+					font-size:0;
+					span {
+						margin-right:5px;
+						font-size:14px;
+						display: inline-block;
+						padding:2px 5px;
+						color:#000;
+						border:1px solid #ddd
+					}
+				}
+				&__cancel {
+					color:$red;
+				}
+			}
+
+			&__result {
+				margin-top:20px;
+				border-top:1px solid #ddd;
+				box-sizing: border-box;
+				padding:20px;
+				padding-right: 40px;
+				font-size:22px;
+				font-weight: bold;
+				color:#000;
+				min-height:50px;
+				line-height:50px;
+				position: relative;
+				text-align: right;
+				&__text {padding-right:20px;}
+				&__num {color:#000;}
+			}
+
+		}
+	}
+
+}
+
+@media screen and (min-width:1px) and (max-width:768px) {
+	.academy-detail__wrap__total__h4 {width:auto;display:block;padding-left:20px;}
+	.academy-detail__wrap__total__info {width:auto;display:block;padding-left:30px;margin-bottom:10px;border-bottom:1px dashed #ddd;padding-bottom:5px;}
+	.academy-detail__wrap__total__info:last-child {border-bottom:0px;}
+	.academy-detail__wrap__total__result {border-top:0px;}
+}
+@media screen and (min-width:1px) and (max-width:560px) {
+	.academy-detail__reback {right:10px;}
+}
+
+
+/*신청*/
+
+/*스쿨락 지원서*/
+.academy-form {
+	text-align:center;
+	&__tit {@include h3Type1}
+	&__ok {
+		@include btn3;
+		margin: 0 auto;
+	}
+	&__table {
+		@include basicTable1;
+		td {text-align:left; padding-left:20px;}
+
+		&__input {
+			@include inText(50%)
+		}
+		&__input2 {
+			@include inText(80%)
+		}
+		&__textarea {
+			@include inTextarea(80%)
+		}
+		&__select {
+			&.type1 {
+				@include selectBox(80px)
+			}
+			&.type2 {
+				@include selectBox(60px)
+			}
+			&.type3 {
+				@include selectBox(60px)
+			}
+
+		}
+
+		@media (max-width:800px) {
+			td:before {
+				display:block;
+				content:attr(data-th) "  ";
+				margin-bottom:10px;
+			}
+
+			&__input {
+				@include inText(95%)
+			}
+			&__input2 {
+				@include inText(95%)
+			}
+			&__textarea {
+				@include inTextarea(95%)
+			}
+		}
+	}
+}

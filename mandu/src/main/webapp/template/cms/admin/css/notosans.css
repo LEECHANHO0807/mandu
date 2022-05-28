@@ -1,0 +1,45 @@
+@charset 'UTF-8';
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 300;
+    src: local('※'), local('※'),
+    url('/template/cms/admin/font/NotoSansKR-Light.eot'),
+    url('/template/cms/admin/font/NotoSansKR-Light.eot#iefix') format('embedded-opentype'),
+    url('/template/cms/admin/font/NotoSansKR-Light.woff') format('woff'),
+    url('/template/cms/admin/font/NotoSansKR-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    src: local(※), local(※),
+    url('/template/cms/admin/font/NotoSansKR-Regular.eot'),
+    url('/template/cms/admin/font/NotoSansKR-Regular.eot#iefix') format('embedded-opentype'),
+    url('/template/cms/admin/font/NotoSansKR-Regular.woff') format('woff'),
+    url('/template/cms/admin/font/NotoSansKR-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    src: local('※'), local('※'),
+    url('/template/cms/admin/font/NotoSansKR-Medium.eot'),
+    url('/template/cms/admin/font/NotoSansKR-Medium.eot#iefix') format('embedded-opentype'),
+    url('/template/cms/admin/font/NotoSansKR-Medium.woff') format('woff'),
+    url('/template/cms/admin/font/NotoSansKR-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 700;
+    src: local('※'), local('※'),
+    url('/template/cms/admin/font/NotoSansKR-Bold.eot'),
+    url('/template/cms/admin/font/NotoSansKR-Bold.eot#iefix') format('embedded-opentype'),
+    url('/template/cms/admin/font/NotoSansKR-Bold.woff') format('woff'),
+    url('/template/cms/admin/font/NotoSansKR-Bold.otf') format('opentype');
+}

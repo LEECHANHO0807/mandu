@@ -1,0 +1,100 @@
+
+/*팝업존*/
+.popup {
+	position: relative;
+	max-width:733px;
+	height:260px;
+	border:0 solid #e5e5e5;
+	overflow: hidden;
+	margin:0 auto;
+
+	&__h3 {font-size:0;height:0;width:0;text-indent: -9999px;}
+	//.slick-prev {}
+	//.slick-next {}
+}
+
+.popup-list {
+	&__item a {
+		display:block;color:gold;width:733px;height:260px;margin:0 auto;
+
+	//	&:hover,
+	//	&:focus {/*opacity: 0.9;*/}
+
+		img {width:733px;height:260px;}
+	}
+}
+
+.popup-dots-wrap {
+	position: absolute;top:8px;right:8px;width:auto;text-align:right;
+	z-index: 999;
+
+	li {float:left;margin-left:5px;}
+
+	button {border:0px;height:23px;font-size:0;display:block;width:23px;
+		background:transparent;border-radius: 30px;
+		@include sprite($popup_bul)
+	}
+}
+.popup-dots-list .slick-active button {
+	@include sprite($popup-active)
+}
+.popup-dots-list button:focus {border:1px solid gold;}
+
+.popup-dots-on-off {display: inline-block;vertical-align: middle;}
+.popup-dots-on-off > a {display:inline-block;
+	width:26px;height:26px;margin:1px;
+	vertical-align: top;font-size:0;text-indent: -9999px;
+}
+.popup-dots-on-off li {float:left;margin-left:5px;}
+.mypopupcarousel {display: inline-block;vertical-align: middle;}
+.popup-dots-on-off a:focus {border:1px solid gold;margin:0;}
+
+
+.popup-prev {@include sprite($popup-prev)}
+.popup-next {@include sprite($popup-next)}
+.popup-pause {@include sprite($popup_pause)}
+.popup-play {@include sprite($popup_play)}
+//.mypopupcarousel {display:none;}/*디자인상 dots 네비 임시 삭제*/
+.popup-total {display:none;}
+.popup-more {display:none !important;} /*더보기 지울시*/
+
+/*숫자형 네비 추가시 주석해제
+.mypopupcarousel {display:inline-block;}
+	*+ html .mypopupcarousel {display:inline;}
+.popup-dots-list button{font-size:12px;text-indent: 0;color:#fff;background-image:none;display:none;}
+.popup-dots-list .slick-active button {background-image:none;display:block;width:auto;color: gold}
+.popup-total {color:#fff;display:inline-block;vertical-align: middle;font-size:12px;}
+	*+ html .popup-total {display:inline;}
+.popup-total-num {padding-left:4px;}*/
+/*숫자형 네비 추가 끝*/
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.popup-list__item a{width:auto;}
+	.popup-list__item a img {max-width:100%;width:auto;height:auto;display: block;
+		margin: 0 auto;}
+
+}
+@media screen and (min-width:769px) and (max-width:1200px) {
+	.popup {height:auto;}
+	.popup-list__item a {height:auto;}
+}
+@media screen and (min-width:769px) and (max-width:1200px) {
+
+	.popup-dots-wrap {top:10px;}
+}
+@media screen and (min-width:561px) and (max-width:768px) {
+	.popup {height:auto;padding-bottom:0px;}
+	.popup-list__item a {height:auto;}
+	.popup-list__item a img {width:100%;height:auto;}
+
+}
+@media screen and (min-width:1px) and (max-width:560px) {
+
+	.popup {height:auto;padding-bottom:0px;}
+	.popup-list__item a {height:auto;}
+	.popup-list__item a img {width:100%;height:auto;}
+
+}
+@media screen and (min-width:1px) and (max-width:420px) {
+
+}

@@ -1,0 +1,220 @@
+$primary-color: #2346b6;
+$x-aligns: left, center, right, justify;
+$directions: top, right, bottom, left;
+
+html {
+	/* Prevent font scaling in landscape */
+   -webkit-text-size-adjust: none; /*Chrome, Safari, newer versions of Opera*/
+   -moz-text-size-adjust: none; /*Firefox*/
+   -ms-text-size-adjust: none;  /*Ie*/
+   -o-text-size-adjust: none; /*old versions of Opera*/
+}
+
+body {
+	font-family: "Nanum Barun Gothic", "맑은 고딕", "돋움", sans-serif;
+	letter-spacing: -0.05em;
+	background-color: #dde4ee;
+	background-image: url(../../resources/images/global/background.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+header, main, footer, section, aside, article, details, figcaption, figure, mark, nav, summary, time {
+	display: block;
+}
+
+.blind {
+	display: none !important;
+}
+
+@each $x-align in $x-aligns {
+	.text-#{$x-align} {
+		text-align: $x-align;
+	}
+}
+
+@for $i from 0 through 20 {
+	@each $direction in $directions {
+		.margin-#{$i * 5} {
+			margin: ($i * 5px);
+		}
+
+		.margin-#{$direction}-#{$i * 5} {
+			margin-#{$direction}: ($i * 5px);
+		}
+
+		.padding-#{$i * 5} {
+			padding: ($i * 5px);
+		}
+
+		.padding-#{$direction}-#{$i * 5} {
+			padding-#{$direction}: ($i * 5px);
+		}
+	}
+}
+
+[id*="slider"] {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: inherit;
+	background-blend-mode: multiply;
+
+	&:not(.load-success) {
+		background-image: url(../../resources/images/global/ajax-loader.gif);
+		height: 237px;
+		overflow: hidden;
+
+		* {
+			opacity: 0;
+			filter: alpha(0);
+		}
+	}
+}
+
+.h3_bul
+	{position: relative;
+	padding-left: 30px;
+	font-weight: 100;
+	margin-bottom: 25px;
+
+	@include breakpoints(xs) {
+		font-size: 20px;
+	}
+
+	@include breakpoints(sm) {
+		font-size: 21.5px;
+	}
+
+	@include breakpoints(md) {
+		font-size: 23px;
+	}
+
+	@include breakpoints(lg) {
+		font-size: 24.5px;
+	}
+
+	@include breakpoints(xl) {
+		font-size: 26px;
+	}
+
+	&:before {
+		display: block;
+		content: "";
+		width: 13px;
+		height: 30px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-image: url(../../resources/images/global/b3_bul.png);
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}
+
+.dl_bul {
+	margin-bottom: 25px;
+
+	dt {
+		position: relative;
+		line-height: 29px;
+		font-weight: bold;
+		color: #333;
+		padding-left: 30px;
+		margin-bottom: 3px;
+
+		@include breakpoints(xs) {
+			font-size: 18px;
+		}
+
+		@include breakpoints(sm) {
+			font-size: 18.5px;
+		}
+
+		@include breakpoints(md) {
+			font-size: 19px;
+		}
+
+		@include breakpoints(lg) {
+			font-size: 19.5px;
+		}
+
+		@include breakpoints(xl) {
+			font-size: 20px;
+		}
+
+		&:before {
+			display: block;
+			content: "";
+			width: 16px;
+			height: 29px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-image: url(../../resources/images/global/dl_bul.png);
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+
+	dd {
+		padding-left: 30px;
+		line-height: 26px;
+		color: #777;
+
+		@include breakpoints(xs) {
+			font-size: 16px;
+		}
+
+		@include breakpoints(sm) {
+			font-size: 16.5px;
+		}
+
+		@include breakpoints(md) {
+			font-size: 17px;
+		}
+
+		@include breakpoints(lg) {
+			font-size: 17.5px;
+		}
+
+		@include breakpoints(xl) {
+			font-size: 18px;
+		}
+	}
+}
+
+@mixin ellipsis($row: 1, $line-height: 1) {
+	@if ($row == 1) {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	} @else {
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: normal;
+		line-height: $line-height;
+		height: $row * $line-height;
+		text-align: left;
+		word-wrap: break-word;
+		display: -webkit-box;
+		-webkit-line-clamp: $row;
+		-webkit-box-orient: vertical;
+	}
+}
+
+/* 2022.03.08 custom */
+
+.sound-only{
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* 다음맵 접근성 추가 .warp_map으로 감쌈 */
+.wrap_map a:focus,
+.wrap_map button:focus,
+.roughmap_maker_label a:focus .roughmap_lebel_text,
+.root_daum_roughmap .wrap_btn_zoom button:focus {border:2px solid gold;}
+.wrap_controllers.hide {display:none;}

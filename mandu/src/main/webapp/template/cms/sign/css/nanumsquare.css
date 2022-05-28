@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'NanumSquare';
+	font-style: normal;
+	font-weight: 300;
+	src:local('※');
+	src:url('/template/cms/admin/font/NanumSquareL.eot');
+	src:url('/template/cms/admin/font/NanumSquareL.eot?#iefix') format('embedded-opentype'), 
+		url('/template/cms/admin/font/NanumSquareL.woff') format('woff'), 
+		url('/template/cms/admin/font/NanumSquareL.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'NanumSquare';
+	font-style: normal;
+	font-weight: 400;
+	src:local('※');
+	src:url('/template/cms/admin/font/NanumSquareR.eot');
+	src:url('/template/cms/admin/font/NanumSquareR.eot?#iefix') format('embedded-opentype'), 
+		url('/template/cms/admin/font/NanumSquareR.woff') format('woff'), 
+		url('/template/cms/admin/font/NanumSquareR.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'NanumSquare';
+	font-style: normal;
+	font-weight: 700;
+	src:local('※');
+	src:url('/template/cms/admin/font/NanumSquareB.eot');
+	src:url('/template/cms/admin/font/NanumSquareB.eot?#iefix') format('embedded-opentype'), 
+		url('/template/cms/admin/font/NanumSquareB.woff') format('woff'), 
+		url('/template/cms/admin/font/NanumSquareB.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'NanumSquare';
+	font-style: normal;
+	font-weight: 900;
+	src:local('※');
+	src:url('/template/cms/admin/font/NanumSquareEB.eot');
+	src:url('/template/cms/admin/font/NanumSquareEB.eot?#iefix') format('embedded-opentype'), 
+		url('/template/cms/admin/font/NanumSquareEB.woff') format('woff'), 
+		url('/template/cms/admin/font/NanumSquareEB.ttf') format('truetype');
+}

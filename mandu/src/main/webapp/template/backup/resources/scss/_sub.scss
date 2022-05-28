@@ -1,0 +1,123 @@
+
+/*sub-page-container*/
+.sub-page-container__in {position: relative;background-color:#fff;}
+.sub-contents {}
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+
+	.sub-page-container__in{width:auto;}
+	.sub-contents {width:auto;float:none; padding:10px;}
+}
+@media screen and (min-width:1px) and (max-width:768px) {
+	.sub-page-container {padding-top:51px;}
+}
+.sub-contents__top {position:relative;font-family: $font2;
+	/*background-image:url("../../commons/images/global/sub-visual-bg1.jpg");
+	background-position:right top;
+	background-repeat:no-repeat;*/
+	background-color:#fff;
+	}
+
+.sub-contents__top h2.sub-tit {font-size:40px;color:#222;padding-top:20px;margin-bottom:0;height:75px;font-weight: 500;
+
+	width:1200px; margin: 0 auto;
+}
+
+/* location */
+.location-box {position:relative;
+	width:1200px; margin: 0 auto;}
+.location-box__cont {
+	position: absolute;
+		right: 0;
+		top: 50px;
+
+		span {float:left;display:block;font-size:14px;font-size:1.4rem;height:28px;line-height:28px;
+
+			&:before {
+				content:'';
+				display:inline-block;font-size:0;
+				@include sprite($location-icon);
+				margin:0 17px;
+			}
+
+			color:#333;
+			&:first-child::before {
+				display:none;
+			}
+		}
+	}
+.location-box__cont .loc-home {
+	display:block;padding-left:30px;font-size:14px;font-size:1.4rem;height:28px;line-height:27px;
+	background-image:url("../../resources/images/icons/home.png");
+	background-position:0 center;
+	background-repeat:no-repeat;
+	color:#333;
+
+	&:focus {border:1px solid gold}
+}
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.location-box {	width:auto;	}
+	.sub-contents__top h2.sub-tit {	width:auto;	}
+}
+@media screen and (min-width:769px) and (max-width:1200px) {
+	.location-box__cont {position:relative;top:3px;}
+}
+@media screen and (min-width:1px) and (max-width:768px) {
+		.sub-contents__top {background-image:none !important;margin-bottom:10px;}
+		.sub-contents__top h2.sub-tit {font-size:21px;margin-bottom:8px;height:auto;
+		width:auto;
+		}
+		.location-box {position:relative;top:0;right:0;padding-bottom:0px;}
+		.location-box__cont {position:relative;white-space:normal;overflow:visible;top:0;left:0;padding-top:0px;}
+		.location-box__cont span:before {margin:0 7px;}
+		.location-box__cont .loc-home {padding-left:20px;}
+}
+
+
+.cont-in {
+	min-height:500px;
+	border-top:1px solid #e0e0e0;
+	padding-top:40px;
+	padding-bottom:50px;
+	width:1200px;
+	margin: 0 auto;
+	font-family: $font1;
+	line-height: 1.6;
+}
+.cont-in img {
+	max-width: 100%;
+}
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.cont-in {
+		width:auto;
+	}
+	.cont-in img {
+		height: auto !important;
+	}
+
+}
+
+// 동영상 게시물 상세에서 아이프레임 있을경우
+.editor_view.on {
+	& .editor_view__cont {
+		position: relative;
+		width: 100%;
+		height: 0;
+		overflow: hidden;
+		padding-bottom: 56.25%; /*16:9*/
+		background-color:#00235d;
+		color:#fff;
+		> p {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			iframe { width: 100%; height: 100%}
+		}
+	}
+}

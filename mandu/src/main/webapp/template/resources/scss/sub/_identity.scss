@@ -1,0 +1,180 @@
+.identity {
+
+	.identity__box {
+		position: relative;
+		margin-bottom: 100px;
+
+		@include breakpoints(xl){
+			padding-right: 666px;
+			height: 346px;
+		}
+
+		.identity__box__h4 {
+			font-size: 30px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 10px;
+
+			.col_1 {
+				color: #ac6151;
+			}
+
+			.col_2 {
+				color: #3279bf;
+			}
+
+			.col_3 {
+				color: #787878;
+			}
+		}
+
+		.identity__box__text {
+			line-height: 26px;
+			color: #888;
+	
+			@include breakpoints(xs) {
+				font-size: 14px;
+			}
+		
+			@include breakpoints(sm) {
+				font-size: 14.5px;
+			}
+		
+			@include breakpoints(md) {
+				font-size: 15px;
+			}
+		
+			@include breakpoints(lg) {
+				font-size: 15.5px;
+			}
+		
+			@include breakpoints(xl) {
+				font-size: 16px;
+			}
+		}
+
+		.identity__box__image {
+			top: 0;
+			right: 0;
+			margin-bottom: 30px;
+
+			@include breakpoints(xs){
+				position: static;
+			}
+
+			@include breakpoints(xl){
+				position: absolute;
+			}
+		}
+
+		.identity__box__buttons {
+			bottom: 0;
+			left: 0;
+			right: 666px;
+			margin: 30px -3.5px 0 -3.5px;
+
+			@include clear-both();
+
+			@include breakpoints(xs){
+				position: static;
+			}
+
+			@include breakpoints(xl){
+				position: absolute;
+			}
+
+			li {
+				list-style: none;
+				padding: 0 3.5px;
+				margin: 3.5px 0;
+
+				@include breakpoints(xs) {
+					float: none;
+				}
+			
+				@include breakpoints(sm) {
+					float: left;
+				}
+
+				a {
+					position: relative;
+					display: block;
+					font-size: 14px;
+					font-weight: bold;
+					color: #888;
+					border: 1px solid #bbb;
+					background-color: white;
+					padding: 0 50px 0 20px;
+					line-height: 50px;
+					text-decoration: none;
+					transition: 0.2s;
+
+					&:after {
+						display: block;
+						content: "";
+						width: 17px;
+						height: 14px;
+						position: absolute;
+						top: 50%;
+						right: 23px;
+						margin-top: ((0 - 14px) / 2);
+						background-image: url(../../resources/images/sub/identity__box__buttons.png);
+					}
+
+					&:hover {
+						color: white;
+						border: 1px solid $primary-color;
+						background-color: $primary-color;
+
+						&:after {
+							background-image: url(../../resources/images/sub/identity__box__buttons__hover.png);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.identity__image {
+		border: 1px solid #ececec;
+
+		@include breakpoints(xs){
+			padding: 20px;
+		}
+
+		@include breakpoints(sm) {
+			padding: 35px;
+		}
+
+		@include breakpoints(lg) {
+			padding: 50px;
+		}
+
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+
+		.identity__image__large {
+
+			@include breakpoints(xs){
+				display: none !important;
+			}
+
+			@include breakpoints(lg) {
+				display: block !important;
+			}
+		}
+
+		.identity__image__small {
+
+			@include breakpoints(xs){
+				display: block !important;
+			}
+
+			@include breakpoints(lg) {
+				display: none !important;
+			}
+		}
+	}
+}

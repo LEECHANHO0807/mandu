@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 비어있는 레이아웃 -->
+	<definition name="adminEmpty" template="/WEB-INF/jsp/cms/admin/layout/adminEmpty.jsp">
+	</definition>
+
+	<!-- 관리자 레이어 레이아웃 -->
+	<definition name="adminLayer" template="/WEB-INF/jsp/cms/admin/layout/adminLayer.jsp">
+	</definition>
+
+	<!-- 관리자 메인 레이아웃 -->
+	<definition name="adminMainLayout" template="/WEB-INF/jsp/cms/admin/layout/adminLayout.jsp">
+		<put-attribute name="adminHeader" value="/WEB-INF/jsp/cms/admin/view/header/adminHeader.jsp" />
+		<put-attribute name="adminFooter" value="/WEB-INF/jsp/cms/admin/view/footer/adminFooter.jsp" />
+	</definition>
+
+	<!-- 관리자 레이아웃 -->
+	<definition name="adminLayout" template="/WEB-INF/jsp/cms/admin/layout/adminLayout.jsp">
+		<put-attribute name="adminHeader" value="/WEB-INF/jsp/cms/admin/view/header/adminHeader.jsp" />
+		<put-attribute name="adminLeft" value="/WEB-INF/jsp/cms/admin/view/left/adminLeft.jsp" />
+		<put-attribute name="adminFooter" value="/WEB-INF/jsp/cms/admin/view/footer/adminFooter.jsp" />
+	</definition>
+
+
+	<!-- 메인 | NITROEYE CMS -->
+	<definition name="/cms/admin/main/adminMainView" extends="adminMainLayout">
+		<put-attribute name="title" value="메인 | NITROEYE CMS" />
+		<put-attribute name="adminHeader" value="/WEB-INF/jsp/cms/admin/view/header/adminHeader.jsp" />
+		<put-attribute name="adminLeft" value="/WEB-INF/jsp/cms/admin/view/left/adminLeft.jsp" />		
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/main/adminMainView.jsp"></put-attribute>
+	</definition>
+	
+		<!-- 사이트 방문 수 (AJAX) | 메인 | NITROEYE CMS -->
+		<definition name="/cms/admin/main/siteHitCountView/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="사이트 방문 수 (AJAX) | 메인 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/main/adminMainSiteHitCountViewAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 방문 수 (AJAX) | 메인 | NITROEYE CMS -->
+		<definition name="/cms/admin/main/menuHitCountView/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 방문 수 (AJAX) | 메인 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/main/adminMainMenuHitCountViewAjax.jsp" />
+		</definition>
+		
+		<!-- 게시물 조회 수 상위 목록 (AJAX) | 메인 | NITROEYE CMS -->
+		<definition name="/cms/admin/main/boardHitCountTopList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="게시물 조회 수 상위 목록 (AJAX) | 메인 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/main/boardHitCountTopListAjax.jsp" />
+		</definition>
+		
+		<!-- 게시물 점유율 목록 (AJAX) | 메인 | NITROEYE CMS -->
+		<definition name="/cms/admin/main/boardShareList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="게시물 점유율 목록 (AJAX) | 메인 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/main/boardShareListAjax.jsp" />
+		</definition>
+	
+		
+	<!-- 계정 | 정보 | NITROEYE CMS -->
+	<definition name="/cms/admin/information/account/*" extends="adminLayout">
+		<put-attribute name="title" expression="계정 | 정보 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/information/account/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 부분 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/section/*" extends="adminLayout">
+		<put-attribute name="title" expression="부분 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/section/{1}.jsp" />
+	</definition>
+	
+		
+	<!-- 게시판 관리 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/boardManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="게시판 관리 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/boardManagement/{1}.jsp" />
+	</definition>
+
+	<!-- 게시판 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/board/*/*" extends="adminLayout">
+		<put-attribute name="title" expression="게시판 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/board/{1}/{2}.jsp" />
+	</definition>
+	
+		<!-- 게시판 이동 - 게시판 목록 (AJAX) | 게시판 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/board/move/adminBoardMoveBoard/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="게시판 이동 - 게시판 목록 (AJAX) | 게시판 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/board/move/adminBoardMoveBoardAjax.jsp" />
+		</definition>
+
+		
+	<!-- 일정 관리 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/scheduleManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="일정 관리 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/scheduleManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 일정 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/schedule/*" extends="adminLayout">
+		<put-attribute name="title" expression="일정 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/schedule/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 대관 관리 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/rentalManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="일정 관리 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/rentalManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 대관 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/rental/*" extends="adminLayout">
+		<put-attribute name="title" expression="일정 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/rental/{1}.jsp" />
+	</definition>
+		
+	
+	<!-- 컨텐츠 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/contents/*" extends="adminLayout">
+		<put-attribute name="title" expression="컨텐츠 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/contents/{1}.jsp" />
+	</definition>
+	
+		<!-- 컨텐츠 이력 읽기 (AJAX) | 컨텐츠 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/contentsHistory/adminContentsHistoryRead/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="컨텐츠 이력 읽기 (AJAX) | 컨텐츠 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/contentsHistory/adminContentsHistoryReadAjax.jsp" />
+		</definition>
+	
+	<!-- 메뉴 | 구조 | NITROEYE CMS -->
+	<definition name="/cms/admin/structure/menu/*" extends="adminLayout">
+		<put-attribute name="title" expression="메뉴 | 구조 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/{1}.jsp" />
+	</definition>
+	
+		<!-- 목록 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="목록 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuListAjax.jsp" />
+		</definition>
+		
+		<!-- 등록 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuCreate/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="등록 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuCreateAjax.jsp" />
+		</definition>		
+		
+		<!-- 수정 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuUpdate/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="수정 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuUpdateAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 종류 - 게시판 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuTypeBoard/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 게시판 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuTypeBoardAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 종류 - 일정 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuTypeSchedule/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 일정 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuTypeScheduleAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 종류 - 대관 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuTypeRental/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 대관 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuTypeRentalAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 종류 - 컨텐츠 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuTypeContents/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 컨텐츠 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuTypeContentsAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 종류 - 링크 주소 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuTypeLink/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 링크 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuTypeLinkAjax.jsp" />
+		</definition>
+		
+		<!-- 메뉴 종류 - 사용자 정의 (AJAX) | 메뉴 | 구조 | NITROEYE CMS -->
+		<definition name="/cms/admin/structure/menu/adminMenuTypeCustom/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 사용자 정의 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/structure/menu/adminMenuTypeCustomAjax.jsp" />
+		</definition>		
+	
+	
+	<!-- 메타 | 기능 | NITROEYE CMS -->
+	<definition name="/cms/admin/function/meta/*" extends="adminLayout">
+		<put-attribute name="title" expression="메타 | 기능 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/function/meta/{1}.jsp" />
+	</definition>
+		
+	<!-- 영역 | 기능 | NITROEYE CMS -->
+	<definition name="/cms/admin/function/area/*" extends="adminLayout">
+		<put-attribute name="title" expression="영역 | 기능 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/function/area/{1}.jsp" />
+	</definition>	
+	
+	<!-- 배너 | 기능 | NITROEYE CMS -->
+	<definition name="/cms/admin/function/banner/*" extends="adminLayout">
+		<put-attribute name="title" expression="배너 | 기능 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/function/banner/{1}.jsp" />
+	</definition>
+	
+	<!-- 팝업 | 기능 | NITROEYE CMS -->
+	<definition name="/cms/admin/function/popup/*" extends="adminLayout">
+		<put-attribute name="title" expression="팝업 | 기능 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/function/popup/{1}.jsp" />
+	</definition>
+	
+	<!-- 통계 | 기능 | NITROEYE CMS -->
+	<definition name="/cms/admin/function/statistic/*" extends="adminLayout">
+		<put-attribute name="title" expression="통계 | 기능 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/function/statistic/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 이메일 설정 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/email/*" extends="adminLayout">
+		<put-attribute name="title" expression="이메일 설정 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/email/{1}.jsp" />
+	</definition>
+	
+	<!-- 이메일 템플릿 | 알림 | NITROEYE CMS -->	 
+	<definition name="/cms/admin/notification/emailTemplate/*" extends="adminLayout">
+		<put-attribute name="title" expression="이메일 템플릿 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailTemplate/{1}.jsp" />
+	</definition>
+	
+		<!-- 이메일 템플릿 미리보기 | 알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/emailTemplate/adminEmailTemplatePreview" extends="adminEmpty">
+			<put-attribute name="title" expression="이메일 템플릿 미리보기 | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailTemplate/adminEmailTemplatePreview.jsp" />
+		</definition>
+		
+	<!-- 이메일 그룹 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/emailGroup/*" extends="adminLayout">
+		<put-attribute name="title" expression="이메일 그룹 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailGroup/{1}.jsp" />
+	</definition>
+	
+		<!-- 이메일 그룹 구성원 - 사용자 목록 (AJAX) | 알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/emailGroupMember/adminEmailGroupMemberSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="이메일 그룹 구성원 - 사용자 목록 (AJAX) | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailGroupMember/adminEmailGroupMemberSelectListAjax.jsp" />
+		</definition>
+	
+	<!-- 이메일 발송 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/emailSend/*" extends="adminLayout">
+		<put-attribute name="title" expression="이메일 발송 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailSend/{1}.jsp" />
+	</definition>
+	
+		<!-- 이메일 발송 - 이메일 그룹 목록 (AJAX) | 알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/emailSend/adminEmailGroupSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="이메일 발송 - 이메일 그룹 목록 (AJAX) | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailSend/adminEmailGroupSelectListAjax.jsp" />
+		</definition>
+		
+		<!-- 이메일 발송 - 이메일 템플릿 목록 (AJAX) |알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/emailSend/adminEmailTemplateSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="이메일 발송 - 이메일 템플릿 목록 (AJAX) | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailSend/adminEmailTemplateSelectListAjax.jsp" />
+		</definition>
+		
+	<!-- 이메일 발송 이력 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/emailHistory/*" extends="adminLayout">
+		<put-attribute name="title" expression="이메일 발송 이력 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/emailHistory/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 문자 설정 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/mms/*" extends="adminLayout">
+		<put-attribute name="title" expression="문자 설정 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mms/{1}.jsp" />
+	</definition>
+	
+	<!-- 문자 템플릿 | 알림 | NITROEYE CMS -->	 
+	<definition name="/cms/admin/notification/mmsTemplate/*" extends="adminLayout">
+		<put-attribute name="title" expression="문자 템플릿 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsTemplate/{1}.jsp" />
+	</definition>
+	
+		<!-- 문자 템플릿 미리보기 | 알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/mmsTemplate/adminMmsTemplatePreview" extends="adminEmpty">
+			<put-attribute name="title" expression="문자 템플릿 미리보기 | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsTemplate/adminMmsTemplatePreview.jsp" />
+		</definition>
+		
+	<!-- 문자 그룹 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/mmsGroup/*" extends="adminLayout">
+		<put-attribute name="title" expression="문자 그룹 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsGroup/{1}.jsp" />
+	</definition>
+	
+		<!-- 문자 그룹 구성원 - 사용자 목록 (AJAX) | 알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/mmsGroupMember/adminMmsGroupMemberSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="문자 그룹 구성원 - 사용자 목록 (AJAX) | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsGroupMember/adminMmsGroupMemberSelectListAjax.jsp" />
+		</definition>
+	
+	<!-- 문자 발송 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/mmsSend/*" extends="adminLayout">
+		<put-attribute name="title" expression="문자 발송 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsSend/{1}.jsp" />
+	</definition>
+	
+		<!-- 문자 발송 - 문자 그룹 목록 (AJAX) | 알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/mmsSend/adminMmsGroupSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="문자 발송 - 문자 그룹 목록 (AJAX) | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsSend/adminMmsGroupSelectListAjax.jsp" />
+		</definition>
+		
+		<!-- 문자 발송 - 문자 템플릿 목록 (AJAX) |알림 | NITROEYE CMS -->
+		<definition name="/cms/admin/notification/mmsSend/adminMmsTemplateSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="문자 발송 - 문자 템플릿 목록 (AJAX) | 알림 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsSend/adminMmsTemplateSelectListAjax.jsp" />
+		</definition>
+		
+	<!-- 문자 발송 이력 | 알림 | NITROEYE CMS -->
+	<definition name="/cms/admin/notification/mmsHistory/*" extends="adminLayout">
+		<put-attribute name="title" expression="문자 발송 이력 | 알림 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/notification/mmsHistory/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 권한 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/authManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="권한 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/authManagement/{1}.jsp" />
+	</definition>
+	
+		<!-- 권한 - 목록 (AJAX) | 권한 | 시스템 | NITROEYE CMS -->
+		<definition name="/cms/admin/system/auth/adminAuthMenuList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="메뉴 종류 - 컨텐츠 (AJAX) | 메뉴 | 구조 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/auth/adminAuthMenuListAjax.jsp" />
+		</definition>
+		
+		<!-- 권한 관리자 - 관리자 목록 (AJAX) | 권한 | 시스템 | NITROEYE CMS -->
+		<definition name="/cms/admin/system/authManager/adminAuthManagerSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="권한 관리자 - 관리자 목록 (AJAX) | 권한 | 시스템 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/authManager/adminAuthManagerSelectListAjax.jsp" />
+		</definition>
+	
+	<!-- 관리자 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/manager/*" extends="adminLayout">
+		<put-attribute name="title" expression="관리자 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/manager/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/member/*" extends="adminLayout">
+		<put-attribute name="title" expression="사용자 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/member/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 | 시스템 | - 사용자 목록 (AJAX)  NITROEYE CMS -->
+	<definition name="/cms/admin/system/member/adminMemberSelectListAjax/ajax" extends="adminEmpty">
+		<put-attribute name="title" expression="사용자 | 시스템 | - 사용자 목록 (AJAX)  NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/member/adminMemberSelectListAjax.jsp" />
+	</definition>
+	
+	<!-- 휴면 사용자 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/dormantMember/*" extends="adminLayout">
+		<put-attribute name="title" expression="사용자 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/dormantMember/{1}.jsp" />
+	</definition>
+	
+	<!-- 사이트 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/site/*" extends="adminLayout">
+		<put-attribute name="title" expression="사이트 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/site/{1}.jsp" />
+	</definition>
+		
+		<!-- 사이트 관리자 - 관리자 선택 목록 (AJAX) | 사이트 | 시스템 | NITROEYE CMS -->
+		<definition name="/cms/admin/system/siteManager/adminSiteManagerSelectList/ajax" extends="adminEmpty">
+			<put-attribute name="title" expression="사이트 관리자 - 관리자 목록 (AJAX) | 사이트 | 시스템 | NITROEYE CMS" />
+			<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/siteManager/adminSiteManagerSelectListAjax.jsp" />
+		</definition>
+		
+		
+	<!-- 접근 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/connection/*" extends="adminLayout">
+		<put-attribute name="title" expression="접근 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/connection/{1}.jsp" />
+	</definition>
+	
+	<!-- 로그 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/log/*" extends="adminLayout">
+		<put-attribute name="title" expression="로그 | 시스템 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/log/{1}.jsp" />
+	</definition>
+	
+	<!-- 코드 | 시스템 | NITROEYE CMS -->
+	<definition name="/cms/admin/system/code/*" extends="adminLayout">
+		<put-attribute name="title" expression="국가 코드 | 코드 관리 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/system/code/{1}.jsp" />
+	</definition>
+	
+	
+	
+	
+	<!-- 국가균형발전위원회 -->
+	
+	<!-- 위원 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/peopleManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="위원 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/peopleManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 위원 데이터 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/people/*" extends="adminLayout">
+		<put-attribute name="title" expression="위원 데이터 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/people/{1}.jsp" />
+	</definition>
+	
+	<!-- 기획단 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/groupManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="기획단 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/groupManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 기획단 데이터 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/group/*" extends="adminLayout">
+		<put-attribute name="title" expression="기획단 데이터 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/group/{1}.jsp" />
+	</definition>
+	
+	<!-- 개최실적 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/performanceManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="개최실적 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/performanceManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 개최실적 데이터 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/performance/*" extends="adminLayout">
+		<put-attribute name="title" expression="개최실적 데이터 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/performance/{1}.jsp" />
+	</definition>
+	
+	<!-- 연혁 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/historyManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="연혁 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/historyManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 연혁 데이터 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/committee/history/*" extends="adminLayout">
+		<put-attribute name="title" expression="연혁 데이터 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/committee/history/{1}.jsp" />
+	</definition>
+	
+	<!-- 유튜브 | 국가균형발전위원회 | NITROEYE CMS -->
+	<definition name="/cms/admin/balance/youtube/*" extends="adminLayout">
+		<put-attribute name="title" expression="유튜브 | 국가균형발전위원회 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/balance/youtube/{1}.jsp" />
+	</definition>
+	
+	<!-- 누리락 -->
+	
+	<!-- 지원사업 관리 | 누리락 | NITROEYE CMS -->
+	<definition name="/cms/admin/nrr/projectManagement/*" extends="adminLayout">
+		<put-attribute name="title" expression="지원사업 관리 | 누리락 | NITROEYE CMS" />
+		<put-attribute name="adminContent" value="/WEB-INF/jsp/cms/admin/view/nrr/projectManagement/{1}.jsp" />
+	</definition>
+	
+	
+	
+</tiles-definitions>

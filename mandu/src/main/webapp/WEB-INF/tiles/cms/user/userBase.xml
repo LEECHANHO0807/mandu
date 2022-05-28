@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	
+	<!-- 비어있는 레이아웃 -->
+	<definition name="userBaseEmpty" template="/WEB-INF/jsp/cms/user/base/layout/userEmpty.jsp">
+	</definition>
+
+	<!-- 사용자 레이어 레이아웃 -->
+	<definition name="userBaseLayer" template="/WEB-INF/jsp/cms/user/base/layout/userLayer.jsp">
+	</definition>
+	
+	
+	
+	
+	<!-- 사용자 단순 레이아웃 -->
+	<definition name="userBaseSimpleLayout" template="/WEB-INF/jsp/cms/user/base/layout/userSimpleLayout.jsp">
+		<put-attribute name="userHeader" value="/WEB-INF/jsp/cms/user/base/view/header/userHeader.jsp" />
+		<put-attribute name="userFooter" value="/WEB-INF/jsp/cms/user/base/view/footer/userFooter.jsp" />
+	</definition>
+
+	<!-- 사용자 메인 레이아웃 -->
+	<definition name="userBaseMainLayout" template="/WEB-INF/jsp/cms/user/base/layout/userMainLayout.jsp">
+		<!-- <put-attribute name="userHeader" value="/WEB-INF/jsp/cms/user/base/view/header/userHeader.jsp" /> -->
+		<put-attribute name="userFooter" value="/WEB-INF/jsp/cms/user/base/view/footer/userFooter.jsp" />
+	</definition>
+	
+	<!-- 사용자 레이아웃 -->
+	<definition name="userBaseLayout" template="/WEB-INF/jsp/cms/user/base/layout/userLayout.jsp">
+		<put-attribute name="userHeader" value="/WEB-INF/jsp/cms/user/base/view/header/userHeader.jsp" />
+		<put-attribute name="userFooter" value="/WEB-INF/jsp/cms/user/base/view/footer/userFooter.jsp" />
+	</definition>
+	
+	
+	
+	
+	<!-- 사용자 오류  -->
+	<definition name="/cms/user/base/error/*" extends="userBaseSimpleLayout">
+		<put-attribute name="title" expression="오류" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/error/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 사용자 메인 -->
+	<definition name="/cms/user/base/main/userMainView" extends="userBaseMainLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/main/userMainView.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!-- 사용자 상단(헤더) -->
+	<definition name="/cms/user/base/header/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="상단" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/header/{1}.jsp"></put-attribute>
+	</definition>
+	
+	<!-- 사용자 하단(푸터) -->
+	<definition name="/cms/user/base/footer/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="하단" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/footer/{1}.jsp"></put-attribute>
+	</definition>
+	
+	<!-- 사용자 메뉴 -->
+	<definition name="/cms/user/base/menu/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="메뉴" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/menu/{1}.jsp"></put-attribute>
+	</definition>
+	
+		<!-- 사용자 메뉴 연결 -->
+		<definition name="/cms/user/base/menu/userMenuLinkView" extends="userBaseSimpleLayout">
+			<put-attribute name="title" expression="사용자 메뉴 연결" />
+			<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/menu/userMenuLinkView.jsp" />
+		</definition>
+		
+	
+	<!-- 사용자 탑 -->
+	<definition name="/cms/user/base/top/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="탑" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/top/{1}.jsp"></put-attribute>
+	</definition>
+	
+	<!-- 사용자 레프트 -->
+	<definition name="/cms/user/base/left/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="레프트" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/left/{1}.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!-- 사용자 팝업 -->
+	<definition name="/cms/user/base/popup/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/popup/{1}.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!-- 사용자 통합 검색 -->
+	<definition name="/cms/user/base/search/*" extends="userBaseSimpleLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/search/{1}.jsp" />
+	</definition>	
+	
+	
+	<!-- 사용자 회원 -->
+	<definition name="/cms/user/base/member/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/member/{1}.jsp" />
+	</definition>
+	
+		<!-- 사용자 본인 인증 결과 -->
+		<definition name="/cms/user/base/member/userMemberCertResultView" extends="userBaseEmpty">
+			<put-attribute name="title" expression="${title}" />
+			<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/member/userMemberCertResultView.jsp" />
+		</definition>
+		
+		<!-- 사용자 본인 인증 실패 -->
+		<definition name="/cms/user/base/member/userMemberCertFailView" extends="userBaseEmpty">
+			<put-attribute name="title" expression="${title}" />
+			<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/member/userMemberCertFailView.jsp" />
+		</definition>
+	
+	<!-- 사용자 아이디, 비밀번호 찾기 -->
+<!-- 	<definition name="/cms/user/base/find/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/find/{1}.jsp" />
+	</definition>
+ -->						
+	
+	<!-- 사용자 게시판 -->
+	<definition name="/cms/user/base/board/*/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/board/{1}/{2}.jsp" />
+	</definition>
+	
+	
+	<!-- 사용자 일정 -->
+	<definition name="/cms/user/base/schedule/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/schedule/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 사용자 대관 -->
+	<definition name="/cms/user/base/rental/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/rental/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 설문 -->
+	<definition name="/cms/user/base/survey/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/survey/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 설문 템플릿 -->
+	<definition name="/cms/user/base/survey/template/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="설문템플릿" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/survey/template/{1}.jsp" />
+	</definition>
+	
+		<!-- 사용자 대관 신청 완료 -->
+		<definition name="/cms/user/base/rental/userRentalCompletionView" extends="userBaseSimpleLayout">
+			<put-attribute name="title" expression="${title}" />
+			<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/rental/userRentalCompletionView.jsp" />
+		</definition>
+	
+	
+	<!-- 사용자 컨텐츠 -->
+	<definition name="/cms/user/base/contents/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/contents/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 사용자 댓글 -->
+	<definition name="/cms/user/base/comment/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/comment/{1}.jsp" />
+	</definition>
+	
+
+	<!-- 사용자 마이페이지 정보 -->
+	<definition name="/cms/user/base/mypage/information/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/mypage/information/{1}.jsp" />
+	</definition>
+
+	<!-- 사용자 마이페이지 탈퇴 -->
+	<definition name="/cms/user/base/mypage/leave/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/mypage/leave/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 마이페이지 아카데미 신청 내역 -->
+	<definition name="/cms/user/base/mypage/academyBreakdown/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/mypage/academyBreakdown/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 마이페이지 공연 예매 내역 -->
+	<definition name="/cms/user/base/mypage/performanceBreakdown/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/mypage/performanceBreakdown/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 마이페이지 대관 신청 내역 -->
+	<definition name="/cms/user/base/mypage/rentalBreakdown/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/mypage/rentalBreakdown/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 사용자 사이트맵 -->
+	<definition name="/cms/user/base/sitemap/*" extends="userBaseEmpty">
+		<put-attribute name="title" expression="사이트맵" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/sitemap/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 국가균형발전위원회 -->	
+	
+	<!-- 사용자 위원, 기획단, 개최실적, 연혁 관리 -->
+	<definition name="/cms/user/base/balance/committee/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/balance/committee/{1}.jsp" />
+	</definition>
+	
+	
+	<!-- 누리락 -->	
+	
+	<!-- 사용자 지원사업 관리 -->
+	<definition name="/cms/user/base/nrr/projectManagement/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/projectManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 지원사업 -->
+	<definition name="/cms/user/base/nrr/project/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/project/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 지원사업 신청 -->
+	<definition name="/cms/user/base/nrr/projectRequest/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/projectRequest/{1}.jsp" />
+	</definition> 
+	
+	
+	<!-- 사용자 아카데미 관리 -->
+	<definition name="/cms/user/base/nrr/academyManagement/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/academyManagement/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 아카데미 -->
+	<definition name="/cms/user/base/nrr/academy/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/academy/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 아카데미 예매 -->
+	<definition name="/cms/user/base/nrr/academyReservation/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/academyReservation/{1}.jsp" />
+	</definition>
+		
+	<!-- 사용자 공연 -->
+	<definition name="/cms/user/base/nrr/performance/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/performance/{1}.jsp" />
+	</definition>
+	
+	<!-- 사용자 공연 예매 -->
+	<definition name="/cms/user/base/nrr/performanceReservation/*" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/user/base/view/nrr/performanceReservation/{1}.jsp" />
+	</definition>
+	
+</tiles-definitions>

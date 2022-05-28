@@ -1,0 +1,377 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+
+<%-- 사용자 공통 --%>
+<%@ include file="/WEB-INF/jsp/cms/user/common/userCommon.jsp" %>
+
+
+<c:choose>
+	<c:when test="${not empty menuList1}">
+
+		<ul class="gnb clearfix">
+			<c:forEach var="first" items="${menuList1}">
+
+				<%-- 메뉴명 - 레벨 1 --%>
+				<li>
+					<c:choose>
+						<c:when test="${first.type eq 'BASE'}">
+							<a href="${contextPath}/${siteCode}/menu/baseView?menuLevel=${first.menuLevel}&amp;menuNo=${first.menuNo}">${first.title}</a>
+						</c:when>
+						<c:when test="${first.type eq 'BOARD'}">
+							<a href="${contextPath}/${siteCode}/board/list?boardManagementNo=${first.referenceNo}&amp;menuLevel=${first.menuLevel}&amp;menuNo=${first.menuNo}">${first.title}</a>
+						</c:when>
+						<c:when test="${first.type eq 'SCHEDULE'}">
+							<a href="${contextPath}/${siteCode}/schedule/list?scheduleManagementNo=${first.referenceNo}&amp;menuLevel=${first.menuLevel}&amp;menuNo=${first.menuNo}">${first.title}</a>
+						</c:when>
+						<c:when test="${first.type eq 'RENTAL'}">
+							<a href="${contextPath}/${siteCode}/rental/calendar?rentalManagementNo=${first.referenceNo}&amp;menuLevel=${first.menuLevel}&amp;menuNo=${first.menuNo}">${first.title}</a>
+						</c:when>
+						<c:when test="${first.type eq 'CONTENTS'}">
+							<a href="${contextPath}/${siteCode}/contents/view?contentsNo=${first.referenceNo}&amp;menuLevel=${first.menuLevel}&amp;menuNo=${first.menuNo}">${first.title}</a>
+						</c:when>
+						<c:when test="${first.type eq 'LINK'}">
+							<c:choose>
+								<c:when test="${not empty first.linkUrl}">
+									<c:choose>
+										<c:when test="${first.linkType eq 'SELF'}">
+											<a href="${first.linkUrl}" target="_self">${first.title}</a>
+										</c:when>
+										<c:when test="${first.linkType eq 'BLANK'}">
+											<a href="${first.linkUrl}" target="_blank">${first.title}</a>
+										</c:when>
+										<c:otherwise>
+											<a href="${first.linkUrl}">${first.title}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<a href="#" onclick="return false;">${first.title}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+						<c:when test="${first.type eq 'CUSTOM'}">
+							<c:choose>
+								<c:when test="${not empty first.customUrl}">
+									<a href="${first.customUrl}?menuLevel=${first.menuLevel}&amp;menuNo=${first.menuNo}">${first.title}</a>
+								</c:when>
+								<c:otherwise>
+									<a href="#" onclick="return false;">${first.title}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+
+
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
+
+					<c:choose>
+						<c:when test="${not empty menuList2}">
+
+							<ul class="sub_gnb">
+								<c:forEach var="second" items="${menuList2}">
+
+									<c:choose>
+										<c:when test="${second.upperMenuNo eq first.menuNo}">
+											<%-- 메뉴명 - 레벨 2 --%>
+											<li>
+												<c:choose>
+													<c:when test="${second.type eq 'BASE'}">
+														<a href="${contextPath}/${siteCode}/menu/baseView?menuLevel=${second.menuLevel}&amp;menuNo=${second.menuNo}">${second.title}</a>
+													</c:when>
+													<c:when test="${second.type eq 'BOARD'}">
+														<a href="${contextPath}/${siteCode}/board/list?boardManagementNo=${second.referenceNo}&amp;menuLevel=${second.menuLevel}&amp;menuNo=${second.menuNo}">${second.title}</a>
+													</c:when>
+													<c:when test="${second.type eq 'SCHEDULE'}">
+														<a href="${contextPath}/${siteCode}/schedule/list?scheduleManagementNo=${second.referenceNo}&amp;menuLevel=${second.menuLevel}&amp;menuNo=${second.menuNo}">${second.title}</a>
+													</c:when>
+													<c:when test="${second.type eq 'RENTAL'}">
+														<a href="${contextPath}/${siteCode}/rental/calendar?rentalManagementNo=${second.referenceNo}&amp;menuLevel=${second.menuLevel}&amp;menuNo=${second.menuNo}">${second.title}</a>
+													</c:when>
+													<c:when test="${second.type eq 'CONTENTS'}">
+														<a href="${contextPath}/${siteCode}/contents/view?contentsNo=${second.referenceNo}&amp;menuLevel=${second.menuLevel}&amp;menuNo=${second.menuNo}">${second.title}</a>
+													</c:when>
+													<c:when test="${second.type eq 'LINK'}">
+														<c:choose>
+															<c:when test="${not empty second.linkUrl}">
+																<c:choose>
+																	<c:when test="${second.linkType eq 'SELF'}">
+																		<a href="${second.linkUrl}" target="_self">${second.title}</a>
+																	</c:when>
+																	<c:when test="${second.linkType eq 'BLANK'}">
+																		<a href="${second.linkUrl}" target="_blank">${second.title}</a>
+																	</c:when>
+																	<c:otherwise>
+																		<a href="${second.linkUrl}">${second.title}</a>
+																	</c:otherwise>
+																</c:choose>
+															</c:when>
+															<c:otherwise>
+																<a href="#" onclick="return false;">${second.title}</a>
+															</c:otherwise>
+														</c:choose>
+													</c:when>
+													<c:when test="${second.type eq 'CUSTOM'}">
+														<c:choose>
+															<c:when test="${not empty second.customUrl}">
+																<a href="${second.customUrl}?menuLevel=${second.menuLevel}&amp;menuNo=${second.menuNo}">${second.title}</a>
+															</c:when>
+															<c:otherwise>
+																<a href="#" onclick="return false;">${second.title}</a>
+															</c:otherwise>
+														</c:choose>
+													</c:when>
+
+													<c:otherwise>
+													</c:otherwise>
+												</c:choose>
+
+												<c:choose>
+													<c:when test="${not empty menuList3}">
+
+														<ul class="sub2_gnb">
+															<c:forEach var="third" items="${menuList3}">
+
+																<c:choose>
+																	<c:when test="${third.upperMenuNo eq second.menuNo}">
+																		<%-- 메뉴명 - 레벨 3 --%>
+																		<li>
+																			<c:choose>
+																				<c:when test="${third.type eq 'BASE'}">
+																					<a href="#" onclick="return false">${third.title}</a>
+																				</c:when>
+																				<c:when test="${third.type eq 'BOARD'}">
+																					<a href="${contextPath}/${siteCode}/board/list?boardManagementNo=${third.referenceNo}&amp;menuLevel=${third.menuLevel}&amp;menuNo=${third.menuNo}">${third.title}</a>
+																				</c:when>
+																				<c:when test="${third.type eq 'SCHEDULE'}">
+																					<a href="${contextPath}/${siteCode}/schedule/list?scheduleManagementNo=${third.referenceNo}&amp;menuLevel=${third.menuLevel}&amp;menuNo=${third.menuNo}">${third.title}</a>
+																				</c:when>
+																				<c:when test="${third.type eq 'RENTAL'}">
+																					<a href="${contextPath}/${siteCode}/rental/calendar?rentalManagementNo=${third.referenceNo}&amp;menuLevel=${third.menuLevel}&amp;menuNo=${third.menuNo}">${third.title}</a>
+																				</c:when>
+																				<c:when test="${third.type eq 'CONTENTS'}">
+																					<a href="${contextPath}/${siteCode}/contents/view?contentsNo=${third.referenceNo}&amp;menuLevel=${third.menuLevel}&amp;menuNo=${third.menuNo}">${third.title}</a>
+																				</c:when>
+																				<c:when test="${third.type eq 'LINK'}">
+																					<c:choose>
+																						<c:when test="${not empty third.linkUrl}">
+																							<c:choose>
+																								<c:when test="${third.linkType eq 'SELF'}">
+																									<a href="${third.linkUrl}" target="_self">${third.title}</a>
+																								</c:when>
+																								<c:when test="${third.linkType eq 'BLANK'}">
+																									<a href="${third.linkUrl}" target="_blank">${third.title}</a>
+																								</c:when>
+																								<c:otherwise>
+																									<a href="${third.linkUrl}">${third.title}</a>
+																								</c:otherwise>
+																							</c:choose>
+																						</c:when>
+																						<c:otherwise>
+																							<a href="#" onclick="return false;">${third.title}</a>
+																						</c:otherwise>
+																					</c:choose>
+																				</c:when>
+																				<c:when test="${third.type eq 'CUSTOM'}">
+																					<c:choose>
+																						<c:when test="${not empty third.customUrl}">
+																							<a href="${third.customUrl}?menuLevel=${third.menuLevel}&amp;menuNo=${third.menuNo}">${third.title}</a>
+																						</c:when>
+																						<c:otherwise>
+																							<a href="#" onclick="return false;">${third.title}</a>
+																						</c:otherwise>
+																					</c:choose>
+																				</c:when>
+																				<c:otherwise>
+																				</c:otherwise>
+																			</c:choose>
+																		</li>
+																	</c:when>
+																	<c:otherwise>
+																	</c:otherwise>
+																</c:choose>
+
+															</c:forEach>
+														</ul>
+
+													</c:when>
+
+													<c:otherwise>
+													</c:otherwise>
+												</c:choose>
+											</li>
+										</c:when>
+									</c:choose>
+
+								</c:forEach>
+							</ul>
+
+						</c:when>
+
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
+
+				</li>
+			</c:forEach>
+		</ul>
+
+	</c:when>
+
+	<c:otherwise>
+	</c:otherwise>
+</c:choose>
+
+
+<script type="text/javascript">
+	$(function(){
+		/* init */
+		var $gnb = $(".gnb");
+		var $mGnb = $(".m_gnb");
+		var $gnbClone = $gnb.html();
+		$mGnb.html($gnbClone);
+		$mGnb.find(".sub_gnb").attr("class","m_sub_gnb");
+		$mGnb.find(".sub2_gnb").attr("class","m_sub2_gnb");
+
+		var subGnbHeight,
+			subGnbLength = $(".sub_gnb").length,
+			depth2_max_height = 0, depth2_each_height = 0;
+
+		/* gnb */
+		var gnbSpeed = 300,
+			gnbEasing = 'easeOutQuint';
+		$(".gnb > li, .gnb_bg").hover(function(){
+			$(".gnb_bg, .sub_gnb").stop().show().animate({height:subGnbHeight}, gnbSpeed, gnbEasing);
+		}, function(){
+			$(".gnb_bg, .sub_gnb").stop().animate({height:0}, gnbSpeed, gnbEasing, function(){
+				$(this).hide();
+			});
+		});
+
+		/********* m_gnb **********/
+		$(".m_gnb_btn").click(function(e){
+			black_bg_over();
+			$(".m_gnb_bg").show().animate({opacity:0.5}, 400);
+			$(".m_gnb_wrap").show().animate({right:0}, 400, "easeOutQuint");
+		});
+		$(".m_gnb_bg, .m_gnb_close").click(function(e){
+			mGnbClose();
+			return false;
+		});
+		$mGnb.find("> li > a").on("click",function(e){
+			if(!$(this).hasClass("on")){
+				$mGnb.find("> li > a").removeClass("on");
+				$(this).addClass("on");
+				$(".m_sub_gnb:visible").stop(true,true).slideUp();
+				$(this).parent().find(".m_sub_gnb").stop(true,true).slideDown();
+			}
+			else{
+				$(this).removeClass("on");
+				$(this).parent().find(".m_sub_gnb").stop(true,true).slideUp();
+			}
+			return false;
+		});
+
+		/* resize event */
+		var mGnbReady = false,
+			subGnbHeightSetReady = false;
+		$(window).resize(function(){
+			/* mGnb_control */
+			windowW = window.innerWidth;
+			if(windowW>=991){
+				if(mGnbReady){
+					mGnbClose();
+					mGnbReady = false;
+				}
+				if(!subGnbHeightSetReady){
+					subGnbHeightSet();
+				}
+			}
+			else{
+				mGnbReady = true;
+				subGnbHeightSetReady = false;
+			}
+		});
+		$(window).trigger("resize");
+
+		function subGnbHeightSet(){
+			$(".sub_gnb").height("auto");
+			for(var i = 0; i<subGnbLength; i++){
+				depth2_each_height = $(".sub_gnb").eq(i).height();
+				depth2_max_height = (depth2_each_height > depth2_max_height) ? depth2_each_height : depth2_max_height;
+			}
+			subGnbHeight = depth2_max_height;
+			depth2_max_height = 0;
+			$(".sub_gnb").height(0);
+		}
+		function mGnbClose(){
+			$(".m_gnb_bg").stop().animate({opacity:0}, 400, function(e){
+				$(this).hide();
+			});
+			$(".m_gnb_wrap").stop().animate({right:-480}, 400, "easeOutQuint", function(e){
+				$(this).hide();
+				black_bg_leave();
+			});
+		}
+
+		/* black_bg_function */
+		function black_bg_over(){
+			$("body").css({"overflow-y":"hidden"});
+		}
+		function black_bg_leave(){
+			$("body").css({"overflow-y":"visible"});
+		}
+		/********* // m_gnb **********/
+
+		/* top_sch */
+		$(".top_sch_btn").click(function(){
+			if($(".top_sch_box .inner_box").is(":hidden")){
+				$(this).addClass("on");
+				$(".top_sch_box .inner_box").show();
+				$(".top_sch_inp").focus();
+			}
+			else{
+				$(this).removeClass("on");
+				$(".top_sch_box .inner_box").hide();
+				$(".top_sch_btn").focus();
+			}
+			return false;
+		});
+
+		/* share_btn */
+		$(".share_btn").click(function(){
+			$(".q_share_menu").stop().fadeToggle(300);
+		});
+
+		/* top_btn */
+		var $topBtn = $(".top_btn");
+		$topBtn.css({opacity:0, visibility: "hidden"});
+		var pageY;
+		var $contents = $(".contents");
+		var $header = $(".header");
+		var contentsFrontY; // 스크롤 시 gnb 고정을 위한 이벤트 발생 offset 값 설정.
+		$(window).scroll(function(){
+			pageY = window.pageYOffset;
+			contentsFrontY = $contents.offset().top;
+			if(pageY>=200){
+				$topBtn.css({visibility:"visible"}).stop().animate({opacity:1}, 300);
+			}
+			else{
+				$topBtn.stop().animate({opacity:0}, 300, function(){
+					$(this).css({visibility:"hidden"});
+				});
+			}
+
+			if(pageY>=contentsFrontY){
+				$header.addClass("scrolled");
+			}
+			else{
+				$header.removeClass("scrolled");
+			}
+		});
+		$(window).scroll();
+
+		$topBtn.click(function(){
+			$("html,body").animate({scrollTop:0}, 300);
+		});
+	});
+</script>

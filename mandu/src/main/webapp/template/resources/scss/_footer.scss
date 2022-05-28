@@ -1,0 +1,326 @@
+/* 
+ * Footer
+ */
+
+$footer-bg: #3e4248;
+$footer-menu-height: 64px;
+$footer-copyright-height: 120px;
+$footer-copyright-content-height: 46px;
+
+footer {
+	background-color: $footer-bg;
+
+	.footer-menu {
+		border-bottom: 1px solid #32353a;
+
+		.container {
+			
+			@include breakpoints(xs) {
+				display: flex;
+				flex-wrap: wrap-reverse;
+			}
+			
+			@include breakpoints(md) {
+				display: block;
+			}
+
+			@include clear-both();
+		}
+
+		&__links {
+			padding: (($footer-menu-height - 28px) / 2) 0;
+
+			@include breakpoints(xs) {
+				width: 100%;
+				margin: 0 -5px;
+				float: none;
+			}
+
+			@include breakpoints(md) {
+				width: auto;
+				margin: 0 -13px;
+				float: left;
+			}
+
+			li {
+				line-height: 28px;
+				list-style: none;
+				float: left;
+
+				@include breakpoints(xs) {
+					padding: 0 5px;
+				}
+
+				@include breakpoints(md) {
+					padding: 0 13px;
+				}
+
+				a {
+					color: #bdbdbd;
+					text-decoration: none;
+
+					@include breakpoints(xs) {
+						font-size: 12px;
+					}
+
+					@include breakpoints(md) {
+						font-size: 14px;
+					}
+				}
+			}
+
+			@include clear-both();
+		}
+
+		&__icons {
+			border-left: 1px solid #32353a;
+
+			@include breakpoints(xs) {
+				width: calc(100% + 40px);
+				margin: 0 -20px;
+				float: none;
+				border-top: 1px solid #32353a;
+				border-bottom: 1px solid #32353a;
+			}
+
+			@include breakpoints(md) {
+				width: auto;
+				margin: 0;
+				float: right;
+				border-top: 0;
+				border-bottom: 0;
+			}
+
+			> li {
+				float: left;
+				list-style: none;
+				@include breakpoints(xs) {
+					width: calc(50% - 33px);
+					max-width: 100%;
+				}
+
+				@include breakpoints(md) {
+					width: 190px;
+					max-width: calc(50% - 33px);
+				}
+
+
+				&:last-child {
+					width: 66px;
+					float: right;
+				}
+
+				> a {
+					text-align: center;
+					display: block;
+					border-left: 1px solid #32353a;
+					border-right: 1px solid #32353a;
+					text-decoration: none;
+					height: $footer-menu-height;
+
+					img {
+						display: block;
+					}
+				}
+			}
+
+			@include clear-both();
+		}
+
+		&__family {
+			width: 100%;
+			background-color: transparent;
+			padding: 0 15px;
+			height: $footer-menu-height;
+			line-height: $footer-menu-height;
+			box-sizing: border-box;
+			position: relative;
+			border-right: 1px solid #32353a;
+
+			@include breakpoints(xs) {
+				float: none;
+			}
+
+			@include breakpoints(md) {
+				float: right;
+			}
+
+			h3 {
+				font-size: 14px;
+				font-weight: normal;
+				color: white;
+
+				&:after {
+					display: block;
+					content: "";
+					width: 11px;
+					height: $footer-menu-height;
+					float: right;
+					background-image: url(../../resources/images/global/footer-copyright__family__arrow.png);
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+			}
+
+			ul {
+				max-height: (10px * 2) + (18px + (5px * 2) + 2px) * 15; // 15개까지 보여짐
+				padding: 10px 15px;
+				display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 100%;
+				border: 1px solid #25282b;
+				border-top: 0;
+				background-color: #2b2e32;
+				overflow-y: scroll;
+
+				li {
+					list-style: none;
+
+					a {
+						display: block;
+						padding: 5px 0;
+						line-height: 18px;
+						height: 100%;
+						color: #ddd;
+						font-size: 13px;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+
+	.footer-copyright {
+		padding: (($footer-copyright-height - $footer-copyright-content-height) / 2) 0;
+		
+		&__logo {
+			margin-right: 26px;
+			display: block;
+			height: $footer-copyright-content-height;
+			line-height: $footer-copyright-content-height;
+
+			@include breakpoints(xs) {
+				float: none;
+			}
+
+			@include breakpoints(md) {
+				float: left;
+			}
+
+			img {
+				display: block;
+				height: 40px;
+				margin: (($footer-copyright-content-height - 40) / 2) 0;
+			}
+		}
+
+		&__text {
+			line-height: ($footer-copyright-content-height / 2);
+
+			@include breakpoints(xs) {
+				float: none;
+				margin: 15px 0;
+			}
+
+			@include breakpoints(md) {
+				float: left;
+				margin: 0;
+			}
+
+			address {
+				display: block;
+				font-size: 14px;
+				color: white;
+				font-style: initial;
+			}
+
+			p {
+				font-size: 12px;
+				text-transform: uppercase;
+				color: #bdbdbd;
+				padding: 0;
+				margin: 0;
+			}
+		}
+
+		&__mark {
+			height: 60px;
+			
+			@include breakpoints(xs) {
+				float: none;
+				margin: 0;
+			}
+
+			@include breakpoints(md) {
+				float: right;
+				margin: (-(60px - 46px) / 2) 0;
+			}
+		}
+
+		&__family {
+			width: 190px;
+			background-color: #25282b;
+			padding: 0 15px;
+			height: $footer-copyright-content-height;
+			line-height: $footer-copyright-content-height;
+			position: relative;
+
+			@include breakpoints(xs) {
+				float: none;
+			}
+
+			@include breakpoints(md) {
+				float: right;
+			}
+
+			h3 {
+				font-size: 14px;
+				font-weight: normal;
+				color: white;
+
+				&:after {
+					display: block;
+					content: "";
+					width: 11px;
+					height: $footer-copyright-content-height;
+					float: right;
+					background-image: url(../../resources/images/global/footer-copyright__family__arrow.png);
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+			}
+
+			ul {
+				max-height: (20px + (13px * 2) + 1px + 2px) * 7; // 7개까지 보여짐
+				display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 100%;
+				border: 1px solid #25282b;
+				border-top: 0;
+				background-color: #2b2e32;
+				overflow-y: auto;
+
+				li {
+					list-style: none;
+					border-top: 1px solid #25282b;
+
+					a {
+						display: block;
+						padding: 13px 15px;
+						line-height: 20px;
+						height: 100%;
+						color: #ddd;
+						font-size: 13px;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		@include clear-both();
+	}
+}

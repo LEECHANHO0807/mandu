@@ -1,0 +1,103 @@
+.mem-tab {
+
+	&__ul {
+		@include tabType1;
+	}
+
+	&__cont {
+
+		&__table {
+			@include basicTable2;
+			input[type=text] {
+				@include inText2;
+			}
+			.join-form__line__in__btn {height:34px;line-height: 34px;}
+		}
+		&__bottom {
+
+			text-align: center;
+			&__edit {
+				@include btn3;
+			}
+			&__cancel {
+				@include btn4;
+			}
+		}
+	}
+
+
+	@media screen and (min-width:1px) and (max-width:768px) {
+
+		&__cont {
+
+			&__table {
+				td:before {
+					display: block;
+					margin-bottom: 5px;
+					content:attr(data-th) " ";
+				}
+			}
+		}
+
+	}
+
+}
+
+
+.mem-tab2 {
+
+	&__ul {
+		@include tabType1;
+	}
+
+	&__cont {
+
+		&__table {
+			@include basicTable4;
+			input[type=text] {
+				@include inText2;
+			}
+			.join-form__line__in__btn {height:34px;line-height: 34px;}
+		}
+		&__bottom {
+
+			text-align: center;
+			&__edit {
+				@include btn3;
+			}
+			&__cancel {
+				@include btn4;
+			}
+		}
+	}
+
+
+	@media screen and (min-width:1px) and (max-width:768px) {
+	}
+}
+
+
+.my-bills {
+	width:80%;
+	margin:0 auto;
+	&__tit {
+		@include h3Type1;
+		text-align: center;
+	}
+	&__tb {
+		@include basicTable2;
+		.col-size-1 {width:35%}
+		.tit-line th {background-color:#333;color:#fff;}
+		.tit-line td {background-color:#333;color:#fff;}
+		tr:nth-child(2n) th{background-color:#e7e7e7;border-right:1px solid #cdcdcd}
+		tr:nth-child(2n) td{background-color:#e7e7e7;}
+		th {text-align: center;}
+	}
+	&__print {
+		text-align: right;
+		&__btn{
+			@include btnSmall-2;
+		}
+
+	}
+}

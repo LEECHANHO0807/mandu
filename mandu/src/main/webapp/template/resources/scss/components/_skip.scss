@@ -1,0 +1,80 @@
+/* skip to Content */
+.skiptoContent {
+	position:absolute;
+	height:0;
+	top:-60px;
+	left:50%;
+	margin-left:0;
+	z-index: 999999;
+	font-size:11px;
+	font-size:1.1rem;
+	left:0;
+	margin-left:0;
+	width:100%;
+
+	h2 {
+		display: none;
+	}
+
+	div {
+		position:relative;
+		height:25px;
+		padding-top:5px;
+		width:60%;
+		margin:0 auto;
+		text-align:center;
+		background-color:#fff;
+		border:1px solid #ccc;
+		border-top:0;
+	}
+
+	strong {
+		position:absolute;
+		top:0;
+		margin:0;
+		padding:0;
+		height:0;
+		width:0;
+		left:-9999px;
+		visibility:hidden;
+	}
+
+	span {
+		vertical-align:middle;
+
+		&.skip_item01 {
+
+			a {
+				display:inline-block;
+				width:173px;
+				height:20px;
+				text-indent:-9999px;
+				overflow:hidden;
+				background-image:url("../../resources/images/global/go_to_sbj.gif");
+				background-repeat:no-repeat;
+				background-position:0 0;
+				vertical-align:middle;
+
+				&:focus {
+					background-image:url("../../resources/images/global/go_to_sbj_on.gif");
+				}
+			}
+		}
+
+		&.skip_item02 {
+
+			a {
+				display:inline-block;
+				padding-right:10px;
+				vertical-align:middle;
+				color: inherit;
+				font-size: 12px;
+				text-decoration: none;
+
+				&:focus {
+					font-weight:bold;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,177 @@
+$image-oversize: 54px;
+
+.greeting {
+	word-break: keep-all;
+
+	.greeting__title {
+		margin-bottom: 80px;
+		position: relative;
+
+		@include breakpoints(xs) {
+			padding: 30px 0 50% 0;
+			border-bottom: none;
+		}
+		
+		@include breakpoints(md) {
+			padding: 90px 60% 60px 0;
+			// border-bottom: 1px solid #e5e5e5;
+		}
+		
+		@include breakpoints(lg) {
+			padding: 90px 50% 60px 0;
+			// border-bottom: 1px solid #e5e5e5;
+		}
+
+		.greeting__title__h3 {
+			color: $primary-color;
+			margin-bottom: 30px;
+			position: relative;
+	
+			@include breakpoints(xs) {
+				font-size: 23px;
+			}
+		
+			@include breakpoints(sm) {
+				font-size: 26px;
+			}
+		
+			@include breakpoints(md) {
+				font-size: 29px;
+			}
+		
+			@include breakpoints(lg) {
+				font-size: 32px;
+			}
+		
+			@include breakpoints(xl) {
+				font-size: 35px;
+			}
+		}
+
+		.greeting__title__text {
+			position: relative;
+			line-height: 1.5em;
+	
+			@include breakpoints(xs) {
+				font-size: 15px;
+			}
+		
+			@include breakpoints(sm) {
+				font-size: 17px;
+			}
+		
+			@include breakpoints(md) {
+				font-size: 19px;
+			}
+		
+			@include breakpoints(lg) {
+				font-size: 21px;
+			}
+		
+			@include breakpoints(xl) {
+				font-size: 23px;
+			}
+		}
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			bottom: 0 - $image-oversize;
+		}
+	}
+
+	.greeting__h4 {
+		padding-left: 15px;
+		border-left: 4px solid $primary-color;
+		margin-bottom: 50px;
+	
+		@include breakpoints(xs) {
+			font-size: 16px;
+		}
+	
+		@include breakpoints(sm) {
+			font-size: 18px;
+		}
+	
+		@include breakpoints(md) {
+			font-size: 20px;
+		}
+	
+		@include breakpoints(lg) {
+			font-size: 22px;
+		}
+	
+		@include breakpoints(xl) {
+			font-size: 24px;
+		}
+
+		strong {
+			color: $primary-color;
+		}
+	}
+
+	.greeting__text {
+		color: #888;
+		line-height: 1.5em;
+
+		@include breakpoints(xs) {
+			font-size: 16px;
+		}
+	
+		@include breakpoints(sm) {
+			font-size: 18px;
+		}
+	
+		@include breakpoints(md) {
+			font-size: 20px;
+		}
+	
+		@include breakpoints(lg) {
+			font-size: 22px;
+		}
+	
+		@include breakpoints(xl) {
+			font-size: 24px;
+		}
+	
+		/*
+		@include breakpoints(xs) {
+			font-size: 14px;
+		}
+	
+		@include breakpoints(sm) {
+			font-size: 15px;
+		}
+	
+		@include breakpoints(md) {
+			font-size: 16px;
+		}
+	
+		@include breakpoints(lg) {
+			font-size: 17px;
+		}
+	
+		@include breakpoints(xl) {
+			font-size: 18px;
+		}
+		*/
+	}
+
+	.greeting__sign {
+		margin-top: 50px;
+
+		img {
+			display: block;
+			margin: 0 0 0 auto;
+
+			@include breakpoints(xs) {
+				width: 200px;
+			}
+
+			@include breakpoints(md) {
+				width: 272px;
+			}
+		}
+	}
+}

@@ -1,0 +1,51 @@
+.section-popupzone {
+
+	.popupzone {
+		padding: 13px 30px 30px 30px;
+
+		.slick-slide {
+			position: relative;
+			overflow: hidden;
+
+			@include breakpoints(xs) {
+				height: auto;
+			}
+
+			@include breakpoints(sm) {
+				height: 232px;
+			}
+
+			img {
+
+				@include breakpoints(xs) {
+					position: static;
+					width: 100%;
+					height: auto;
+					max-width: none;
+				}
+
+				@include breakpoints(sm) {
+					position: absolute;
+					margin: auto;
+					width: auto;
+					height: 100%;
+					top: 0;
+					bottom: 0;
+					left: -9999px;
+					right: -9999px;
+				}
+
+				@media screen and (min-width: 768px) and (max-width: 1000px) {
+					position: absolute;
+					margin: auto;
+					width: 100%;
+					height: auto;
+					top: -9999px;
+					bottom: -9999px;
+					left: 0;
+					right: 0;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,68 @@
+.bookmark {
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+
+	&-title {
+		background-color: #f5f6f7;
+		border: 1px solid #13406c;
+
+		img {
+			left: 34px;
+			top: 0;
+			bottom: 0;
+
+			@include breakpoints(xs) {
+				position: static;
+				margin: 0 0 15px 0;
+			}
+
+			@include breakpoints(md) {
+				position: absolute;
+				margin: auto 0;
+			}
+		}
+
+		&-inner {
+			position: relative;
+
+			@include breakpoints(xs) {
+				padding: 25px;
+			}
+
+			@include breakpoints(md) {
+				padding: 33px 33px 33px 95px;
+			}
+		}
+
+		h3 {
+			color: #13406c !important;;
+			margin-bottom: 5px !important;;
+			font-weight: bold !important;
+
+			@include breakpoints(xs) {
+				font-size: 17px !important;
+			}
+
+			@include breakpoints(lg) {
+				font-size: 19px !important;
+			}
+		}
+
+		p {
+			color: #818a94;
+			word-break: keep-all;
+			padding: 0;
+			margin: 0;
+
+			@include breakpoints(xs) {
+				font-size: 14px;
+			}
+
+			@include breakpoints(lg) {
+				font-size: 15px;
+			}
+		}
+	}
+}

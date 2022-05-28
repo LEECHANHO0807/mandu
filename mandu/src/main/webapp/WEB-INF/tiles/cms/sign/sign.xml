@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 사인 비어있는 레이아웃 -->
+	<definition name="signEmpty" template="/WEB-INF/jsp/cms/sign/layout/signEmpty.jsp">
+	</definition>
+
+	<!-- 사인 레이어 레이아웃 -->
+	<definition name="signLayer" template="/WEB-INF/jsp/cms/sign/layout/signLayer.jsp">
+	</definition>
+
+	<!-- 사인 레이아웃 -->
+	<definition name="signLayout" template="/WEB-INF/jsp/cms/sign/layout/signLayout.jsp">
+		<put-attribute name="signHeader" value="/WEB-INF/jsp/cms/sign/view/header/signHeader.jsp" />
+		<put-attribute name="signFooter" value="/WEB-INF/jsp/cms/sign/view/footer/signFooter.jsp" />
+	</definition>
+
+
+	<!-- 사인 인 - 관리자  -->
+	<definition name="/cms/sign/main/signInAdminView" extends="signEmpty">
+		<put-attribute name="title" expression="로그인 | NITROEYE CMS" />
+		<put-attribute name="signContent" value="/WEB-INF/jsp/cms/sign/view/main/signInAdminView.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!-- 사인 인 - 사용자  -->
+	<!-- 
+	<definition name="/cms/sign/main/signInUserView" extends="signEmpty">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="signContent" value="/WEB-INF/jsp/cms/sign/view/main/signInUserView.jsp"></put-attribute>
+	</definition>
+	-->
+	<definition name="/cms/sign/main/signInUserView" extends="userBaseLayout">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="userContent" value="/WEB-INF/jsp/cms/sign/view/main/signInUserView.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>

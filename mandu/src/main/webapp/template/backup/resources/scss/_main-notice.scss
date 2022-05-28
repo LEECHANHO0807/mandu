@@ -1,0 +1,97 @@
+.main-notice {
+		&__tit {
+			font-family: 'Do Hyeon','Noto Sans KR', sans-serif; font-size:28px;
+			position: relative;
+
+			&:after {
+				content:'';
+				display: inline-block;
+				position: absolute;
+				top:8px;left:140px;
+				@include sprite($main-notice);
+
+			}
+
+		}
+
+		&__ul {
+			margin: {
+				left:200px;
+				top:-30px;
+				right:50px;
+			}
+
+			&__li {
+				border-bottom:1px solid #aaaaaa;
+				margin: {bottom:43px;}
+
+				&:last-child {margin-bottom:0;}
+				&__a {
+					display:block;
+					margin-bottom:-12px;
+					position: relative;
+					z-index: 99;
+					@include floatWrap;
+					font: {
+						size:16px;
+						}
+					&:hover,
+					&:focus {color:#fc6410}
+
+					&__date {
+						font: {
+							family: 'Noto Sans KR';
+						}
+						color:#888888;
+						background-color:#fff;
+						display:block;
+						float:left;
+						padding-right:10px;
+					}
+					&__title {
+						float:right;
+						width:70%;
+						padding-left:10px;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						background-color:#fff;
+					}
+
+				}
+			}
+
+
+		}
+
+}
+
+
+
+@media screen and (min-width:1px) and (max-width:1500px) {
+	.main-notice__ul {margin-right:0;margin-top:30px;margin-left:0;}
+	.main-notice__ul__li {margin-bottom: 30px;}
+
+}
+
+
+@media screen and (min-width:769px) and (max-width:1200px) {
+	.main-notice__ul {margin-top:5px;}
+	.main-notice__ul__li {border-bottom:0px; margin-bottom: 18px;}
+	.main-notice__ul__li__a {margin-bottom:0;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+	.main-notice__ul__li__a__date {float:none;display:none;}
+	.main-notice__ul__li__a__title {float:none;}
+}
+@media screen and (min-width:769px) and (max-width:1000px) {
+	.main-notice__ul__li {display:none;}
+	.main-notice__ul__li:nth-child(1),
+	.main-notice__ul__li:nth-child(2),
+	.main-notice__ul__li:nth-child(3),
+	.main-notice__ul__li:nth-child(4) {display:block;}
+}
+
+
+@media screen and (min-width:1px) and (max-width:768px) {
+	.main-notice__ul {margin-top:10px;}
+	.main-notice__tit:after {left:105px;}
+}

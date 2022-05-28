@@ -1,0 +1,21 @@
+
+/*skip navigation*/
+.skiptoContent {
+	position: fixed;
+	left: 50%;
+	top: -30px;
+	height: 30px;
+	line-height: 30px;
+	background-color:#00235d;
+	width:360px;
+	margin-left:-180px;
+	text-align: center;
+	transition: all 0.3s ease 0s;
+
+	&.on {top:0;}
+	strong {font-size:0;}
+	a {color:#fff;font-size:18px;margin-left:10px;margin-right:10px;}
+	a:focus {color:gold;}
+
+	z-index: 999;
+}

@@ -1,0 +1,36 @@
+/*유동적 가로세로 비율 박스*/
+
+.movie-wrap {
+	&__h3 {
+		height:35px;
+		font-family: 'Do Hyeon','Noto Sans KR', sans-serif; font-size:28px;
+		position: relative;
+		margin-bottom: 40px;
+		&:before {
+			@include sprite($main-youtube);
+			margin-right:5px;
+		}
+		@media screen and (min-width:1px) and (max-width:1200px) {
+			& {margin-bottom:20px;}
+		}
+	}
+}
+.movie-player {
+	position: relative;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%; /*16:9*/
+	background-color:#00235d;
+	color:#fff;
+
+	&__in {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		iframe { width: 100%; height: 100%}
+	}
+}

@@ -1,0 +1,282 @@
+//예매페이지
+.yeyak-ver .sub-contents {background-color: #f5f5f5;}
+.yeyak-ver .cont-in {border-top:0;}
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.yeyak-ver .sub-contents {background-color:#fff;}
+	.yeyak-ver .cont-in {background-color: #f5f5f5;padding:5px;}
+}
+
+//첫단계
+.yeyak-first {
+	position: relative;
+	text-align:center;
+	margin:0 auto;
+	width: 80%;
+	&__title {
+		text-align: left;
+		background-color: #ec6159;
+		height: 70px;
+		line-height: 70px;
+		color: #fff;
+		font-size:18px;
+		font-weight:bold;
+		padding-left:20px;
+	}
+	&__reback {
+		position: absolute;
+		top:14px;right:20px;
+		color:#fff;
+		border:1px solid #fff;
+		display: block;
+		padding: 9px 10px;
+		border-radius: 5px;
+		font-size:13px;
+		white-space: nowrap;
+
+		span {
+			padding-left:30px;
+			display: block;
+			position: relative;
+			&:before {
+				position: absolute;
+				top:50%;
+				left:0;
+				transform: translateY(-50%);
+				@include sprite($reback)
+			}
+
+		}
+		&:hover,
+		&:focus {text-decoration: underline; }
+	}
+	&__wrap {
+		text-align: left;
+		background-color:#fff;
+		min-height: 580px;
+		border: {
+			left: 1px solid #dcdcdc;
+			bottom: 1px solid #dcdcdc;
+			right: 1px solid #dcdcdc;
+		}
+		box-sizing: border-box;
+		padding:80px 30px;
+		@include floatWrap;
+		&__cal {
+			float:left;
+			position: relative;
+			width:57%;
+			box-sizing: border-box;
+			padding:0 40px 0 0;
+			border-right:1px solid #ddd;
+			&__psb {
+				margin-left:15px;
+				padding-top:20px;
+				span {
+					display:inline-block;
+					background-color:#f0afb5;
+					width:15px;
+					height:15px;
+					vertical-align: middle;
+					margin-right:5px;
+				}
+			}
+			&__date {
+				font-size: 30px;
+				margin-left:20px;
+				font-weight: 800;
+				margin-bottom:30px;
+			}
+
+			&__prev {
+				&:before{
+					@include sprite($month-prev);
+					position: absolute;
+					top: 50%;
+					left: 35%;
+					transform: translateY(-50%);
+				}
+				position: absolute;
+				top:10px;
+				right:100px;
+				display:block;
+				width:40px;height:40px;
+				font-size:0;text-indent: -9999px;
+
+				border:1px solid #fff;
+				&:focus {
+					border:1px solid gold
+				}
+			}
+			&__next {
+				&:before{
+					@include sprite($month-next);
+					position: absolute;
+					top: 50%;
+					right: 35%;
+					transform: translateY(-50%);
+				}
+
+				position: absolute;
+				top:10px;
+				right:60px;
+				display:block;
+				width:40px;height:40px;
+				font-size:0;text-indent: -9999px;
+
+				border:1px solid #fff;
+				&:focus {
+					border:1px solid gold
+				}
+			}
+
+			table {
+				@include typeCal;
+			}
+		}
+
+		&__detail {
+			width: 40%;
+			float: right;
+			box-sizing: border-box;
+			padding:0 40px;
+			@include floatWrap;
+			&__time {
+				display: block;
+				border:1px solid #bbb;
+				color:#666;
+				text-align: center;
+				padding-top:10px;
+				padding-bottom:10px;
+				margin-bottom:10px;
+				&:hover,
+				&:focus {/*text-decoration: underline;*/}
+				&.on {background-color:#ededed}
+			}
+			&__time2 {
+				display: block;
+				border:1px solid #bbb;
+				color:#666;
+				text-align: center;
+				padding-top:10px;
+				padding-bottom:10px;
+				margin-bottom:10px;
+				&:hover,
+				&:focus {/*text-decoration: underline;*/}
+				&.on {background-color:#4a90e2;border:1px solid #4a90e2;color:#fff;}
+			}
+			&__time3 {
+				display: block;
+				border:1px solid #bbb;
+				color:#666;
+				text-align: center;
+				padding-top:10px;
+				padding-bottom:10px;
+				margin-bottom:10px;
+				float:left;width:45%;margin-left:2.5%;
+				&:hover,
+				&:focus {/*text-decoration: underline;*/}
+				&.on {background-color:#fdce07;border:1px solid #fdce07;font-weight: bold;color:#000;}
+			}
+		}
+	}
+
+}
+
+@media screen and (min-width:1px) and (max-width:880px) {
+
+	.yeyak-first__wrap__cal {width:100%;margin-bottom:30px;border-right:0px;padding-right:0;}
+	.yeyak-first__wrap__cal__date {margin-left:0;text-align: center;}
+	.yeyak-first__wrap__cal__prev {right:unset;left:0px;top:5px;}
+	.yeyak-first__wrap__cal__next {right:0px;top:5px;}
+	.yeyak-first__wrap__detail {width:100%;display:flex;flex-wrap: wrap;padding:0 10px}
+
+	.yeyak-first__wrap__detail__time {flex:1;margin-left:5px;margin-right:5px;min-width: 100px;}
+	.yeyak-first__wrap__detail__time2 {flex:1;margin-left:5px;margin-right:5px;min-width: 100px;}
+	.yeyak-first__wrap__detail__time3 {float:none;margin-left:0;flex:1;margin-left:5px;margin-right:5px;min-width: 100px;}
+}
+@media screen and (min-width:1px) and (max-width:560px) {
+	.yeyak-first__reback {right:10px;}
+	.yeyak-first__wrap {padding-left:10px;padding-right:10px;}
+	.yeyak-first__wrap__cal table td {height:50px;padding:3px 0}
+	.yeyak-first__wrap__cal table td a {height:30px;line-height: 30px;}
+}
+
+
+/* 다음 이전 스텝 이동 버튼 */
+.yeyak-step-btn__prev {
+	position: absolute;
+	top:50%;
+	left:-110px;
+	&__btn {
+		display:block;
+		position: relative;
+		width:90px;
+		padding-top:55px;
+		height:35px;
+		color:#333;
+		text-align: center;
+		font-size:13px;
+		&:before {
+			@include sprite($step-prev);
+			position: absolute;
+			top: 15px;
+			left: 50%;
+			transform: translateX(-50%)
+		}
+		&:hover,
+		&:focus {background-color: #ddd;}
+	}
+}
+.yeyak-step-btn__next {
+	position: absolute;
+	top:50%;
+	right:-110px;
+	&__btn {
+		display:block;
+		position: relative;
+		background-color:#ec6159;
+		width:90px;
+		padding-top:55px;
+		height:35px;
+		color:#fff;
+		text-align: center;
+		font-size:13px;
+		&:before {
+			@include sprite($step-next);
+			position: absolute;
+			top: 15px;
+			left: 50%;
+			transform: translateX(-50%)
+		}
+		&:hover,
+		&:focus {background-color: #d1463e}
+	}
+}
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.yeyak-step-btn__prev {
+		position: relative;
+		top: 0;
+		left: 0;
+		display:inline-block;
+		width:30%;
+		margin-top:30px;margin-bottom:30px;
+		&__btn {
+			width:100%;
+		}
+	}
+	.yeyak-step-btn__next {
+		position: relative;
+		top: 0;
+		right: 0;
+		display:inline-block;
+		width:30%;
+		margin-top:30px;margin-bottom:30px;
+		&__btn {
+			width:100%;
+		}
+	}
+}
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.yeyak-first {width:auto;}
+}

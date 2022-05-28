@@ -1,0 +1,1011 @@
+$red: #da4453;
+$font1: 'Nanum Gothic';
+$font2: 'Noto Sans KR', 'Nanum Gothic', sans-serif;
+$mobileTitle : 34px;
+
+//---------------------------------------------
+
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+@function str-split($string, $separator) {
+	$split-arr: ();
+	$index: str-index($string, $separator);
+
+	@while $index !=null {
+		$item: str-slice($string, 1, $index - 1);
+		$split-arr: append($split-arr, $item);
+		$string: str-slice($string, $index + 1);
+		$index: str-index($string, $separator);
+	}
+
+	$split-arr: append($split-arr, $string);
+
+	@return $split-arr;
+}
+
+@mixin sprite($sprite, $size: 1) {
+	$sprite-offset-x: nth($sprite, 3) / $size;
+	$sprite-offset-y: nth($sprite, 4) / $size;
+	$sprite-total-width: nth($sprite, 7) / $size;
+	$sprite-width: nth($sprite, 5) / $size;
+	$sprite-height: nth($sprite, 6) / $size;
+	$sprite-image: nth($sprite, 9);
+	$sprite-name: nth($sprite, 10);
+
+	content: '';
+	vertical-align: middle;
+	display: inline-block;
+
+	background: {
+		repeat: no-repeat;
+		position: $sprite-offset-x $sprite-offset-y;
+		image: url('#{$sprite-image}');
+	};
+
+	@if ($size > 1) {
+		background-size: $sprite-total-width auto;
+	}
+
+	width: $sprite-width;
+	min-width: $sprite-width;
+	height: $sprite-height;
+}
+
+
+@mixin sprites($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+
+		@if str-index($sprite-name, '-active') {
+
+			//*:focus > .icon-#{str-replace($sprite-name, '-active', '')},
+			*:active>.icon-#{str-replace($sprite-name, '-active', '')},
+			*:hover>.icon-#{str-replace($sprite-name, '-active', '')} {
+				@include sprite($sprite);
+			}
+		}
+
+		@else {
+			.icon-#{$sprite-name} {
+				@include sprite($sprite);
+			}
+		}
+	}
+}
+
+@function size($pixels) {
+	@return $pixels;
+}
+
+@mixin hiddenWord {
+	text-indent: -9999px;
+	position: absolute;
+	top:0;
+	left:-9999px;
+	font-size:0;
+	height:0;
+	overflow: hidden;
+}
+
+@mixin floatWrap {
+	&:after {
+		content: ' ';
+		clear: both;
+		display: block;
+		visibility: hidden;
+	}
+	*+ html & {
+		display: inline-block;
+	}
+}
+
+@mixin btn1 {
+	& {
+		display: block;
+		color: #fff;
+		background-color:#da4453;
+		margin:0 20%;
+		font-size:19px;
+		padding:20px 0;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #da5b67;
+		color: gold;
+	}
+}
+@mixin btn2 {
+	& {
+		color:#fff;
+		background-color:#000;
+		height: 60px;
+		line-height: 60px;
+		display: inline-block;
+		padding-left: 30px;
+		padding-right: 30px;
+		vertical-align: middle;
+		font-size:15px;
+		font-weight: 600;
+		text-align: center;
+	}
+	&:focus {
+		background-color: #333;
+		color: gold;
+	}
+}
+
+@mixin btn3 {
+	& {
+		display: inline-block;
+		color: #fff;
+		background-color:#da4453;
+		font-size:19px;
+		padding:20px 60px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 100px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #da5b67;
+		color: gold;
+	}
+}
+@mixin btn4 {
+	& {
+		display: inline-block;
+		color: #000;
+		background-color:#fff;
+		font-size:19px;
+		padding:19px 59px;
+		border:1px solid #000;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 100px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #eee;
+		color: #000;
+	}
+}
+
+@mixin btn5($btn5Width){
+	& {
+		display: inline-block;
+		color: #fff;
+		width:$btn5Width;
+		background-color:#f43142;
+		font-size:19px;
+		height:50px;
+		text-align: center;
+		line-height:50px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 100px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #ff0016;
+		color: gold;
+	}
+}
+@mixin btn6($btn6Width){
+	& {
+		display: inline-block;
+		color: #fff;
+		width:$btn6Width;
+		background-color:#3a8dcb;
+		font-size:14px;
+		height:33px;
+		text-align: center;
+		line-height:33px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 100px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #51a5e3;
+		color: gold;
+	}
+}
+
+@mixin btn7($btn6Width){
+	& {
+		display: inline-block;
+		color: #fff;
+		width:$btn6Width;
+		background-color:#000;
+		font-size:18px;
+		height:100px;
+		text-align: center;
+		line-height:100px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 100px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #666;
+		color: gold;
+	}
+}
+
+@mixin downBtn1 {
+	& {
+		display: inline-block;
+		color: #fff;
+		background-color:#0c5493;
+		font-size:15px;
+		padding:10px 40px 10px 30px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 80px;
+		text-align: center;
+		border:1px solid #0c5493;
+		position: relative;
+		&:after {
+			position: absolute;
+			top:50%;
+			transform: translateY(-50%);
+			right:15px;
+			@include sprite($down-icon1);
+		}
+	}
+	&:hover,
+	&:focus {
+		background-color: #1e79c8;
+		color: gold;
+	}
+}
+@mixin downBtn2 {
+	& {
+		display: inline-block;
+		color: #0c5493;
+		background-color:#fff;
+		font-size:15px;
+		padding:10px 40px 10px 30px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 80px;
+		text-align: center;
+		border:1px solid #0c5493;
+		position: relative;
+		&:after {
+			position: absolute;
+			top:50%;
+			transform: translateY(-50%);
+			right:15px;
+			@include sprite($down-icon2);
+		}
+	}
+	&:hover,
+	&:focus {
+		background-color: #1e79c8;
+		color: gold;
+	}
+}
+@mixin btnSmall-1 {
+	& {
+		display: inline-block;
+		color: #fff;
+		background-color:#ec2533;
+		border-radius: 30px;
+		font-size:15px;
+		padding:10px 30px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 80px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #c7131f;
+		color: gold;
+	}
+}
+
+@mixin btnSmall-2 {
+	& {
+		display: inline-block;
+		color: #fff;
+		background-color:#333333;
+		border-radius: 30px;
+		font-size:15px;
+		padding:10px 30px;
+		font-weight: 600;
+		transition: all 0.3s ease 0s;
+		min-width: 80px;
+		text-align: center;
+	}
+	&:hover,
+	&:focus {
+		background-color: #000;
+		color: gold;
+	}
+}
+
+@mixin searchBtn {
+	& {
+		font-size:0;
+		text-indent: -9999px;
+		@include sprite($search-btn);
+		position: absolute;
+		top: 50%;
+		right: 2px;
+		transform: translateY(-50%);
+	}
+}
+
+
+@mixin basicList {
+	& {
+		margin-bottom: 10px;
+		li {
+			text-align: left;
+			position: relative;
+			padding-left:15px;
+			line-height:1.6;
+			&:before {
+				position: absolute;
+				top:11px;left:0;
+				content: ' ';
+				@include sprite($list-bul2);
+			}
+		}
+	}
+}
+
+@mixin basicList2 {
+	& {
+		margin-bottom: 10px;
+		li {
+			text-align: left;
+			position: relative;
+			padding-left:15px;
+			line-height:1.6;
+			margin-bottom:15px;
+			&:before {
+				position: absolute;
+				top:10px;left:0;
+				content: ' ';
+				@include sprite($list-bul2);
+			}
+		}
+	}
+}
+@mixin basicList3 {
+	& {
+		margin-bottom: 10px;
+		li {
+			text-align: left;
+			position: relative;
+			padding-left:15px;
+			line-height:1.6;
+			&:before {
+				position: absolute;
+				top:11px;left:0;
+				content: ' ';
+				@include sprite($list-bul);
+			}
+		}
+	}
+}
+
+@mixin inText($inTextSize) {
+	& {
+		border: 1px solid #000;
+		height: 60px;
+		width:$inTextSize;
+		line-height: 60px;
+		font-size: 16px;
+		padding: 0;
+		padding-left: 10px;
+		box-sizing: border-box;
+	}
+}
+@mixin inText2 {
+	& {
+		border: 1px solid #000;
+		height: 34px;
+		line-height: 34px;
+		font-size: 16px;
+		min-width: 30%;
+		padding: 0;
+		padding-left: 10px;
+		box-sizing: border-box;
+	}
+}
+@mixin inTextarea($inTextSize) {
+	& {
+		border: 1px solid #000;
+		height: 130px;
+		width:$inTextSize;
+		line-height: 1.6;
+		font-size: 16px;
+		padding: 0;
+		padding-left: 10px;
+		box-sizing: border-box;
+	}
+}
+
+@mixin inSearchText($searchWidth) {
+	&{
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		input {
+			width:$searchWidth;
+			border: 1px solid #000;
+			height: 58px;
+			line-height: 58px;
+			font-size: 16px;
+			padding: 0;
+			padding-left: 10px;
+		}
+		a {
+			@include searchBtn;
+		}
+	}
+}
+
+
+@mixin fontFamily {
+
+}
+
+@mixin selectBox($mWidth){
+	& {
+		overflow: hidden;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		background-color: #fff;
+
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			margin-right:10px;
+			transform: translateY(-50%);
+			content: ' ';
+			@include sprite($select-bul);
+		}
+		text-align:left;
+		border:1px solid #000;
+
+		select {
+			width:100%;
+			background-color: transparent;
+			appearance: none;
+			min-width:$mWidth+30;
+			vertical-align: middle;
+			color: #000;
+			font-size: 16px;
+			height:58px;
+			margin-top: 0;
+			padding: 2px 2px 2px 10px;
+			position: relative;
+			border:0px;
+			/*
+			@media screen and (min-width:0\0){
+				& {width:125%}
+			}
+			*/
+
+			appearance:none;
+			-webkit-appearance:none;
+			-moz-appearance:none;
+			-o-appearance:none;
+			&::-ms-expand {display:none;} /*ie10~11 에서 셀렉트 기본디자인 무력화*/
+
+			.lte-ie9 & {width: 125%;vertical-align: top;}
+
+			option {
+				font-family:$font1;
+			}
+		}
+
+	}
+
+	@media screen and (min-width:1px) and (max-width:768px) {
+		& {
+			select {
+
+				min-width:$mWidth;
+			}
+		}
+	}
+}
+
+@mixin selectBox2($mWidth){
+	& {
+		overflow: hidden;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		background-color: #fff;
+
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			margin-right:10px;
+			transform: translateY(-50%);
+			content: ' ';
+			@include sprite($select-bul);
+		}
+		text-align:left;
+		border:1px solid #000;
+
+		select {
+			width:100%;
+			background-color: transparent;
+			appearance: none;
+			min-width:$mWidth+30;
+			vertical-align: middle;
+			color: #000;
+			font-size: 14px;
+			height:38px;
+			margin-top: 0;
+			padding: 2px 2px 2px 10px;
+			position: relative;
+			border:0px;
+			/*
+			@media screen and (min-width:0\0){
+				& {width:125%}
+			}
+			*/
+
+			appearance:none;
+			-webkit-appearance:none;
+			-moz-appearance:none;
+			-o-appearance:none;
+			&::-ms-expand {display:none;}/*ie10~11 에서 셀렉트 기본디자인 무력화*/
+
+			.lte-ie9 & {width: 125%;vertical-align: top;}
+
+			option {
+				font-family:$font1;
+			}
+		}
+
+	}
+
+	@media screen and (min-width:1px) and (max-width:768px) {
+		& {
+			select {
+
+				min-width:$mWidth;
+			}
+		}
+	}
+}
+@mixin dl {
+	& {
+
+		@include floatWrap;
+
+		dt {
+			display: block;
+			min-width: 80px;
+			font-weight: bold;
+			float:left;
+			margin-bottom:10px;
+		}
+
+		dd {
+			display: block;
+			margin-bottom:10px;
+
+		}
+	}
+}
+
+
+@mixin tabType1 {
+	& {
+		display:flex;
+		margin-bottom:40px;
+		& > li {
+			flex: 1;
+			text-align:center;
+			> a {
+				display:block;
+				height:70px;
+				line-height:70px;
+				white-space: nowrap;
+				border:1px solid #dcdcdc;
+				border-left: 0;
+				font-size: 16px;
+				font-weight: bold;
+				color:#666;
+			}
+			&:first-child > a {border-left:1px solid #dcdcdc;}
+
+			&.on > a {
+				background-color:#000;
+				color:#fff;
+				border: 1px solid #000;border-left:0;
+			}
+			& > a:hover,
+			& > a:focus {background-color:#333;
+				color:#fff;
+				border: 1px solid #000;border-left:0;}
+		}
+	}
+
+	@media screen and (min-width:1px) and (max-width:768px) {
+		& {
+			display:block;
+			@include floatWrap;
+			margin-left:-10px;
+			& > li {
+				float:left;
+				width:50%;
+
+				> a {margin-bottom:10px;margin-left:10px;border-left:1px solid #dcdcdc;}
+			}
+		}
+	}
+
+}
+
+@mixin basicTable1 { //가로형
+	& {
+		margin-bottom:30px;
+		border-top:1px solid #000;
+		border-bottom:1px solid #000;
+		table {border-collapse: collapse; width:100%;}
+		thead th {border-bottom:0px;}
+		th {border:1px solid #dcdcdc;padding:13px 0;background-color:#f4f4f4}
+		td {border:1px solid #dcdcdc;padding:13px 5px;text-align:center;vertical-align: middle;}
+
+	}
+	@media (max-width:768px) {
+		& {
+			padding-top:10px;
+			colgroup {display: none;}
+			thead {display:none;}
+			tr {
+				display:block;
+				margin-bottom:20px;
+				border-top:1px solid #dcdcdc;
+			}
+			th {
+				display: none;
+			}
+			td {
+				display: block;
+				margin-bottom: 0px;
+				text-align: left;
+				padding-left: 10px;
+				border-top: 0px;
+				border-right: 1px solid #dcdcdc;
+			}
+			td:before {
+				color: #000;
+				font-weight: bold;
+				content:attr(data-th) " - "
+			}
+		}
+	}
+
+}
+@mixin basicTable2 { //세로형
+	& {
+		margin-bottom:30px;
+		border-top:1px solid #000;
+		border-bottom:1px solid #000;
+		table {border-collapse: collapse; width:100%;}
+		th {border:1px solid #dcdcdc;border-left:0;padding:13px 0;background-color:#f4f4f4;text-align:left;padding-left: 30px;}
+		td {border:1px solid #dcdcdc;border-right:0;padding:13px 5px;text-align: left;padding-left: 30px;}
+
+		@media print {
+
+		}
+
+
+	}
+	@media (max-width:768px) {
+		& {
+			padding-top:10px;
+			colgroup {display: none;}
+			thead {display:none;}
+			tr {
+				display:block;
+				margin-bottom:20px;
+				border-top:1px solid #dcdcdc;
+			}
+			th {
+				display:none;
+			}
+			td {
+				display:block;
+				margin-bottom:0px;
+				text-align:left;
+				padding-left:10px;
+				border-top:0px;
+				border-right:1px solid #dcdcdc;
+			}
+			td:before {
+				color:#000;
+				font-weight:bold;
+				content:attr(data-th) " - "
+			}
+		}
+	}
+}
+
+@mixin basicTable3 { //세로형
+	& {
+		text-align:center;
+		margin-bottom:30px;
+		border-bottom:1px solid #000;
+		table {border-collapse: collapse; width:100%;}
+		thead th {background-color:#333;color:#fff;border:1px solid #333;}
+		th {border:1px solid #dcdcdc;border-left:0;padding:18px 0;background-color:#f4f4f4;padding-left: 30px;}
+		td {border:1px solid #dcdcdc;border-right:0;padding:18px 5px;padding-left: 30px;}
+
+
+	}
+	@media (max-width:768px) {
+		& {
+			padding-top:10px;
+			border-top:0px;
+			border-bottom:0px;
+			colgroup {display: none;}
+			thead {display:none;}
+			tr {
+				display:block;
+				margin-bottom:20px;
+				border-top:1px solid #dcdcdc;
+			}
+			th {
+				display:none;
+			}
+			td {
+				display:block;
+				margin-bottom:0px;
+				text-align:left;
+				padding-left:10px;
+				border-top:0px;
+				border-right:1px solid #dcdcdc;
+			}
+			td:before {
+				color:#000;
+				font-weight:bold;
+				content:attr(data-th) " - "
+			}
+		}
+	}
+
+}
+
+@mixin basicTable4 { //가로형 좌우 보더 삭제
+	& {
+		margin-bottom:30px;
+		border-top:1px solid #000;
+		border-bottom:1px solid #000;
+		table {border-collapse: collapse; width:100%;}
+		th {
+			border-left:1px solid #dcdcdc;padding:13px 0;background-color:#f4f4f4;text-align: center;
+			&:first-child {border-left:0px;}
+		}
+		tbody th {
+			border:1px solid #dcdcdc;padding:13px 5px;text-align:center;
+			border-right:0px;
+			border-bottom:0px;
+			background-color:#fbfbfb;
+			&:first-child {border-left:0px;}
+		}
+		td {
+			border:1px solid #dcdcdc;padding:13px 5px;text-align:center;
+			border-right:0px;
+			border-bottom:0px;
+			&:first-child {border-left:0px;}
+
+			&.sbj-line {
+				padding-left:15px;text-align: left;
+				> a {
+					&:hover,
+					&:focus {text-decoration: underline;}
+				}
+			}
+			& > a {
+				&:hover,
+				&:focus {text-decoration: underline;}
+			}
+		}
+		td.align-left {text-align:left;padding-left:15px;}
+
+	}
+	@media (max-width:768px) {
+		& {
+			padding-top:0px;
+			border-top:0px;
+			border-bottom:0px;
+			colgroup {display: none;}
+			thead {display:none;}
+
+			tr {
+				display:block;
+				margin-bottom:20px;
+				border-bottom:1px solid #dcdcdc;
+			}
+			th {
+				display: none;
+			}
+			td {
+				display: block;
+				margin-bottom: 0px;
+				text-align: left;
+				padding-left: 10px;
+				border-right: 1px solid #dcdcdc;
+				border-top:1px solid #dcdcdc;
+				border-bottom:0px;
+				&:first-child {border-left:1px solid #dcdcdc;}
+			}
+			td:before {
+				color: #000;
+				font-weight: bold;
+				content:attr(data-th) " : "
+			}
+			td.align-left {padding-left:10px;}
+		}
+	}
+
+}
+//컨텐츠 소제목
+
+@mixin h3Type1 {
+	& {
+		color:#000;
+		font-weight: bold;
+		font-size: 28px;
+		margin-bottom:25px;
+		@media (max-width:768px) {
+			font-size:22px;
+		}
+	}
+}
+@mixin h3Type2 {
+	& {
+		color:#399bd8;
+		font-weight: bold;
+		font-size: 28px;
+		margin-bottom:25px;
+		@media (max-width:768px) {
+			font-size:22px;
+		}
+	}
+}
+@mixin h3Type3 {
+	& {
+		border-left:5px solid #3a8dcb;
+		font-weight: bold;
+		font-size: 28px;
+		height:23px;
+		line-height:19px;
+		padding-left:10px;
+		margin-bottom:25px;
+		@media (max-width:768px) {
+			font-size:22px;
+		}
+	}
+}
+@mixin h4Type1 {
+	& {
+		color:#000;
+		font-weight: bold;
+		font-size: 18px;
+		margin-bottom:10px;
+		@media (max-width:768px) {
+			font-size:22px;
+		}
+	}
+
+}
+@mixin h4Type2 {
+	& {
+		color:#000;
+		font-weight: bold;
+		font-size: 18px;
+		margin-bottom:10px;
+		@media (max-width:768px) {
+			font-size:22px;
+		}
+		position:relative;
+		padding-left:10px;
+		&:before {
+			content:' ';
+			position:absolute;
+			top:14px;
+			left:0;
+			@include sprite($h4_bul)
+		}
+	}
+
+}
+
+
+//캘린더
+@mixin typeCal {
+	& {
+		width:100%;
+		border-collapse: collapse;
+		box-sizing: border-box;
+		text-align: center;
+		th {
+			color:#bbb;
+			&.sat{color:$red}
+			height:60px;
+			vertical-align: middle;
+		}
+		td {
+			font-weight: bold;
+			font-size:20px;
+			height:60px;
+			vertical-align: middle;
+			padding:10px 0;
+			color:#bbb;
+			&.sun {color:#bbb;}
+
+			a {
+				display: block;
+				height: 60px;
+				line-height: 60px;
+				margin: 0 auto;
+				box-sizing: border-box;
+				border:1px solid #fff;
+				margin-left: 1px;
+				&.today.posb {
+					color:#000;
+					background-color:#fff;
+					border:1px solid #ec6159;
+				}
+				&.posb {
+					border:1px solid #fbe2de;
+					background-color: #fbe2de;
+					color:#000;
+				}
+
+				&.selected {background-color:gold !important;}
+				&.on{
+					color:#000;
+					background-color:#fff;
+					border:1px solid #ec6159;
+				}
+
+				.ver-show &.on.posb {
+					background-color:#f0afb5;
+					border:1px solid #f0afb5;
+				}
+
+				&:hover,
+				&:focus {
+					color:#fff;
+					background-color:#f0afb5;
+					border:1px solid #f0afb5;
+				}
+			}
+		}
+	}
+}

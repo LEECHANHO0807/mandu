@@ -1,0 +1,92 @@
+
+.short_input { width: 60px; }
+
+.mt_10 { margin-top: 10px; }
+.mr_10 { margin-right: 10px; }
+.mb_10 { margin-bottom: 10px; }
+.ml_10 { margin-left: 20px; }
+
+.mt_15 { margin-top: 15px; }
+.mr_15 { margin-right: 15px; }
+.mb_15 { margin-bottom: 15px; }
+.ml_15 { margin-left: 15px; }
+
+.mt_20 { margin-top: 20px; }
+.mr_20 { margin-right: 20px; }
+.mb_20 { margin-bottom: 20px; }
+.ml_20 { margin-left: 20px; }
+
+.mt_30 { margin-top: 30px; }
+.mr_30 { margin-right: 30px; }
+.mb_30 { margin-bottom: 30px; }
+.ml_30 { margin-left: 30px; }
+
+.seat_controller { width: 688px; min-height: 400px; margin-bottom: 0px; padding: 10px; border: 0px solid #000; font-size: 0.9em; }
+	.debug_box { width:600px; height: 100px; padding: 10px; border: 1px solid #000; }
+	.mode_box { width:600px; height: 100px; padding: 10px; border: 1px solid #000; }
+		.box_space { margin-bottom: 12px;}
+		.mode_description { color: #1B4F72; }
+
+	.seat_select_box { display:none; width: 600px; padding: 10px; height: 100px; border: 1px solid #000; }
+
+	.controller_hold_button { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+	.controller_hold_button:hover {background-color: #000; color: #fff; }
+	.controller_hold_button:focus {background-color: #000; color: #fff; }
+
+	.controller_release_button { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+	.controller_release_button:hover {background-color: #F5B7B1; color: #000; }
+	.controller_release_button:focus {background-color: #F5B7B1; color: #000; }
+
+	.button_seat_empty { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_empty.on { background-color: #595959; color: #fff; }
+
+	.button_seat_a { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_a.on { background-color: #41ae6e; color: #000; }
+
+	.button_seat_s { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_s.on { background-color: #c2cd5d; color: #000; }
+
+	.button_seat_r { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_r.on { background-color: #fad758; color: #000; }
+
+	.button_seat_dp { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_dp.on { background-color: #aa7a55; color: #000; }
+
+	.button_seat_sp { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_sp.on { background-color: #eba643; color: #000; }
+
+	.button_seat_iv { height: 21px; line-height: 20px; padding: 0 6px; background-color: #fff; color: #000; border: 1px solid #000; font-size: 0.9em; }
+		.button_seat_iv.on { background-color: #145e98; color: #000; }
+
+.seat_stage { width: 640px; height: 50px; margin: 0 0 6px 56px; font-size: 0.9em; font-weight: bold; text-align: center; border: 1px solid #000; }
+.seat_row-wrap {
+	width:423px;margin: 0 auto;
+}
+.seat_row { float: left; margin-right: 0; width: 44px; height: 312px; border: 0px solid #000; }
+.seat_row_item { float: left; margin: 1px; font-size: 0.9em; font-weight: bold; color: #888; text-align: center; width: 40px; height: 22px; border: 0px solid #000;  }
+
+.seat_container { float: left; width: 350px; height: 312px; border: 0px solid #000; }
+.seat_container_box { float: left; width: 170px; height: 24px; border: 0px solid #000; }
+.seat_container_box_space { margin-left: 8px; }
+.seat_container_box_item { float: left; margin: 1px; font-size: 0.9em; color: #fff; text-align: center; width: 20px; height: 20px; border: 1px solid #53da3f; border-radius: 5px 5px 0 0;}
+	.seat_container_box_item:hover {cursor:pointer; background-color: #fff; color: #000; }
+
+	.box_item_empty { background-color: #595959; color: #fff; }
+	.box_item_a { background-color: #41ae6e; color: #000; }
+	.box_item_s { background-color: #c2cd5d; color: #000; }
+	.box_item_r { background-color: #fad758; color: #000; }
+	.box_item_dp { background-color: #aa7a55; color: #000; }
+	.box_item_sp { background-color: #eba643; color: #000; }
+	.box_item_iv { background-color: #145e98; color: #000; }
+
+	.box_item_x {
+		background-image:url('/template/resources/images/icons/seat-none.png');
+		background-repeat: no-repeat;
+		background-position:center center;
+		background-size: cover;
+		font-size:0;
+		border:1px solid #fff;
+	}
+	
+	.box_item_select { background-color: #EC6159; color: #fff; font-weight: bold; }
+	

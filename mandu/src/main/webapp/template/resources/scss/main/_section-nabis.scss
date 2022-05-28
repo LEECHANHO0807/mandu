@@ -1,0 +1,231 @@
+.section-nabis {
+
+	> ul.section-nabis-gallery {
+		position: relative;
+		padding-right: 52.330508%;
+
+		> li {
+			list-style: none;
+
+			> h3 {
+				height: 56px;
+				line-height: 56px;
+				background-color: #188286; // #16bfc5
+				border-bottom: 1px solid #167579; // #55d0d5
+				font-weight: normal;
+				font-size: 14px;
+
+				> a {
+					position: relative;
+					display: block;
+					width: 100%;
+					height: 100%;
+					color: white;
+					padding: 0 40px 0 20px;
+					text-decoration: none;
+					transition: 0.2s;
+					opacity: 0.7;
+
+					@include ellipsis(1);
+
+					&:hover {
+						opacity: 0.9;
+					}
+
+					&:after {
+						position: absolute;
+						display: block;
+						content: "";
+						width: 12px;
+						top: 0;
+						bottom: 0;
+						right: 20px;
+						background-image: url(../../resources/images/icons/nabis-arrow.png);
+						background-repeat: no-repeat;
+						background-position: center;
+					}
+				}
+			}
+
+			.section-nabis-gallery__cont {
+				position: absolute;
+				width: 52.330508%;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #c6e4e5;
+				z-index: -1;
+				visibility: hidden;
+
+				> .section-nabis-gallery__slider {
+					padding: 20px 28px;
+
+					.slick-slide {
+
+						a {
+							display: block;
+							text-decoration: none;
+
+							h4 {
+								font-size: 19px;
+								color: #222;
+								font-weight: normal;
+
+								@include ellipsis(2, 23px);
+							}
+
+							.thumb {
+								height: 97px;
+								position: relative;
+								margin-bottom: 29px;
+								overflow: hidden;
+
+								&-overlay {
+									display: block;
+									position: absolute;
+									top: 0;
+									right: 0;
+									bottom: 0;
+									left: 0;
+									filter: blur(3px);
+									background-size: cover;
+									background-repeat: no-redpeat;
+									background-position: center;
+				
+									&:before {
+										display: block;
+										content: "";
+										position: absolute;
+										top: 0;
+										right: 0;
+										bottom: 0;
+										left: 0;
+										background-color: rgba(0,0,0,0.3);
+									}
+								}
+				
+								img {
+									display: block;
+									position: absolute;
+									max-width: none;
+									height: 100%;
+									left: -9999px;
+									right: -9999px;
+									margin: auto;
+								}
+							}
+				
+							span {
+								display: block;
+								font-size: 12px;
+								color: #626262;
+							}
+
+							.text {
+								margin: 8px 0 18px 0;
+
+								@include ellipsis(2, 16px);
+							}
+
+							.date {
+
+							}
+						}
+					}
+				}
+		
+				ul.section-nabis-gallery__arrows {
+					position: absolute;
+					right: 28px;
+					bottom: 15px;
+					z-index: 1;
+					margin: 0 -5px;
+		
+					li {
+						list-style: none;
+						float: left;
+		
+						a {
+							width: 8px;
+							height: 13px;
+							display: block;
+							background-repeat: no-repeat;
+							background-position: center center;
+							overflow: hidden;
+							text-indent: -9999px;
+							color: transparent;
+							padding: 5px;
+							box-sizing: content-box;
+						}
+		
+						&.section-nabis-gallery__arrows__prev {
+								
+							a {
+								background-image: url("../../resources/images/global/section-title-default-prev.png");
+							}
+						}
+		
+						&.section-nabis-gallery__arrows__pause {
+							
+							a {
+								background-image: url("../../resources/images/global/section-title-default-pause.png");
+							}
+						}
+		
+						&.section-nabis-gallery__arrows__start {
+							
+							a {
+								background-image: url("../../resources/images/global/section-title-default-start.png");
+							}
+						}
+		
+						&.section-nabis-gallery__arrows__next {
+							
+							a {
+								background-image: url("../../resources/images/global/section-title-default-next.png");
+							}
+						}
+					}
+				}
+			}
+
+			.btn_more {
+				position: absolute;
+				top: 0 - $board-list-title-height;
+				right: 30px;
+				display: none;
+				width: 16px;
+				height: 16px;
+				margin: (($board-list-title-height - 16px) / 2) 0;
+				background-image: url(../../resources/images/global/section-title-white-more.png);
+				background-repeat: no-repeat;
+				background-position: center center;
+				overflow: hidden;
+				text-indent: -9999px;
+				color: transparent;
+			}
+
+			&.active {
+
+				> h3 {
+					
+					> a {
+						opacity: 1;
+						text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+						font-weight: bold;
+						font-size: 1.1em;
+					}
+				}
+
+				.section-nabis-gallery__cont {
+					z-index: 0;
+					visibility: visible;
+				}
+
+				.btn_more {
+					display: block;
+				}
+			}
+		}
+	}
+}

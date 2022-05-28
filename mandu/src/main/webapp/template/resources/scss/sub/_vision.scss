@@ -1,0 +1,406 @@
+.vision {
+
+	.subpage-row {
+		margin-bottom: 20px;
+
+		&:first-child {
+			
+			h3 {
+				background-image: none !important;
+			}
+		}
+	}
+
+	h3 {
+		font-family: "GmarketSans", sans-serif;
+		text-align: center;
+		color: #111;
+		font-weight: normal;
+		padding: (33px + 15px) 0 6px 0;
+		position: relative;
+		background-image: url(../../resources/images/sub/vision__h3.png);
+		background-repeat: no-repeat;
+		background-position: top center;
+
+		@include breakpoints(xs) {
+			font-size: 25px;
+		}
+
+		@include breakpoints(md) {
+			font-size: 30px;
+		}
+
+		@include breakpoints(lg) {
+			font-size: 35px;
+		}
+
+		&:before {
+			display: block;
+			content: "";
+			width: 50px;
+			height: 5px;
+			position: absolute;
+			top: 33px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			background-color: $primary-color;
+		}
+	}
+
+	.vision__point {
+		background: 
+		linear-gradient(#fff,#fff) padding-box, /*this is your grey background*/
+		linear-gradient(to bottom, #26bfe4, #255197) border-box;
+		color: $primary-color;
+		border: 5px solid transparent;
+		max-width: 874px;
+		padding: 15px 49px;
+		border-radius:49px;
+		margin: 0 auto;
+		font-family: "GmarketSans", sans-serif;
+		font-weight: 100;
+		text-align: center;
+		word-break: keep-all;
+
+		@include breakpoints(xs) {
+			font-size: 20px;
+		}
+
+		@include breakpoints(sm) {
+			font-size: 25px;
+		}
+
+		@include breakpoints(md) {
+			font-size: 30px;
+		}
+
+		@include breakpoints(lg) {
+			font-size: 35px;
+		}
+
+		strong {
+			font-weight: normal;
+		}
+	}
+
+	.vision__subject {
+		font-family: "GmarketSans", sans-serif;
+		position: relative;
+
+		@include breakpoints(md) {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;;
+		}
+
+		@include breakpoints(lg) {
+			display: flex;
+
+			&:before {
+				display: block;
+				content: "";
+				position: absolute;
+				width: 66.666%;
+				height: 1px;
+				top: 115px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				background-color: #ddd;
+			}
+		}
+
+		> li {
+			list-style: none;
+			
+			@include breakpoints(xs) {
+				margin: 20px auto;
+			}
+
+			@include breakpoints(md) {
+				width: 50%;
+			}
+
+			@include breakpoints(lg) {
+				width: 33.333%;
+				float: left;
+			}
+
+			figure {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-content: center;
+				text-align: center;
+				position: relative;
+				z-index: 0;
+				margin: -15px auto 0 auto;
+				width: 200px;
+				height: 200px;
+				border-radius: 100%;
+				font-size: 19px;
+				background-image: url(../../resources/images/sub/visual__subject__bg.png);
+				background-position: bottom right;
+				background-repeat: no-repeat;
+
+				figcaption {
+					margin-top: 15px;
+					width: 100%;
+					font-size: 40px;
+					display: block;
+					color: white;
+				}
+			}
+
+			&:nth-child(1) {
+				figure {background-color: #26bfe3;}
+			}
+
+			&:nth-child(2) {
+				figure {background-color: #1e63b1;}
+			}
+
+			&:nth-child(3) {
+				figure {background-color: #052361;}
+			}
+
+			h4 {
+				text-align: center;
+				font-weight: normal;
+				font-size: 20px;
+				margin-top: 20px;
+				padding: 5px 0;
+				line-height: 1.25em;
+				position: relative;
+
+				&:before {
+					display: block;
+					content: "";
+					top: -20px;
+					width: 1px;
+					height: 20px;
+					width: 1px;
+					background-color: #dfdfdf;
+					position: absolute;
+					left: 0;
+					right: 0;
+					margin: auto;
+				}
+
+				&:after {
+					display: block;
+					content: "";
+					top: -10px;
+					width: 10px;
+					height: 10px;
+					border: 3px solid #dfdfdf;
+					background-color: white;
+					border-radius: 100%;
+					position: absolute;
+					left: 0;
+					right: 0;
+					margin: auto;
+				}
+			}
+
+			ul {
+				position: relative;
+				width: 90%;
+				padding: 20px 25px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				margin: 22px auto 0 auto;
+
+				&:before {
+					display: block;
+					content: "";
+					position: absolute;
+					width: 1px;
+					height: 22px;
+					top: -23px;
+					left: 0;
+					right: 0;
+					margin: 0 auto;
+					background-color: #ddd;
+				}
+
+				li {
+					list-style: none;
+					margin: 10px 0;
+					padding-left: 15px;
+					font-size: 14px;
+					font-weight: normal;
+					line-height: 17px;
+					position: relative;
+
+					&:after {
+						display: block;
+						content: "";
+						width: 6px;
+						height: 17px;
+						position: absolute;
+						top: -3px;
+						left: 0;
+						background-image: url(../../resources/images/sub/vision__subject__list.png);
+						background-repeat: no-repeat;
+						background-position: center;
+					}
+				}
+			}
+		}
+
+		@include clear-both();
+	}
+
+	.vision__diagram {
+		position: relative;
+		border: 5px solid #f4f4f4;
+
+		.vision__diagram-large {
+
+			@include breakpoints(xs) {
+				display: none;
+			}
+
+			@include breakpoints(md) {
+				display: block;
+			}
+		}
+
+		.vision__diagram-small {
+			@include breakpoints(sm) {
+				display: block;
+			}
+			
+			@include breakpoints(md) {
+				display: none;
+			}
+		}
+
+		@include breakpoints(md) {
+			background-image: url(../../resources/images/sub/vision__diagram-bg.png);
+			background-repeat: no-repeat;
+			background-position: 10% 15%;
+		}
+
+		img {
+			display: block;
+
+			@include breakpoints(xs) {
+				margin: 55px auto 10px auto;
+			}
+
+			@include breakpoints(md) {
+				margin: 55px auto;
+			}
+		}
+
+		> li {
+			list-style: none;
+
+			@include breakpoints(md) {
+				position: absolute;
+			}
+				
+			&.vision__diagram01 {
+
+				@include breakpoints(md) {
+					top: 50%;
+					left: 50%;
+					transform: translate(50px, -175px);
+				}
+
+				> dl {
+
+					> dt {
+						color: #0080A5;
+					}
+				}
+			}
+			
+			&.vision__diagram02 {
+
+				@include breakpoints(md) {
+					top: 50%;
+					right: 50%;
+					transform: translate(-131px, 100px);
+				}
+
+				> dl {
+
+					> dt {
+						color: #1e63b1;
+					}
+				}
+			}
+			
+			&.vision__diagram03 {
+
+				@include breakpoints(md) {
+					top: 50%;
+					left: 50%;
+					transform: translate(131px, 100px);
+				}
+
+				> dl {
+
+					> dt {
+						color: #052361;
+					}
+				}
+			}
+
+			> dl {
+				@include breakpoints(xs) {
+					padding: 0 30px 30px 30px;
+				}
+
+				@include breakpoints(md) {
+					padding: 0;
+				}
+
+				> dt {
+					font-family: "GmarketSans", sans-serif;
+					font-size: 20px;
+					font-weight: normal;
+
+					@include breakpoints(md) {
+						display: none;
+					}
+				}
+
+				> dd {
+
+					> ul {
+
+						> li {
+							font-family: "GmarketSans", sans-serif;
+							list-style: none;
+							margin: 10px 0;
+							padding-left: 15px;
+							font-size: 15px;
+							font-weight: normal;
+							line-height: 17px;
+							position: relative;
+							line-height: 1.2em;
+
+							&:after {
+								display: block;
+								content: "";
+								width: 6px;
+								height: 17px;
+								position: absolute;
+								top: 0;
+								left: 0;
+								background-image: url(../../resources/images/sub/vision__subject__list.png);
+								background-repeat: no-repeat;
+								background-position: center;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

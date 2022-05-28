@@ -1,0 +1,149 @@
+
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
+/**/
+html body {
+	font-size: 15px;
+	font-size: 1.5rem;
+}
+
+/*사이즈 확인*/
+.resol {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	border: 3px solid red;
+	background-color: #fff;
+	padding: 5px;
+}
+
+
+/*숫자클래스 삽입*/
+.menu-num-1 > ul > li {width:100%;}
+.menu-num-2 > ul > li {width:50%;}
+.menu-num-3	> ul > li {width:33.33%;}
+	*+ html .menu-num-3	> ul > li {width:33%;}
+.menu-num-4	> ul > li {width:25%;}
+.menu-num-5	> ul > li {width:20%;}
+.menu-num-6	> ul > li {width:16.66%;}
+	*+ html .menu-num-6	> ul > li {width:16%;}
+.menu-num-7	> ul > li {width:14%;}
+.menu-num-8	> ul > li {width:12.5%;}
+.menu-num-9	> ul > li {width:11.20%;}
+	*+ html .menu-num-9	> ul > li {width:11%;}
+.menu-num-10 > ul > li {width:10%;}
+.menu-num-11 > ul > li {width:9.09%;}
+	*+ html .menu-num-11 > ul > li {width:9%;}
+.menu-num-12 > ul > li {width:8.3%;}
+	*+ html .menu-num-12 > ul > li {width:8%;}
+
+.menu-num-13 > ul > li {width:7.5%;}
+	*+ html .menu-num-13 > ul > li {width:7%;}
+
+
+/*유동적 가로세로 비율 박스*/
+#movie-player-wrapper {
+	position: relative;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%; /*16:9*/
+	background-color:#00235d;
+	color:#fff
+}
+#movie-player-wrapper .mov-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#movie-player-wrapper iframe { width: 100%; height: 100%}
+
+/*표 */
+
+.test-table {
+	@include basicTable1;
+}
+.test-table2 {
+	@include basicTable2;
+}
+
+
+
+/*select 설정 */
+.select_design {
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 8px;
+	background: {
+		color:#fff;
+		image: url("../../resources/images/icons/select_arrow.png");
+		position: right center;
+		repeat: no-repeat;
+	}
+	text-align:left;
+	border:1px solid #e5e5e5;
+}
+	*+ html .select_design {display:inline;}
+.select_design select{width:100%;background-color:transparent;appearance:none;
+
+	vertical-align:middle;color: #585858;font-size: 11px;
+	height:25px;margin-top: 0;padding: 2px;position: relative;border:0px;
+	font-family:'Nanum Gothic','나눔고딕';
+}
+/* ie등에 디자인 접목시 주석 해제*/
+.select_design {
+	&.in_length20 {width:20px;}
+	&.in_length30 {width:30px;}
+	&.in_length40 {width:40px;}
+	&.in_length50 {width:50px;}
+	&.in_length60 {width:60px;}
+	&.in_length70 {width:70px;}
+	&.in_length80 {width:80px;}
+	&.in_length90 {width:90px;}
+	&.in_length100 {width:100px;}
+	&.in_length110 {width:110px;}
+	&.in_length120 {width:120px;}
+	&.in_length130 {width:130px;}
+	&.in_length140 {width:140px;}
+	&.in_length150 {width:150px;}
+	&.in_length160 {width:160px;}
+	&.in_length170 {width:170px;}
+	&.in_length180 {width:180px;}
+	&.in_length190 {width:190px;}
+	&.in_length200 {width:200px;}
+
+	&.in_length20 select {width:45px;}
+	&.in_length30 select {width:55px;}
+	&.in_length40 select {width:65px;}
+	&.in_length50 select {width:75px;}
+	&.in_length60 select {width:85px;}
+	&.in_length70 select {width:95px;}
+	&.in_length80 select {width:105px;}
+	&.in_length90 select {width:115px;}
+	&.in_length100 select {width:125px;}
+	&.in_length110 select {width:135px;}
+	&.in_length120 select {width:145px;}
+	&.in_length130 select {width:155px;}
+	&.in_length140 select {width:165px;}
+	&.in_length150 select {width:175px;}
+	&.in_length160 select {width:185px;}
+	&.in_length170 select {width:200px;}
+	&.in_length180 select {width:205px;}
+	&.in_length190 select {width:215px;}
+	&.in_length200 select {width:225px;}
+
+}
+
+@media print {
+	#footer{ display: none ;}
+
+	#cont-sbj { display: none; }
+	#sidebar { display: none; }
+	#header { display: none; }
+	.sub-page-container {padding-top:0px !important;}
+	.sub-visual { display: none; }
+	.location-box__cont { display: none; }
+	.print-btn { display: none !important; }
+}

@@ -1,0 +1,215 @@
+$board-list-title-height: 70px;
+$board-list-row-height: 44px;
+$board-list-row-line-height: 19px;
+
+.section-board {
+	height: 350px;
+	position: relative;
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			list-style: none;
+		}
+	}
+	
+	ul.section-board-list {
+		height: $board-list-title-height;
+		background-color: #565f83;
+
+		> li {
+			float: left;
+
+			h3 {
+				height: $board-list-title-height;
+				line-height: $board-list-title-height;
+				border-right: 1px solid #787f9c;
+
+				a {
+					display: block;
+					text-decoration: none;
+					width: 100%;
+					height: 100%;
+					color: white;
+					position: relative;
+					font-size: 18px;
+
+					@include breakpoints(xs) {
+						padding: 0 (37px / 2);
+					}
+			
+					@include breakpoints(sm) {
+						padding: 0 37px;
+					}
+
+					&:after {
+						display: none;
+						content: "";
+						position: absolute;
+						left: 0;
+						right: 0;
+						bottom: 12.5px;
+						margin: auto;
+						width: 0;
+						height: 0;
+						border-left: 3.5px solid transparent;
+						border-right: 3.5px solid transparent;
+						border-top: 5px solid #bd1b26;
+					}
+				}
+			}
+
+			> .section-board-list__cont {
+				display: none;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+
+				> ul {
+					padding: 18.5px 30px 30px 30px;
+
+					> li {
+						padding: (($board-list-row-height - $board-list-row-line-height) / 2) 0;
+						position: relative;
+						border-top: 1px solid #ddd;
+
+						a {
+							text-decoration: none;
+							margin-right: 80px;
+							display: block;
+							font-size: 16px;
+							line-height: $board-list-row-line-height;
+							color: #333;
+
+							@include ellipsis();
+						}
+
+						.text {
+							display: none;
+							color: #767676;
+							font-size: 14px;
+						}
+
+						.date {
+							position: absolute;
+							display: block;
+							top: 0;
+							right: 0;
+							font-size: 12px;
+							color: #767676;
+							line-height: $board-list-row-line-height;
+							padding: (($board-list-row-height - $board-list-row-line-height) / 2) 0;
+
+							strong {
+								font-weight: normal;
+							}
+						}
+
+						&:first-child {
+							height: 87px;
+							position: relative;
+							border-top: 0;
+							padding-top: 0;
+							padding-bottom: 0;
+							margin-bottom: 22px;
+							
+							a, .text {
+								display: block;
+								padding-left: 100px;
+								line-height: $board-list-row-line-height;
+							}
+
+							a {
+								margin-right: 0 !important;
+								padding-top: (87px - 10px - ($board-list-row-line-height * 3)) / 2;
+								margin-bottom: 10px;
+								font-size: 1.15em;
+							}
+
+							.text {
+								font-size: 16px;
+								padding-bottom: (87px - 10px - ($board-list-row-line-height * 3)) / 2;
+
+								@include ellipsis(2, 17px);
+							}
+	
+							.date {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 87px;
+								height: 87px;
+								padding-top: 53px;
+								border: 5px solid #f0f0f0;
+								box-sizing: border-box;
+								color: #767676;
+								text-align: center;
+
+								strong {
+									position: absolute;
+									top: 16px;
+									left: 0;
+									right: 0;
+									text-align: center;
+									display: block;
+									color: black;
+									font-size: 30px;
+									line-height: 30px;
+									font-weight: bold;
+									margin-bottom: 10px;
+								}
+								
+								em {
+									display: none;
+								}
+							}
+						}
+
+						&:last-child {
+							padding-bottom: 0 !important;
+						}
+					}
+				}
+
+				.btn_more {
+					position: absolute;
+					top: 0 - $board-list-title-height;
+					right: 30px;
+					display: block;
+					width: 16px;
+					height: 16px;
+					margin: (($board-list-title-height - 16px) / 2) 0;
+					background-image: url(../../resources/images/global/section-title-white-more.png);
+					background-repeat: no-repeat;
+					background-position: center center;
+					overflow: hidden;
+					text-indent: -9999px;
+					color: transparent;
+				}
+			}
+
+			&.active {
+				h3 {
+					background-color: white;
+
+					a {
+						color: #333;
+
+						&:after {
+							display: block;
+						}
+					}
+				}
+
+				> .section-board-list__cont {
+					display: block;
+				}
+			}
+		}
+		
+		@include clear-both();
+	}
+}

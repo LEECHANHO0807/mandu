@@ -1,0 +1,59 @@
+@charset 'UTF-8';
+
+@media screen and (max-width:991px){
+	/* sub_layout */
+	.sub_left {display:none;}
+	.sub_right {float:none; width:100%;}
+
+	/* sub_top */
+	.sub_top {background-size:300px;}
+	.sub_share_box {display: none;}
+	.sub_top_tit {font-size:2.6em;}
+	
+	/* greet basic */
+	.greet_top {padding:0;}
+	.greet_top .txt_box {padding:30px;}
+	.greet_top .cell {padding:20px;}
+	.greet_top .r_img {position:static;}
+}
+
+@media screen and (max-width:767px){
+	/* history basic */
+	.history_box {background-image:none;}
+	.history_box .img_box {display:none;}
+	.his_row {margin-bottom:0; padding:30px 0; border-bottom:1px dashed #ccc;}
+	.his_row:last-child {border-bottom:0 none;}
+	.his_row .his_lr {width:100%; padding-top:0;}
+	.his_row:nth-child(odd) .his_lr {padding-right:0;}
+	.his_row:nth-child(even) .his_lr {float:none; padding-left:0;}
+	.his_row .year {position:relative; top:0; width:100%; margin-bottom:15px; padding-left:18px; font-size:1.6em; text-align:left;}
+	.his_row:nth-child(odd) .his_lr .year {right:auto;}
+	.his_row:nth-child(even) .his_lr .year {left:0;}
+	.his_row .year:after {width:10px; height:10px; margin-top:-5px;}
+	.his_row:nth-child(odd) .his_lr .year:after {right:auto; left:0;}
+	.his_row:nth-child(even) .his_lr .year:after {left:0;}
+	.his_month_box .month {padding-left:18px;}
+}
+
+@media screen and (max-width:640px){
+	/* sub_top */
+	.sub_top {background-image:none !important;}
+	.breadcrumb li:after {margin:-1px 4px 0;}
+	.breadcrumb, .sub_share_box {margin-bottom:5px;}
+	
+	/* greet basic */
+	.greet_top .inner_box {display:block;}
+	.greet_top .txt_box {display:block; width:100%; padding:20px;}
+	.greet_top .dot_box {margin-bottom:20px;}
+	.greet_top .txt_box .dot1 img, .greet_top .txt_box .dot2 img {width:15px;}
+	.greet_top .txt_box .txt1 {font-size:1.4em;}
+	.greet_top .cell {display:block;}
+	.greet_top .r_img {position:static; max-height:270px;}
+	.greet_mid .txt {font-size:1.26em;}
+	.greet_btm .each_txt {font-size:0.93em;}
+}
+
+@media screen and (max-width:480px){	
+	/* sub_top */
+	.sub_top_tit {font-size:2.13em;}
+}

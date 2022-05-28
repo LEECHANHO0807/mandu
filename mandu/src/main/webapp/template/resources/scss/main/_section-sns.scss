@@ -1,0 +1,30 @@
+.section-sns {
+	width: 100%;
+	padding-top: 14px;
+	background-color: #22417c !important;
+
+	@include breakpoints(sm) {
+		height: auto;
+		float: none;
+	}
+
+	@include breakpoints(md) {
+		height: 364px;
+		float: none;
+	}
+
+	@include breakpoints(lg) {
+		height: 364px;
+		float: left;
+	}
+
+	@include breakpoints(xl) {
+		height: 364px;
+		float: left;
+	}
+
+	@include breakpoints(xxl) {
+		height: 364px;
+		float: left;
+	}
+}

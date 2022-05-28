@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+    <!-- 실행환경에서 빈이름 참조(EgovAbstractDAO) -->
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+
+	<!-- Mybatis setup for Mybatis Database Layer -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">		
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/com/mandu/cms/mapper/config/sql-map-config.xml" />
+		
+		<property name="mapperLocations">
+			<list>
+				
+				<!-- CMS -->
+				<value>classpath:/com/mandu/cms/mapper/sign/**/*_mysql.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/dormant/**/*_mysql.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/admin/**/*_mysql.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/user/**/*_mysql.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/storage/**/*_mysql.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/scheduler/**/*_mysql.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/log/**/*_mysql.xml</value>
+				
+			</list>
+		</property>
+	</bean>
+
+
+<!-- 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">		
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/com/mandu/cms/mapper/config/sql-map-config.xml" />
+		
+		<property name="mapperLocations">
+			<list>
+				
+				CMS
+				<value>classpath:/com/mandu/cms/mapper/sign/**/*_${Globals.DbType}.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/dormant/**/*_${Globals.DbType}.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/admin/**/*_${Globals.DbType}.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/user/**/*_${Globals.DbType}.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/storage/**/*_${Globals.DbType}.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/scheduler/**/*_${Globals.DbType}.xml</value>
+				<value>classpath:/com/mandu/cms/mapper/log/**/*_${Globals.DbType}.xml</value>
+				
+			</list>
+		</property>
+	</bean> -->
+
+	<!-- Mybatis Session Template -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+</beans>

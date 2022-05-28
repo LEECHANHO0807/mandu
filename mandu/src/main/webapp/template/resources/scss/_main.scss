@@ -1,0 +1,169 @@
+/* 
+ * Main Components
+ */
+
+@import './main/section-links';
+@import './main/section-sns';
+@import './main/section-popupzone';
+@import './main/section-title';
+@import './main/section-gallery';
+@import './main/section-board';
+@import './main/section-nabis';
+
+/* 
+ * Main Layout
+ */
+
+// 상하단 간격
+$main-section-spacing-top: 48px;
+$main-section-spacing-bottom: 65px;
+
+// 컬럼 간격 
+$main-column-spacing-x: 50px;
+$main-column-spacing-y: 48px;
+
+main {
+	overflow-x: hidden;
+
+	@include breakpoints(xs) {
+		margin-top: $header-height / 5 * 3.5;
+	}
+
+	@include breakpoints(md) {
+		margin-top: $header-height - 20px;
+	}
+
+	@include breakpoints(lg) {
+		margin-top: $header-height;
+	}
+}
+
+.main-section {
+	position: relative;
+
+	@include breakpoints(xs) {
+		margin: 0 (0 - ($main-column-spacing-x / 2)) ($main-section-spacing-bottom - ($main-column-spacing-x / 2)) (0 - ($main-column-spacing-x / 2));
+	}
+
+	@include breakpoints(lg) {
+		margin: ($main-section-spacing-top - ($main-column-spacing-y / 2)) (0 - ($main-column-spacing-x / 2)) ($main-section-spacing-bottom - ($main-column-spacing-x / 2)) (0 - ($main-column-spacing-x / 2));
+	}
+
+	& > [class^="main-lay-"] {
+		padding: ($main-column-spacing-y / 2) ($main-column-spacing-x / 2);
+		float: left;
+
+		section {
+			background-color: white;
+		}
+	}
+
+	[class^="main-group-"] {
+		padding: 0 -($main-column-spacing-x / 2);
+		float: left;
+
+		[class^="main-lay-"] {
+			padding: ($main-column-spacing-y / 2) ($main-column-spacing-x / 2);
+			float: none;
+
+			section {
+				background-color: white;
+			}
+		}
+	}
+
+	@include breakpoints(xs) {
+		.main-lay-01, .main-lay-02, .main-lay-03, .main-lay-04, .main-lay-05, .main-lay-06, .main-group-01, .main-group-02 {
+			width: 100%;
+		}
+	
+		.main-lay-01 {
+			float: left !important;
+		}
+
+		.main-lay-02, .main-lay-03, .main-lay-04, .main-lay-05 {
+			float: none !important;
+		}
+
+		.main-lay-06 {
+			position: static;
+			padding: ($main-column-spacing-y / 2) ($main-column-spacing-x / 2);
+		}
+	}
+	
+	@include breakpoints(md) {
+		.main-lay-01, .main-group-01, .main-group-02 {
+			width: 100%;
+		}
+	
+		.main-lay-06 {
+			width: 50%;
+		}
+	
+		.main-lay-01 {
+			float: left !important;
+		}
+
+		.main-lay-02, .main-lay-03, .main-lay-04, .main-lay-05 {
+			width: 50%;
+			float: left !important;
+		}
+	
+		.main-lay-06 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: auto;
+			left: auto;
+			padding: ($main-column-spacing-y / 2) ($main-column-spacing-x / 2) ($main-column-spacing-y / 2) 0;
+		}
+	}
+	
+	@include breakpoints(xl) {
+		.main-lay-01, .main-lay-02, .main-lay-03, .main-lay-04, .main-lay-05 {
+			width: 100%;
+		}
+
+		.main-lay-06, .main-group-01, .main-group-02 {
+			width: 50%;
+		}
+	
+		.main-lay-01, .main-lay-02, .main-lay-03, .main-lay-04, .main-lay-05 {
+			float: none !important;
+		}
+	
+		.main-lay-06 {
+			position: absolute;
+			top: 0;
+			right: ($main-column-spacing-x / 2);
+			bottom: auto;
+			left: auto;
+			padding: ($main-column-spacing-y / 2) 0 0 ($main-column-spacing-x / 2);
+		}
+	}
+	
+	@include breakpoints(xxl) {
+		.main-lay-01, .main-lay-06 {
+			width: 37.272727%;
+		}
+		
+		.main-group-01, .main-group-02 {
+			width: 31.363636%;
+		}
+	
+		.main-lay-01 {
+			float: left !important;
+		}
+	
+		.main-lay-06 {
+			position: absolute;
+			top: auto;
+			right: auto;
+			bottom: 0;
+			left: 0;
+			padding: ($main-column-spacing-y / 2) ($main-column-spacing-x / 2);
+		}
+	}
+
+	@include clear-both();
+}

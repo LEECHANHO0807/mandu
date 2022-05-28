@@ -1,0 +1,164 @@
+.jiwon {
+
+	&__top {
+		@include floatWrap;
+		padding-bottom: 40px;
+		margin-bottom: 70px;
+		border-bottom:1px solid #333;
+		&__image {
+			float: left;
+			width: 35%;
+			img {
+				max-width: 100%;
+			}
+		}
+		&__right {
+			float: right;
+			width: 60%;
+			&__title {
+				font-size:30px;
+				font-weight:bold;
+				margin-bottom:10px;
+			}
+			&__info {
+				font-size:20px;
+				margin-bottom:20px;
+				line-height:1.8
+			}
+			&__ul{
+				font-size:16px;
+				font-size:1.6rem;
+				&__li {
+					padding-top: 18px;
+					padding-bottom: 18px;
+					border-bottom:1px solid #dcdcdc;
+					position: relative;
+					padding-left:100px;
+					&__tit {
+						position: absolute;
+						top:18px;
+						left:0;
+					}
+					&__cont {
+						&__table {
+							@include basicTable4;
+							margin-bottom:0px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	&__mid {
+		padding-bottom:60px;
+		&__table {
+			@include basicTable4;
+		}
+	}
+	&__bot {
+		&__table {
+			@include basicTable4;
+		}
+	}
+
+}
+.jiwon-btn {
+	@include btn6(140px)
+}
+
+
+.h3-type3 {
+	@include h3Type3;
+}
+
+
+/*지난사업결과 버튼*/
+.go-result {
+	position: relative;
+	text-align: right;
+	&__btn {
+		position: absolute;
+		top: -40px;
+		right:0;
+		span {
+			display:inline-block;
+			padding-bottom:0px;
+			border-bottom: 1px solid #000;
+			font-weight: bold;
+		}
+
+		&:before {
+			margin-right:4px;
+			@include sprite($alert-icon)
+		}
+	}
+}
+
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+}
+@media screen and (min-width:1px) and (max-width:800px) {
+	.jiwon__top__image {
+		float:none;
+		width:auto;
+		text-align: center;
+		max-width:360px;
+		margin:0 auto;
+		margin-bottom:30px;
+	}
+	.jiwon__top__right {
+		float:none;
+		width:auto;
+	}
+}
+@media screen and (min-width:1px) and (max-width:460px) {
+	.jiwon__top__right__ul__li {padding-left:0px;}
+	.jiwon__top__right__ul__li:last-child {border-bottom:0px;}
+	.jiwon__top__right__ul__li__tit {position: relative;top:0;}
+}
+
+
+/*스쿨락 지원서*/
+.support-box {
+	text-align:center;
+	&__tit {@include h3Type1}
+	&__ok {
+		@include btn3;
+		margin: 0 auto;
+	}
+	&__table {
+		@include basicTable1;
+		td {text-align:left; padding-left:20px;}
+
+		&__input {
+			@include inText(50%)
+		}
+		&__input2 {
+			@include inText(80%)
+		}
+		&__textarea {
+			@include inTextarea(80%)
+		}
+		&__select {
+			@include selectBox(300px)
+		}
+
+		@media (max-width:800px) {
+			td:before {
+				display:block;
+				content:attr(data-th) "  ";
+				margin-bottom:10px;
+			}
+
+			&__input {
+				@include inText(95%)
+			}
+			&__input2 {
+				@include inText(95%)
+			}
+			&__textarea {
+				@include inTextarea(95%)
+			}
+		}
+	}
+}

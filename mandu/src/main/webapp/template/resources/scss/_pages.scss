@@ -1,0 +1,53 @@
+.icon-test {
+	padding: 10px;
+	background: {
+		color: #000;
+	};
+	&:after {
+		content: '';
+		display: inline-block;
+		@include sprite($pause);
+	}
+}
+
+
+.flex {
+	position: relative;
+	display: flex;
+	// flex-direction: column-reverse;
+	justify-content: space-between;
+	width: 500px;
+	height: 200px;
+	border: 1px solid red;
+
+	&-item {
+		flex: 1;
+		order: 0;
+		width: 100px;
+		height: 100px;
+		border: 1px solid blue;
+		background-color: #ccc;
+
+
+		&:nth-child(3) {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			width: 50px;
+			height: auto;
+			min: {
+				height: 40px;
+				width: 40px;
+			}
+			transform: translateY(-50%);
+			flex: 1;
+			order: 1;
+			background: {
+				color: red;
+			};
+		}
+	}
+}
+
+.flex-item {
+}

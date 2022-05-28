@@ -1,0 +1,327 @@
+/*사업개요*/
+
+.intro-box {
+	> h3 {@include h3Type3}
+	&__top {
+		height: 268px;
+		width: auto;
+		background: {
+			image:url('../../resources/images/cont/intro1-bg.jpg');
+			position:center center;
+			repeat:no-repeat;
+		}
+
+		&__desc {
+			position: relative;
+			text-align: center;
+			font-weight: bold;
+			color:#fff;
+			padding-top:150px;
+			&:before {
+				position: absolute;
+				top:70px;
+				left:50%;
+				transform: translateX(-50%);
+				@include sprite($title);
+			}
+		}
+	}
+	&__inform {
+		background-color:#fff;
+		width:90%;
+		margin:0 auto;
+		position: relative;
+		margin-top: -30px;
+		padding-bottom:40px;
+		margin-bottom:50px;
+		&__in {
+			padding:40px;
+			display: flex;
+			> li {
+				flex:1;
+				text-align:center;
+				position: relative;
+				border-left:1px solid #eee;
+				&:first-child {border-left:0;}
+
+				strong {
+					display: block;
+					padding-top:110px;
+				}
+				span {
+					display: block;
+					padding-top:30px;
+					position: relative;
+					&:before {
+						position: absolute;
+						top:10px;
+						left:50%;
+						transform: translateX(-50%);
+						@include sprite($intro-bul)
+					}
+				}
+			}
+			&__item1 strong:before {
+				position: absolute;
+				top:30px;
+				left:50%;
+				transform: translateX(-50%);
+				@include sprite($intro-box1)
+			}
+			&__item2 strong:before {
+				position: absolute;
+				top:10px;
+				left:50%;
+				transform: translateX(-50%);
+				@include sprite($intro-box2)
+			}
+			&__item3 strong:before {
+				position: absolute;
+				top:20px;
+				left:50%;
+				transform: translateX(-50%);
+				@include sprite($intro-box3)
+			}
+		}
+	}
+
+	&__table {
+		@include basicTable2;
+		th {text-align: center;padding-left:0;}
+	}
+
+	&__simbol {
+		padding:30px;
+		background-color:#f7f7f7;
+		@include floatWrap;
+		position: relative;
+		&__tit {
+			position: absolute;
+			top:30px;left:30px;
+			color:#000;
+			margin-bottom:5px;
+		}
+		&__desc {
+			position: absolute;
+			top:54px;left:30px;
+			color:#666;
+		}
+		&__btnbox {
+			position: absolute;
+			bottom:30px;left:30px;
+		}
+		&__img {float:right;}
+	}
+}
+.down-btn1 {@include downBtn1}
+.down-btn2 {@include downBtn2}
+
+
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.intro-box__simbol {text-align: center;}
+	.intro-box__simbol__tit {position: relative;top:0;left:0;margin-bottom: 20px;}
+	.intro-box__simbol__desc {position: relative;top:0;left:0;margin-bottom: 20px;}
+	.intro-box__simbol__btnbox {position: relative;bottom:0;left:0;margin-bottom: 20px;}
+	.intro-box__simbol__btnbox a {margin-bottom:5px;}
+
+	.intro-box__simbol__img {float:none;}
+}
+
+@media screen and (min-width:1px) and (max-width:768px) {
+	.intro-box__inform__in {padding:20px 0;}
+	.intro-box__inform {width:100%;margin-top:0;}
+}
+
+/* 조직도 */
+.intro-jojik {
+	text-align: center;
+	background: {
+		image: url('../../resources/images/cont/jojik-bg-line.png');
+		repeat: no-repeat;
+		position: center 188px;
+	}
+	&__top {
+		border: 1px dashed #cfcfcf;
+		padding: 13px;
+		margin: 0 auto;
+		border-radius: 100px;
+		display: inline-block;
+		margin-bottom: 97px;
+		&__boss {
+			position: relative;
+			height: 160px;
+			width: 160px;
+			border-radius: 100px;
+			display: inline-block;
+			overflow: hidden;
+
+			background: {
+				color:#0067c3;
+				image: url('../../resources/images/cont/jojik-bg.png');
+				repeat:repeat;
+				position: center center;
+				size:120% auto;
+			}
+			strong {
+				color:#fff;
+				display:block;
+				padding-top:55px;
+				font-size:18px;
+			}
+			small {
+				color:#bbd6ef;
+				font-size:14px;
+			}
+		}
+	}
+	&__mid {
+		display: flex;
+		width:82%;
+		margin: 0 auto;
+		&__item {
+			flex: 1;
+			padding:0 25px;
+			strong {
+				display: block;
+				height: 60px;
+				line-height: 60px;
+				color:#fff;
+				margin-bottom:10px;
+				border-radius: 10px;
+				font-size:16px;
+				background: {
+					color:#0067c3;
+					image: url('../../resources/images/cont/jojik-bg2.png');
+					repeat:repeat;
+					position: center center;
+				}
+			}
+			&__list {
+				padding:20px;
+				border:1px solid #dbdbdb;
+				border-radius: 5px;
+				@include basicList2;
+				color:#666;
+				min-height:190px;
+			}
+
+		}
+	}
+}
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.intro-jojik {background-image:none;}
+	.intro-jojik__top {margin-bottom:30px;}
+}
+@media screen and (min-width:1px) and (max-width:900px) {
+	.intro-jojik__mid {width:100%}
+	.intro-jojik__mid__item {padding:0 10px;}
+}
+@media screen and (min-width:1px) and (max-width:550px) {
+	.intro-jojik__mid {display:block;}
+	.intro-jojik__mid__item {flex: 0;}
+	.intro-jojik__mid__item__list {min-height:100px;}
+}
+
+/* 오시는 길 */
+.way-wrap {
+	> h3 {@include h3Type3}
+	&__top {
+		padding: 40px 0;
+		margin-bottom: 50px;
+		border-bottom: 1px solid #666;
+		@include floatWrap;
+		&__1 {
+			float:left;
+			margin-right:30px;
+			position:relative;
+			padding-left:50px;
+			font-size:16px;
+			&:before {
+				position: absolute;
+				top:50%;
+				left:0;
+				transform: translateY(-50%);
+
+				@include sprite($way-icon1)
+			}
+		}
+		&__2 {
+			float:left;
+			margin-right:30px;
+			position:relative;
+			padding-left:50px;
+			font-size:16px;
+			&:before {
+				position: absolute;
+				top:50%;
+				left:0;
+				transform: translateY(-50%);
+
+				@include sprite($way-icon2);
+			}
+		}
+	}
+	&__mid {
+		$wayPadding: 140px;
+		margin-bottom:30px;
+		padding-left:$wayPadding;
+
+		&__box {
+			padding:50px 0;
+			position: relative;
+			border-bottom: 1px solid #eee;
+			&:last-child {border-bottom:0px;}
+
+			&.type1:before {
+				position: absolute;
+				top:50px;
+				left:-$wayPadding;
+				@include sprite($way-big1);
+			}
+			&.type2:before {
+				position: absolute;
+				top:50px;
+				left:-$wayPadding;
+				@include sprite($way-big2);
+			}
+
+			&__tit {
+				font-size: 16px;
+				margin-bottom:20px;
+			}
+			&__loc {
+				padding-left:13px;
+				position: relative;
+				font-size: 14px;
+				&:before {
+					position: absolute;
+					top:6px;
+					left:0;
+					@include sprite($way-bul);
+				}
+			}
+			&__list {
+				color:#666;
+				margin-bottom:30px;
+				padding-left:13px;
+			}
+		}
+
+	}
+	&__table {
+		@include basicTable3;
+	}
+}
+@media screen and (min-width:1px) and (max-width:1200px) {
+	.way-wrap > div {max-width:100%;width:auto !important;}
+
+}
+@media screen and (min-width:1px) and (max-width:768px) {
+	.way-wrap__top {margin-bottom:30px;padding:30px 0;border-bottom:0px;padding-bottom:0;}
+	.way-wrap__top__1 {margin-bottom:30px;}
+	.way-wrap__top__2 {}
+	.way-wrap__mid {padding-left:0px;}
+	.way-wrap__mid__box {padding-top:0px;border-bottom: 0px;;}
+	.way-wrap__mid__box.type1:before {position: relative;top:0;left:0;margin-bottom:10px;}
+	.way-wrap__mid__box.type2:before {position: relative;top:0;left:0;margin-bottom:10px;}
+}
