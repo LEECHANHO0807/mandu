@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="adminMenu">
+	
+	
+	<!-- 메뉴 목록 (레벨 1) -->
+	<select id="menuFirstList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)						
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)				
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)				
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_FIRST
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+		ORDER BY
+			ORDER_NO ASC
+	</select>
+	
+	
+	<!-- 메뉴 목록 (레벨 2) -->
+	<select id="menuSecondList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_SECOND
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}	
+		ORDER BY
+			ORDER_NO ASC			
+	</select>
+	
+	
+	<!-- 메뉴 목록 (레벨 3) -->
+	<select id="menuThirdList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)						
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_THIRD
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}	
+		ORDER BY
+			ORDER_NO ASC			
+	</select>
+	
+
+	<!-- 메뉴 목록 (레벨 4) -->
+	<select id="menuFourthList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_FOURTH
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}	
+		ORDER BY
+			ORDER_NO ASC			
+	</select>	
+	
+	
+	<!-- 메뉴 레벨 1 등록 -->
+	<insert id="menuFirstCreate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		<selectKey keyProperty="menuNo" resultType="java.lang.String" order="BEFORE">
+			SELECT
+				IFNULL(MAX(MENU_NO), 0) + 1 AS menuNo
+			FROM
+				CMS_MENU_FIRST
+		</selectKey>
+		
+		INSERT INTO
+		CMS_MENU_FIRST (
+			MENU_NO,
+			UPPER_MENU_NO,
+			SITE_CODE,
+			TYPE,
+			REFERENCE_NO,
+			LINK_TYPE,
+			LINK_URL,
+			CUSTOM_URL,
+			OPEN_YN,
+			TITLE,
+			DESCRIPTION,
+			CODE,
+			PATH,
+			MENU_LEVEL,
+			ORDER_NO,
+			MASTER,
+			SUB_MASTER,
+			SEARCH_YN,
+			USE_YN,
+			DELETE_YN,
+			WRITE_ID,
+			WRITE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		) VALUES (
+			#{menuNo},
+			#{upperMenuNo},
+			#{siteCode},
+			#{type},
+			#{referenceNo},
+			#{linkType},
+			#{linkUrl},
+			#{customUrl},
+			#{openYn},
+			#{title},
+			#{description},
+			#{code},
+			#{path},
+			#{menuLevel},
+			#{orderNo},
+			#{master},
+			#{subMaster},
+			#{searchYn},
+			#{useYn},
+			'N',
+			#{writeId},
+			SYSDATE,
+			NULL,
+			NULL			
+		)
+	</insert>
+	
+	
+	<!-- 메뉴 레벨 2 등록 -->
+	<insert id="menuSecondCreate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		<selectKey keyProperty="menuNo" resultType="java.lang.String" order="BEFORE">
+			SELECT
+				IFNULL(MAX(MENU_NO), 0) + 1 AS menuNo
+			FROM
+				CMS_MENU_SECOND
+		</selectKey>
+		
+		INSERT INTO
+		CMS_MENU_SECOND (
+			MENU_NO,
+			UPPER_MENU_NO,
+			SITE_CODE,
+			TYPE,
+			REFERENCE_NO,
+			LINK_TYPE,
+			LINK_URL,
+			CUSTOM_URL,
+			OPEN_YN,			
+			TITLE,
+			DESCRIPTION,
+			CODE,
+			PATH,
+			MENU_LEVEL,
+			ORDER_NO,
+			MASTER,
+			SUB_MASTER,
+			SEARCH_YN,
+			USE_YN,
+			DELETE_YN,
+			WRITE_ID,
+			WRITE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		) VALUES (
+			#{menuNo},
+			#{upperMenuNo},
+			#{siteCode},
+			#{type},
+			#{referenceNo},
+			#{linkType},
+			#{linkUrl},
+			#{customUrl},
+			#{openYn},			
+			#{title},
+			#{description},
+			#{code},
+			#{path},
+			#{menuLevel},
+			#{orderNo},
+			#{master},
+			#{subMaster},
+			#{searchYn},
+			#{useYn},
+			'N',
+			#{writeId},
+			SYSDATE,
+			NULL,
+			NULL			
+		)
+	</insert>
+	
+	
+	<!-- 메뉴 레벨 3 등록 -->
+	<insert id="menuThirdCreate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		<selectKey keyProperty="menuNo" resultType="java.lang.String" order="BEFORE">
+			SELECT
+				IFNULL(MAX(MENU_NO), 0) + 1 AS menuNo
+			FROM
+				CMS_MENU_THIRD
+		</selectKey>
+		
+		INSERT INTO
+		CMS_MENU_THIRD (
+			MENU_NO,
+			UPPER_MENU_NO,
+			SITE_CODE,
+			TYPE,
+			REFERENCE_NO,
+			LINK_TYPE,
+			LINK_URL,
+			CUSTOM_URL,
+			OPEN_YN,
+			TITLE,
+			DESCRIPTION,
+			CODE,
+			PATH,
+			MENU_LEVEL,
+			ORDER_NO,
+			MASTER,
+			SUB_MASTER,
+			SEARCH_YN,
+			USE_YN,
+			DELETE_YN,
+			WRITE_ID,
+			WRITE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		) VALUES (
+			#{menuNo},
+			#{upperMenuNo},
+			#{siteCode},
+			#{type},
+			#{referenceNo},
+			#{linkType},
+			#{linkUrl},
+			#{customUrl},
+			#{openYn},			
+			#{title},
+			#{description},
+			#{code},
+			#{path},
+			#{menuLevel},
+			#{orderNo},
+			#{master},
+			#{subMaster},
+			#{searchYn},
+			#{useYn},
+			'N',
+			#{writeId},
+			SYSDATE,
+			NULL,
+			NULL			
+		)
+	</insert>
+	
+	
+	<!-- 메뉴 레벨 4 등록 -->
+	<insert id="menuFourthCreate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		<selectKey keyProperty="menuNo" resultType="java.lang.String" order="BEFORE">
+			SELECT
+				IFNULL(MAX(MENU_NO), 0) + 1 AS menuNo
+			FROM
+				CMS_MENU_FOURTH
+		</selectKey>
+		
+		INSERT INTO
+		CMS_MENU_FOURTH (
+			MENU_NO,
+			UPPER_MENU_NO,
+			SITE_CODE,
+			TYPE,
+			REFERENCE_NO,
+			LINK_TYPE,
+			LINK_URL,
+			CUSTOM_URL,
+			OPEN_YN,
+			TITLE,
+			DESCRIPTION,
+			CODE,
+			PATH,
+			MENU_LEVEL,
+			ORDER_NO,
+			MASTER,
+			SUB_MASTER,
+			SEARCH_YN,
+			USE_YN,
+			DELETE_YN,
+			WRITE_ID,
+			WRITE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		) VALUES (
+			#{menuNo},
+			#{upperMenuNo},
+			#{siteCode},
+			#{type},
+			#{referenceNo},
+			#{linkType},
+			#{linkUrl},
+			#{customUrl},
+			#{openYn},			
+			#{title},
+			#{description},
+			#{code},
+			#{path},
+			#{menuLevel},
+			#{orderNo},
+			#{master},
+			#{subMaster},
+			#{searchYn},
+			#{useYn},
+			'N',
+			#{writeId},
+			SYSDATE,
+			NULL,
+			NULL			
+		)
+	</insert>
+		
+	
+	<!-- 메뉴 읽기 (레벨 1) -->
+	<select id="menuFirstRead" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,	
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)	
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FIRST.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_FIRST
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</select>
+	
+	
+	<!-- 메뉴 읽기 (레벨 2) -->
+	<select id="menuSecondRead" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,		
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_SECOND.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_SECOND
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</select>
+	
+	
+	<!-- 메뉴 읽기 (레벨 3) -->
+	<select id="menuThirdRead" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_THIRD.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_THIRD
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</select>
+		
+	
+	<!-- 메뉴 읽기 (레벨 3) -->
+	<select id="menuFourthRead" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.WRITE_ID ) AS writerName,							
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.WRITE_ID ) AS writer,
+			WRITE_ID AS writeId,
+			DATE_FORMAT(WRITE_DATE, '%Y-%m-%d %H:%i:%s') AS writeDate,
+			( SELECT USER_NM FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.UPDATE_ID ) AS updaterName,
+			( SELECT USER_ID FROM COMVNUSERMASTER WHERE ESNTL_ID = CMS_MENU_FOURTH.UPDATE_ID ) AS updater,
+			UPDATE_ID AS updateId,
+			DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%s') AS updateDate
+		FROM
+			CMS_MENU_FOURTH
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</select>	
+	
+	
+	<!-- 메뉴 수정 (레벨 1) -->
+	<update id="menuFirstUpdate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_FIRST
+		SET
+			UPPER_MENU_NO = #{upperMenuNo},
+			TYPE = #{type},
+			REFERENCE_NO = #{referenceNo},
+			LINK_TYPE = #{linkType},
+			LINK_URL = #{linkUrl},
+			CUSTOM_URL = #{customUrl},
+			OPEN_YN = #{openYn},
+			TITLE = #{title},
+			DESCRIPTION = #{description},
+			CODE = #{code},
+			PATH = #{path},
+			MENU_LEVEL = #{menuLevel},
+			ORDER_NO = #{orderNo},
+			MASTER = #{master},
+			SUB_MASTER = #{subMaster},
+			SEARCH_YN = #{searchYn},
+			USE_YN = #{useYn},
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 수정 (레벨 2) -->
+	<update id="menuSecondUpdate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_SECOND
+		SET
+			UPPER_MENU_NO = #{upperMenuNo},
+			TYPE = #{type},
+			REFERENCE_NO = #{referenceNo},
+			LINK_TYPE = #{linkType},
+			LINK_URL = #{linkUrl},
+			CUSTOM_URL = #{customUrl},
+			OPEN_YN = #{openYn},
+			TITLE = #{title},
+			DESCRIPTION = #{description},
+			CODE = #{code},
+			PATH = #{path},
+			MENU_LEVEL = #{menuLevel},
+			ORDER_NO = #{orderNo},
+			MASTER = #{master},
+			SUB_MASTER = #{subMaster},
+			SEARCH_YN = #{searchYn},
+			USE_YN = #{useYn},
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 수정 (레벨 3) -->
+	<update id="menuThirdUpdate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_THIRD
+		SET
+			UPPER_MENU_NO = #{upperMenuNo},
+			TYPE = #{type},
+			REFERENCE_NO = #{referenceNo},
+			LINK_TYPE = #{linkType},
+			LINK_URL = #{linkUrl},
+			CUSTOM_URL = #{customUrl},
+			OPEN_YN = #{openYn},
+			TITLE = #{title},
+			DESCRIPTION = #{description},
+			CODE = #{code},
+			PATH = #{path},
+			MENU_LEVEL = #{menuLevel},
+			ORDER_NO = #{orderNo},
+			MASTER = #{master},
+			SUB_MASTER = #{subMaster},
+			SEARCH_YN = #{searchYn},
+			USE_YN = #{useYn},
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 수정 (레벨 4) -->
+	<update id="menuFourthUpdate" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_FOURTH
+		SET
+			UPPER_MENU_NO = #{upperMenuNo},
+			TYPE = #{type},
+			REFERENCE_NO = #{referenceNo},
+			LINK_TYPE = #{linkType},
+			LINK_URL = #{linkUrl},
+			CUSTOM_URL = #{customUrl},
+			OPEN_YN = #{openYn},
+			TITLE = #{title},
+			DESCRIPTION = #{description},
+			CODE = #{code},
+			PATH = #{path},
+			MENU_LEVEL = #{menuLevel},
+			ORDER_NO = #{orderNo},
+			MASTER = #{master},
+			SUB_MASTER = #{subMaster},
+			SEARCH_YN = #{searchYn},
+			USE_YN = #{useYn},
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>	
+	
+
+	<!-- 메뉴 삭제 (레벨 1) -->
+	<update id="menuFirstDelete" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_FIRST
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 삭제 (레벨 2) -->
+	<update id="menuSecondDelete" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">			
+		UPDATE
+			CMS_MENU_SECOND
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 삭제 (레벨 3) -->
+	<update id="menuThirdDelete" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_THIRD
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 삭제 (레벨 4) -->
+	<update id="menuFourthDelete" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_FOURTH
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 초기화 (레벨 1) -->
+	<update id="menuFirstReset" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_FIRST
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 초기화 (레벨 2) -->
+	<update id="menuSecondReset" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_SECOND
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 초기화 (레벨 3) -->
+	<update id="menuThirdReset" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_THIRD
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+	
+	<!-- 메뉴 초기화 (레벨 4) -->
+	<update id="menuFourthReset" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		UPDATE
+			CMS_MENU_FOURTH
+		SET
+			DELETE_YN = 'Y',
+			UPDATE_ID = #{updateId},
+			UPDATE_DATE = SYSDATE
+		WHERE
+			DELETE_YN = 'N'
+			AND SITE_CODE = #{siteCode}
+	</update>
+	
+</mapper>

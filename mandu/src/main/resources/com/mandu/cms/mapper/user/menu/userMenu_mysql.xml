@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="userMenu">
+	
+	
+	<!-- 메뉴 목록 (사용자 - 레벨 1) -->
+	<select id="menuFirstUserList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FIRST.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_FIRST
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			
+			<if test="openYn != null and openYn != ''">
+				AND OPEN_YN = #{openYn}
+			</if>
+			
+		ORDER BY
+			ORDER_NO ASC
+	</select>
+	
+	
+	<!-- 메뉴 목록 (사용자 - 레벨 2) -->
+	<select id="menuSecondUserList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)		
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_SECOND
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND DELETE_YN = 'N'	
+			AND USE_YN = 'Y'
+			
+			<if test="openYn != null and openYn != ''">
+				AND OPEN_YN = #{openYn}
+			</if>
+			
+		ORDER BY
+			ORDER_NO ASC			
+	</select>
+	
+	
+	<!-- 메뉴 목록 (사용자 - 레벨 3) -->
+	<select id="menuThirdUserList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_THIRD
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			
+			<if test="openYn != null and openYn != ''">
+				AND OPEN_YN = #{openYn}
+			</if>
+			
+		ORDER BY
+			ORDER_NO ASC			
+	</select>
+	
+	
+	<!-- 메뉴 목록 (사용자 - 레벨 4) -->
+	<select id="menuFourthUserList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)		
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_FOURTH
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			
+			<if test="openYn != null and openYn != ''">
+				AND OPEN_YN = #{openYn}
+			</if>
+			
+		ORDER BY
+			ORDER_NO ASC			
+	</select>	
+	
+	
+	<!-- 메뉴 리다이렉트 (레벨 1) -->
+	<select id="menuFirstRedirect" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_SECOND.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_SECOND
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND UPPER_MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+		ORDER BY
+			ORDER_NO ASC
+		LIMIT
+			1
+	</select>
+	
+	
+	<!-- 메뉴 리다이렉트 (레벨 2) -->
+	<select id="menuSecondRedirect" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_THIRD.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_THIRD
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND UPPER_MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+		ORDER BY
+			ORDER_NO ASC
+		LIMIT
+			1
+	</select>
+	
+	
+	<!-- 메뉴 리다이렉트 (레벨 3) -->
+	<select id="menuThirdRedirect" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			(
+				CASE TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = CMS_MENU_FOURTH.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,			
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_FOURTH
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND UPPER_MENU_NO = #{menuNo}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+		ORDER BY
+			ORDER_NO ASC
+		LIMIT
+			1
+	</select>	
+	
+	
+	<!-- 메뉴 왼쪽 목록 (사용자 - 레벨 2) -->
+	<select id="menuSecondUserLeftList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			SECOND.MENU_NO AS menuNo,
+			SECOND.UPPER_MENU_NO as UPPER_MENU_NO,
+			SECOND.TYPE AS type,
+			SECOND.REFERENCE_NO AS referenceNo,
+			(
+				CASE SECOND.TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = SECOND.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = SECOND.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = SECOND.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = SECOND.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			SECOND.LINK_TYPE AS linkType,
+			SECOND.LINK_URL AS linkUrl,
+			SECOND.CUSTOM_URL AS customUrl,
+			SECOND.OPEN_YN AS openYn,
+			SECOND.TITLE AS title,
+			SECOND.DESCRIPTION AS description,
+			SECOND.CODE AS code,
+			SECOND.PATH AS path,
+			SECOND.MENU_LEVEL AS menuLevel,
+			SECOND.ORDER_NO AS orderNo,
+			SECOND.MASTER AS master,
+			SECOND.SUB_MASTER AS subMaster,
+			SECOND.SEARCH_YN AS searchYn,
+			SECOND.USE_YN AS useYn,
+			SECOND.DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_FIRST FIRST,
+			CMS_MENU_SECOND SECOND
+		WHERE
+			FIRST.SITE_CODE = #{siteCode}
+			AND SECOND.SITE_CODE = #{siteCode}
+			AND FIRST.MENU_NO = SECOND.UPPER_MENU_NO
+			AND FIRST.MENU_NO = #{menuNo}
+			AND FIRST.DELETE_YN = 'N'
+			AND FIRST.USE_YN = 'Y'
+			AND SECOND.DELETE_YN = 'N'
+			AND SECOND.USE_YN = 'Y'
+		ORDER BY
+			SECOND.ORDER_NO ASC			
+	</select>
+	
+	
+	<!-- 메뉴 왼쪽 목록 (사용자 - 레벨 3) -->
+	<select id="menuThirdUserLeftList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			THIRD.MENU_NO AS menuNo,
+			THIRD.UPPER_MENU_NO as UPPER_MENU_NO,
+			THIRD.TYPE AS type,
+			THIRD.REFERENCE_NO AS referenceNo,
+			(
+				CASE THIRD.TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = THIRD.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = THIRD.REFERENCE_NO
+						)
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = THIRD.REFERENCE_NO
+						)		
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = THIRD.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			THIRD.LINK_TYPE AS linkType,
+			THIRD.LINK_URL AS linkUrl,
+			THIRD.CUSTOM_URL AS customUrl,
+			THIRD.OPEN_YN AS openYn,
+			THIRD.TITLE AS title,
+			THIRD.DESCRIPTION AS description,
+			THIRD.CODE AS code,
+			THIRD.PATH AS path,
+			THIRD.MENU_LEVEL AS menuLevel,
+			THIRD.ORDER_NO AS orderNo,
+			THIRD.MASTER AS master,
+			THIRD.SUB_MASTER AS subMaster,
+			THIRD.SEARCH_YN AS searchYn,
+			THIRD.USE_YN AS useYn,
+			THIRD.DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_FIRST FIRST,
+			CMS_MENU_SECOND SECOND,
+			CMS_MENU_THIRD THIRD
+		WHERE
+			FIRST.SITE_CODE = #{siteCode}
+			AND SECOND.SITE_CODE = #{siteCode}
+			AND	THIRD.SITE_CODE = #{siteCode}
+			AND FIRST.MENU_NO = SECOND.UPPER_MENU_NO
+			AND SECOND.MENU_NO = THIRD.UPPER_MENU_NO
+			AND FIRST.MENU_NO = #{menuNo}
+			AND FIRST.DELETE_YN = 'N'
+			AND FIRST.USE_YN = 'Y'
+			AND SECOND.DELETE_YN = 'N'
+			AND SECOND.USE_YN = 'Y'
+			AND THIRD.DELETE_YN = 'N'
+			AND THIRD.USE_YN = 'Y'
+		ORDER BY
+			THIRD.ORDER_NO ASC
+	</select>
+	
+	
+	<!-- 메뉴 왼쪽 목록 (사용자 - 레벨 4) -->
+	<select id="menuFourthUserLeftList" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			FOURTH.MENU_NO AS menuNo,
+			FOURTH.UPPER_MENU_NO as UPPER_MENU_NO,
+			FOURTH.TYPE AS type,
+			FOURTH.REFERENCE_NO AS referenceNo,
+			(
+				CASE FOURTH.TYPE
+					WHEN 'BOARD' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_BOARD_MANAGEMENT
+							WHERE
+								BOARD_MANAGEMENT_NO = FOURTH.REFERENCE_NO
+						)
+					WHEN 'SCHEDULE' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_SCHEDULE_MANAGEMENT
+							WHERE
+								SCHEDULE_MANAGEMENT_NO = FOURTH.REFERENCE_NO
+						)	
+					WHEN 'RENTAL' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_RENTAL_MANAGEMENT
+							WHERE
+								RENTAL_MANAGEMENT_NO = FOURTH.REFERENCE_NO
+						)	
+					WHEN 'CONTENTS' THEN
+						(
+							SELECT
+								TITLE
+							FROM
+								CMS_CONTENTS
+							WHERE
+								CONTENTS_NO = FOURTH.REFERENCE_NO
+						)					
+					ELSE
+						NULL
+				END
+			) AS referenceTitle,			
+			FOURTH.LINK_TYPE AS linkType,
+			FOURTH.LINK_URL AS linkUrl,
+			FOURTH.CUSTOM_URL AS customUrl,
+			FOURTH.OPEN_YN AS openYn,
+			FOURTH.TITLE AS title,
+			FOURTH.DESCRIPTION AS description,
+			FOURTH.CODE AS code,
+			FOURTH.PATH AS path,
+			FOURTH.MENU_LEVEL AS menuLevel,
+			FOURTH.ORDER_NO AS orderNo,
+			FOURTH.MASTER AS master,
+			FOURTH.SUB_MASTER AS subMaster,
+			FOURTH.SEARCH_YN AS searchYn,
+			FOURTH.USE_YN AS useYn,
+			FOURTH.DELETE_YN AS deleteYn
+		FROM
+			CMS_MENU_FIRST FIRST,
+			CMS_MENU_SECOND SECOND,
+			CMS_MENU_THIRD THIRD,
+			CMS_MENU_FOURTH FOURTH
+		WHERE
+			FIRST.SITE_CODE = #{siteCode}
+			AND SECOND.SITE_CODE = #{siteCode}
+			AND	THIRD.SITE_CODE = #{siteCode}
+			AND	FOURTH.SITE_CODE = #{siteCode}
+			
+			AND FIRST.MENU_NO = SECOND.UPPER_MENU_NO
+			AND SECOND.MENU_NO = THIRD.UPPER_MENU_NO
+			AND THIRD.MENU_NO = FOURTH.UPPER_MENU_NO
+			
+			AND FIRST.MENU_NO = #{menuNo}
+			
+			AND FIRST.DELETE_YN = 'N'
+			AND FIRST.USE_YN = 'Y'
+			
+			AND SECOND.DELETE_YN = 'N'
+			AND SECOND.USE_YN = 'Y'
+			
+			AND THIRD.DELETE_YN = 'N'
+			AND THIRD.USE_YN = 'Y'
+			
+			AND FOURTH.DELETE_YN = 'N'
+			AND FOURTH.USE_YN = 'Y'
+		ORDER BY
+			FOURTH.ORDER_NO ASC
+	</select>	
+	
+	
+</mapper>

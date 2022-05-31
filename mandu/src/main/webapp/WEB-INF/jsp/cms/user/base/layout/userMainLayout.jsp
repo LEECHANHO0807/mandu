@@ -121,7 +121,7 @@
 	</aside>
 	<div class="scrollbar">
 		<!-- userHeader -->
-		<%-- <tiles:insertAttribute name="userHeader" /> --%>
+		<tiles:insertAttribute name="userHeader" />
 		<!-- // userHeader -->
 
 		<!-- userContent -->

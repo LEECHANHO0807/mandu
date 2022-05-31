@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="userTop">
+	
+	
+	<!-- 탑 정보 (사용자 - 레벨 1) -->
+	<select id="topFirstInformation" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS firstMenuNo,
+			TITLE AS title,
+			TITLE AS firstTitle,
+			SITE_CODE AS siteCode,
+			UPPER_MENU_NO AS upperMenuNo,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo
+		FROM
+			CMS_MENU_FIRST
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND	DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			AND MENU_NO = #{menuNo}
+	</select>
+	
+	
+	<!-- 탑 정보 (사용자 - 레벨 2) -->
+	<select id="topSecondInformation" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			(
+				SELECT 
+					MENU_NO 
+				FROM 
+					CMS_MENU_FIRST 
+				WHERE 
+					MENU_NO = CMS_MENU_SECOND.UPPER_MENU_NO
+			) AS firstMenuNo,
+			MENU_NO AS secondMenuNo,
+			TITLE AS title,
+			(
+				SELECT 
+					TITLE 
+				FROM 
+					CMS_MENU_FIRST 
+				WHERE 
+					MENU_NO = CMS_MENU_SECOND.UPPER_MENU_NO
+			) AS firstTitle,
+			TITLE AS secondTitle,
+			SITE_CODE AS siteCode,
+			UPPER_MENU_NO AS upperMenuNo,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo
+		FROM
+			CMS_MENU_SECOND
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND	DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			AND MENU_NO = #{menuNo}		
+	</select>
+	
+	
+	<!-- 탑 정보 (사용자 - 레벨 3) -->
+	<select id="topThirdInformation" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			TITLE AS title,
+			(	SELECT
+					MENU_NO
+				FROM
+					CMS_MENU_FIRST
+				WHERE
+					MENU_NO = (
+						SELECT
+							UPPER_MENU_NO
+						FROM
+							CMS_MENU_SECOND
+						WHERE
+							MENU_NO = CMS_MENU_THIRD.UPPER_MENU_NO
+					)
+			) AS firstMenuNo,
+			(
+				SELECT
+					MENU_NO
+				FROM
+					CMS_MENU_SECOND
+				WHERE
+					MENU_NO = CMS_MENU_THIRD.UPPER_MENU_NO
+			) AS secondMenuNo,
+			MENU_NO AS thirdMenuNo,		
+			(	SELECT
+					TITLE
+				FROM
+					CMS_MENU_FIRST
+				WHERE
+					MENU_NO = (
+						SELECT
+							UPPER_MENU_NO
+						FROM
+							CMS_MENU_SECOND
+						WHERE
+							MENU_NO = CMS_MENU_THIRD.UPPER_MENU_NO
+					)
+			) AS firstTitle,
+			(
+				SELECT 
+					TITLE 
+				FROM 
+					CMS_MENU_SECOND 
+				WHERE MENU_NO = CMS_MENU_THIRD.UPPER_MENU_NO
+			) AS secondTitle,
+			TITLE AS thirdTitle,
+			SITE_CODE AS siteCode,
+			UPPER_MENU_NO AS upperMenuNo,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo
+		FROM
+			CMS_MENU_THIRD
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND	DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			AND MENU_NO = #{menuNo}
+	</select>
+	
+	
+	<!-- 탑 정보 (사용자 - 레벨 4) -->
+	<select id="topFourthInformation" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			TITLE AS title,
+			(	SELECT
+					MENU_NO
+				FROM
+					CMS_MENU_FIRST
+				WHERE
+					MENU_NO = (
+						SELECT
+							UPPER_MENU_NO
+						FROM
+							CMS_MENU_SECOND
+						WHERE
+							MENU_NO = 
+								(
+									SELECT
+										UPPER_MENU_NO
+									FROM
+										CMS_MENU_THIRD
+									WHERE
+										MENU_NO = CMS_MENU_FOURTH.UPPER_MENU_NO
+								)
+					)
+			) AS firstMenuNo,
+			(
+				SELECT
+					MENU_NO
+				FROM
+					CMS_MENU_SECOND
+				WHERE
+					MENU_NO = 
+						(
+							SELECT
+								UPPER_MENU_NO
+							FROM
+								CMS_MENU_THIRD
+							WHERE
+								MENU_NO = CMS_MENU_FOURTH.UPPER_MENU_NO
+						)
+			) AS secondMenuNo,
+			(
+				SELECT
+					MENU_NO
+				FROM
+					CMS_MENU_THIRD
+				WHERE
+					MENU_NO = CMS_MENU_FOURTH.UPPER_MENU_NO
+			) AS thirdMenuNo,
+			MENU_NO AS fourthMenuNo,
+			(	SELECT
+					TITLE
+				FROM
+					CMS_MENU_FIRST
+				WHERE
+					MENU_NO = (
+						SELECT
+							UPPER_MENU_NO
+						FROM
+							CMS_MENU_SECOND
+						WHERE
+							MENU_NO = 
+								(
+									SELECT
+										UPPER_MENU_NO
+									FROM
+										CMS_MENU_THIRD
+									WHERE
+										MENU_NO = CMS_MENU_FOURTH.UPPER_MENU_NO
+								)
+					)
+			) AS firstTitle,
+			(
+				SELECT 
+					TITLE 
+				FROM 
+					CMS_MENU_SECOND 
+				WHERE
+					MENU_NO = 
+					(
+						SELECT 
+							TITLE 
+						FROM 
+							CMS_MENU_THIRD 
+						WHERE
+							MENU_NO = CMS_MENU_FOURTH.UPPER_MENU_NO
+					)
+			) AS secondTitle,
+			(
+				SELECT 
+					TITLE 
+				FROM 
+					CMS_MENU_THIRD 
+				WHERE MENU_NO = CMS_MENU_FOURTH.UPPER_MENU_NO
+			) AS thirdTitle,
+			TITLE AS fourthTitle,
+			SITE_CODE AS siteCode,
+			UPPER_MENU_NO AS upperMenuNo,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo
+		FROM
+			CMS_MENU_FOURTH
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND	DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			AND MENU_NO = #{menuNo}
+	</select>	
+	
+	
+	<!-- 이전, 다음 메뉴 정보 -->
+	<select id="prevNextMenu" parameterType="com.mandu.cms.admin.structure.menu.domain.Menu" resultType="com.mandu.cms.admin.structure.menu.domain.Menu">
+		SELECT
+			MENU_NO AS menuNo,
+			UPPER_MENU_NO as UPPER_MENU_NO,
+			TYPE AS type,
+			REFERENCE_NO AS referenceNo,
+			LINK_TYPE AS linkType,
+			LINK_URL AS linkUrl,
+			CUSTOM_URL AS customUrl,
+			OPEN_YN AS openYn,
+			TITLE AS title,
+			DESCRIPTION AS description,
+			CODE AS code,
+			PATH AS path,
+			MENU_LEVEL AS menuLevel,
+			ORDER_NO AS orderNo,
+			MASTER AS master,
+			SUB_MASTER AS subMaster,
+			SEARCH_YN AS searchYn,
+			USE_YN AS useYn,
+			DELETE_YN AS deleteYn
+		FROM
+			(
+			SELECT * FROM CMS_MENU_FIRST
+			UNION
+			SELECT * FROM CMS_MENU_SECOND
+			UNION
+			SELECT * FROM CMS_MENU_THIRD
+			UNION
+			SELECT * FROM CMS_MENU_FOURTH
+		) AS A
+		WHERE
+			SITE_CODE = #{siteCode}
+			AND DELETE_YN = 'N'
+			AND USE_YN = 'Y'
+			AND UPPER_MENU_NO = #{upperMenuNo}
+			AND MENU_LEVEL = #{menuLevel}
+			AND ORDER_NO = #{orderNo};
+	</select>
+</mapper>
